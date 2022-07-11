@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:46:25 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 11:47:44 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/11 12:00:46 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int control_arg(int ac, char **av)
     j = 0;
     if (ac == 2)
     {
-        if(av[1][5])
+        if(av[1][4])
         {
             while(av[1][ft_strlen(av[1]) - i])
             {
@@ -31,7 +31,7 @@ int control_arg(int ac, char **av)
             }
             extension[4] = '\0';
             if (ft_strcmp(extension, ".cub"))
-                ft_error(WRONG_EXT);
+                ft_error(WRONG_EXT, NULL);
         }
     }
     return (1);

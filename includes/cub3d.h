@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:20:35 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/11 09:25:33 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,32 @@
 # include <stddef.h>
 # include <stdbool.h>
 
+typedef struct s_textures
+{
+    char    *ceiler_code;
+    char    *roof_code;
+    char    *no_path;
+    char    *so_path;
+    char    *we_path;
+    char    *ea_path;
+}              t_textures;
+
+
 typedef struct s_map
 {
-    char **map;
+    char        **map;
+    t_textures  textures;
+    
 }              t_map;
 
 
-void        ft_error(char *error);
+void        ft_error(char *error, char *where);
 int         control_arg(int argc, char **av);
 
 size_t	    ft_strlen(const char *s);
+int         ft_isprint(int c);
 int         ft_isdigit(int c);
+int         ft_isascii(int c);
 int         ft_is_str_nb(char *str);
 char	    *ft_itoa(int n);
 int         ft_atoi(const char *str);
@@ -48,5 +63,7 @@ char	    *ft_strdup(const char *s1);
 
 char	    *get_file_str(char *file_entry);
 int         control_map(char **map);
+int         get_color_code(t_map *m, char *rgb_code);
+int         is_color_code (char *code);
 
 # endif

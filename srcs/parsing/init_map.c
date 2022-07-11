@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:13:08 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/10 23:18:38 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*get_file_str(char *file_entry)
 
 	strmap = NULL;
 	if (open(file_entry, O_DIRECTORY) != -1)
-		ft_error(PATH_IS_DIRECTORY);
+		ft_error(PATH_IS_DIRECTORY, NULL);
 	fd = open(file_entry, O_RDONLY);
 	if (fd == -1)
-		ft_error(NO_MAP_FILE);
+		ft_error(NO_MAP_FILE, NULL);
 	r = read(fd, &buffer, 1);
 	while (r)
 	{
