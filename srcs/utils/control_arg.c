@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   control_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:46:25 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 11:47:44 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:13:56 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
+/* check extention .cub */
 int control_arg(int ac, char **av)
 {
     int     i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:29:47 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/12 17:58:19 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int check_textures (char **map)
     if (ft_strncmp(map[0], "NO ", 3) || ft_strncmp(map[1], "SO ", 3) 
         || ft_strncmp(map[2], "WE ", 3) || ft_strncmp(map[3], "EA ", 3)
         || ft_strncmp(map[4], "F ", 2) || ft_strncmp(map[5], "C ", 2))
-        ft_error(TEXTURE_NAME_ERROR);
+        ft_error(TEXTURE_ERROR);
     return(0);
 }
 

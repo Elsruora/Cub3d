@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:20:35 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/12 22:47:22 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,26 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdbool.h>
+# ifdef __LINUX__
+    # include "../linux_mlx/mlx.h"
+# else
+    # include "../mlx/mlx.h"
+#endif
 
 typedef struct s_map
 {
-    char **map;
+    char    **map;
+	void	*mlx;
+	void	*win;
+	int		loop;
 }              t_map;
 
-
+/* tools */
 void        ft_error(char *error);
 int         control_arg(int argc, char **av);
+void    ft_map_size(t_map *mlx, int *cols, int *lines);
 
+/* libft */
 size_t	    ft_strlen(const char *s);
 int         ft_isdigit(int c);
 int         ft_is_str_nb(char *str);
@@ -46,6 +56,7 @@ int         ft_strncmp(const char *s1, const char *s2, size_t n);
 char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
 
+/* parsing */
 char	    *get_file_str(char *file_entry);
 int         control_map(char **map);
 

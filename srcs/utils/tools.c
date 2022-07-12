@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 15:23:15 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/12 18:11:01 by jvalenci         ###   ########.fr       */
+/*   Created: 2022/07/12 22:34:06 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/07/12 22:56:01 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-size_t	ft_strlen(const char *s)
+void    ft_map_size(t_map *m, int *cols, int *lines)
 {
-	size_t	i;
+    int i;
+    int temp;
 
-	i = 0;
-	if (!*s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+    i = 5; 
+    temp = 0;
+    *cols = 0;
+    *lines = 0;
+    while (m->map[++i])
+    {
+        temp = ft_strlen(m->map[i]);
+        if (temp > *cols)
+            *cols = temp;
+    }
+    *lines = i - 5;
 }

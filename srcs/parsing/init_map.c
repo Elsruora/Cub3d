@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:13:08 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/12 18:22:28 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
+/* 
+Read from file passed as argument character by character, then return string
+*/
 char	*get_file_str(char *file_entry)
 {
 	int		fd;

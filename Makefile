@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+         #
+#    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/07/08 10:09:55 by nchabli          ###   ########.fr        #
+#    Updated: 2022/07/12 22:55:22 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,19 +36,28 @@ WHITE       = \033[1;49;97m
 NAME        = Cub3d
 MK_DIR      = Config
 OBJS        = $(SRCS:%.c=%.o)
+EXEC_FLAGS_MAC = -Lmlx -lmlx -framework OpenGL -framework AppKit 
+OBJS_FLAGS_MAC = -Imlx 
+EXEC_FLAGS_LINUX := linux_mlx/libmlx.a -L/usr/include/ -L/usr/lib  -lXext -lX11 -lm -lbsd
+OBJS_FLAGS_LINUX := -I/usr/include -lmlx -O3 -Ilinux_mlx -Llinux_mlx
 OBJ_DIR     = Objects
 OBJ_PATH    = $(addprefix $(OBJ_DIR)/, $(OBJS))
 DEPENDES    = $(OBJ_PATH:%.o=%.d)
-CFLAGS      = -Wall -Werror -Wextra
+CFLAGS      = -g -Wall -Werror -Wextra
 TRACKER     = srcs/utils/tracker/libtracker.a
 DIR_TRACK   = srcs/utils/tracker
 CONFIG      = $(shell find [0-9a-zA-Z]* -type d -name "Config")
+CNAME := $(shell uname -s)
+ifeq ($(CNAME), Linux)
+EXEC_FLAGS_MAC = $(EXEC_FLAGS_LINUX)
+OBJS_FLAGS_MAC = $(OBJS_FLAGS_LINUX)
+endif
 
 #################################################################################
 #                                   Compilation C                               #
 #################################################################################
 $(NAME): $(OBJ_PATH)
-	@gcc $(CFLAGS) $(OBJ_PATH) -o $(NAME)
+	@gcc $(CFLAGS) $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 	
 all: gmk $(NAME) $(HEADER)
@@ -89,7 +98,7 @@ gmk: $(MK_DIR)
 	@echo "SRCS += " > ./Config/Sources.mk
 	@find srcs -name '*.c' | sed 's/^/SRCS += /' >> ./Config/Sources.mk
 	@echo "HEADER += " > ./Config/Header.mk
-	@find Includes -name '*.h' | sed 's/^/HEADER += /' >> ./Config/Header.mk
+	@find ./includes -name '*.h' | sed 's/^/HEADER += /' >> ./Config/Header.mk
 	@echo "`sed '/tracker/d' ./Config/Sources.mk`" > ./Config/Sources.mk
 
 #################################################################################
