@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/12 22:47:22 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:29:08 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,44 @@
     # include "../mlx/mlx.h"
 #endif
 
-typedef struct s_map
+
+/* mlx enviroment  */
+typedef struct  s_sys 
 {
-    char    **map;
 	void	*mlx;
 	void	*win;
 	int		loop;
+}               t_sys;
+
+/* structure for image creation  */
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
+/* 2d map information */
+typedef struct s_map
+{
+    char    **map;
+    t_sys   *s_mlx;
+    t_img   *s_img;
+    int     lines;
+    int     colums;
 }              t_map;
+
+
 
 /* tools */
 void        ft_error(char *error);
 int         control_arg(int argc, char **av);
-void    ft_map_size(t_map *mlx, int *cols, int *lines);
+void        ft_map_size(t_map *mlx, int *cols, int *lines);
+int         ft_rgb_to_int(int r, int g, int b);
+void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
+void    	create_map(t_map *m);
 
 /* libft */
 size_t	    ft_strlen(const char *s);

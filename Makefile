@@ -6,7 +6,7 @@
 #    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/07/12 22:55:22 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/07/14 15:10:29 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ endif
 #################################################################################
 #                                   Compilation C                               #
 #################################################################################
-$(NAME): $(OBJ_PATH)
+$(NAME): mlx $(OBJ_PATH) 
 	@gcc $(CFLAGS) $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 	
@@ -73,6 +73,9 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@printf "\033[1;32mCreate OBJS_DIR $(CO_DELET)\033[3;32m [√]\033[0m\n"
+
+mlx:
+	$(MAKE) -C ./linux_mlx
 
 #################################################################################
 #                                   Clean                                       #
