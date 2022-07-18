@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:02:47 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/10 23:34:10 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 09:39:55 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,5 @@
 #define TEXTURE_NAME_ERROR  RED"Texture name error"GREEN" check your map file.\""RESET""
 #define BAD_TEXTURE_PATH    RED"Unable to find file at path"GREEN" check your map file.\""RESET""
 #define BAD_COLOR_CODE      RED"Bad color code format"GREEN" check your map file.\""RESET""
+#define WRONG_ARG_NB        RED"Wrong arguments number"GREEN" please type just one\""RESET""
+#define BAD_RGB_VALUE       RED"Bad RGB value"GREEN" please type a number between 0 and 255 inclued\""RESET""

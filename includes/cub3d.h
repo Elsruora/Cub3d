@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/11 09:25:33 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/13 10:38:47 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@
 typedef struct s_textures
 {
     char    *ceiler_code;
-    char    *roof_code;
-    char    *no_path;
-    char    *so_path;
-    char    *we_path;
-    char    *ea_path;
+    char    *floor_code;
+    int     no_fd;
+    int     so_fd;
+    int     we_fd;
+    int     ea_fd;
 }              t_textures;
-
 
 typedef struct s_map
 {
@@ -40,6 +39,14 @@ typedef struct s_map
     t_textures  textures;
     
 }              t_map;
+
+typedef struct s_counter
+{
+    int         i;
+    int         j;
+    int         k;
+    
+}              t_counter;
 
 
 void        ft_error(char *error, char *where);
@@ -60,10 +67,21 @@ char	    *ft_strjoin(char const *s1, char const *s2);
 int         ft_strncmp(const char *s1, const char *s2, size_t n);
 char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
+char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
+char        *find_scnd_word(char *line);
+
+/* CHECKING */
+
+int         check_all_map_file(t_map m);
+void        check_map(t_map m);
+void        check_textures_path_and_color (t_map *m);
+void        check_textures_name (char **map);
+
 
 char	    *get_file_str(char *file_entry);
-int         control_map(char **map);
-int         get_color_code(t_map *m, char *rgb_code);
+int         control_map(t_map map);
+char        *get_color_code(char *rgb_code);
 int         is_color_code (char *code);
+int         open_each_texture (t_map *m, char *path, int i);
 
 # endif

@@ -1,28 +1,31 @@
 
 #include "../../includes/cub3d.h"
 
-int get_color_code(char *rgb_code)
+char *get_color_code(char *rgb_code)
 {
-    int     i;
-    int     j;
-    int     k;
+    t_counter c;
     int     rgb[3];
-    char    *tmp;
+    char    tmp[10];
 
-    i = 0;
-    k = 0;
-    j = 0;
-    tmp = NULL;
-    while (rgb_code[i])
+    c.i = 0;
+    c.k = 0;
+    c.j = 0;
+    while (rgb_code[c.i++])
     {
-
-        while(ft_isdigit(rgb_code[i]))
-            tmp[k] = rgb_code[i++];
-        rgb[j] = atoi(tmp);
-        if (rgb_code[i] == ',')
-            j++;
+        while(ft_isdigit(rgb_code[c.i]))
+            tmp[c.k++] = rgb_code[c.i++];
+        tmp[c.k] = '\0';
+        rgb[c.j] = atoi(tmp);
+        if (rgb[c.j] < 0 || rgb[c.j] > 255)
+            ft_error(BAD_RGB_VALUE, tmp);
+        if (rgb_code[c.i] == ',')
+        {
+            c.j++;
+            c.k = 0;
+        }
     }
-    return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+    return (ft_convert_base (ft_itoa(rgb[0] << 16 | rgb[1] << 8 | rgb[2]),
+        "0123456789", "0123456789ABCDEF"));
 }
 
 int is_color_code (char *code)
@@ -34,7 +37,7 @@ int is_color_code (char *code)
     j = 0;
     while (code[i])
     {
-        if(ft_isdigit(code[i]))
+        if(ft_isdigit(code[i]) || code[i] == ' ')
             i++;
         else if (code[i] == ',')
         {

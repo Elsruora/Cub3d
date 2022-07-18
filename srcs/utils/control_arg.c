@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:46:25 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/11 12:00:46 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/11 14:04:31 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int control_arg(int ac, char **av)
             if (ft_strcmp(extension, ".cub"))
                 ft_error(WRONG_EXT, NULL);
         }
+        return (0);
     }
+    ft_error(WRONG_ARG_NB, NULL);
     return (1);
 }

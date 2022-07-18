@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 12:08:56 by nchabli          ###   ########.fr       */
+/*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
+/*   Updated: 2022/07/18 12:17:16 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int main(int ac, char **av)
+int get_map_start(char **map)
 {
-	t_map m;
+    t_counter c;
 
- 	control_arg(ac, av);
-	m.map = ft_split(get_file_str(av[1]), '\n');
-	check_all_map_file(m);
-	return (0);
+    c.i = 0;
+    c.j = 0;
+    while (map[c.i])
+        c.i++;
+    c.i--;
+    while ((map[c.i][0] == '1' || map[c.i][0] == ' ' || map[c.i][0] == '0') && map[c.i])
+        c.i--;
+    return (c.i + 1);
+}
+
+void    check_map(t_map m)
+{
+    int i;
+    
+    i = get_map_start(m.map);
+    printf("%s\n", m.map[i]);
 }
