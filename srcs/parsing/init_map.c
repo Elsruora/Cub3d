@@ -6,12 +6,15 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/10 23:18:38 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 13:02:01 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
+/* 
+Read from file passed as argument character by character, then return string
+*/
 char	*get_file_str(char *file_entry)
 {
 	int		fd;

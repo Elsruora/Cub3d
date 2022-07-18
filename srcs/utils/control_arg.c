@@ -6,12 +6,13 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:46:25 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/11 14:04:31 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 13:02:07 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
+/* check extention .cub */
 int control_arg(int ac, char **av)
 {
     int     i;

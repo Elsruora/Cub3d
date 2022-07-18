@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/13 10:38:47 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 13:06:31 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdbool.h>
+# ifdef __LINUX__
+    # include "../linux_mlx/mlx.h"
+# else
+    # include "../mlx/mlx.h"
+#endif
 
 typedef struct s_textures
 {
@@ -33,11 +38,33 @@ typedef struct s_textures
     int     ea_fd;
 }              t_textures;
 
+/* mlx enviroment  */
+typedef struct  s_sys 
+{
+	void	*mlx;
+	void	*win;
+	int		loop;
+}               t_sys;
+
+/* structure for image creation  */
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
+/* 2d map information */
 typedef struct s_map
 {
-    char        **map;
-    t_textures  textures;
-    
+    char    **map;
+    t_sys   *s_mlx;
+    t_img   *s_img;
+    int     lines;
+    int     colums;
+    t_textures textures;
 }              t_map;
 
 typedef struct s_counter
@@ -51,7 +78,12 @@ typedef struct s_counter
 
 void        ft_error(char *error, char *where);
 int         control_arg(int argc, char **av);
+void        ft_map_size(t_map *mlx, int *cols, int *lines);
+int         ft_rgb_to_int(int r, int g, int b);
+void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
+void    	create_map(t_map *m);
 
+/* libft */
 size_t	    ft_strlen(const char *s);
 int         ft_isprint(int c);
 int         ft_isdigit(int c);
@@ -78,6 +110,7 @@ void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
 
 
+/* parsing */
 char	    *get_file_str(char *file_entry);
 int         control_map(t_map map);
 char        *get_color_code(char *rgb_code);

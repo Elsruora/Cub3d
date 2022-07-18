@@ -14,6 +14,7 @@ SRCS += srcs/libft/ft_strdup.c
 SRCS += srcs/libft/ft_atoi.c
 SRCS += srcs/libft/ft_itoa.c
 SRCS += srcs/libft/ft_strcmp.c
+SRCS += srcs/utils/tools.c
 SRCS += srcs/utils/ft_error.c
 SRCS += srcs/utils/control_arg.c
 SRCS += srcs/main.c
