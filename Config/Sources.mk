@@ -1,5 +1,11 @@
 SRCS += 
 SRCS += srcs/libft/ft_putstr_fd.c
+SRCS += srcs/parsing/control_map.c
+SRCS += srcs/parsing/game.c
+SRCS += srcs/parsing/init_map.c
+SRCS += srcs/parsing/init.c
+SRCS += srcs/libft/ft_strncmp.c
+SRCS += srcs/libft/ft_itoa.c
 SRCS += srcs/libft/ft_strlen.c
 SRCS += srcs/libft/ft_putnbr_fd.c
 SRCS += srcs/libft/ft_strjoin.c
@@ -14,6 +20,14 @@ SRCS += srcs/libft/ft_strdup.c
 SRCS += srcs/libft/ft_atoi.c
 SRCS += srcs/libft/ft_itoa.c
 SRCS += srcs/libft/ft_strcmp.c
+<<<<<<< HEAD
+=======
+SRCS += srcs/libft/ft_putnbr_fd.c
+SRCS += srcs/utils/create_map.c
+SRCS += srcs/utils/control_arg.c
+SRCS += srcs/utils/draw_line.c
+SRCS += srcs/utils/ft_error.c
+>>>>>>> origin/jvalenci
 SRCS += srcs/utils/tools.c
 SRCS += srcs/utils/ft_error.c
 SRCS += srcs/utils/control_arg.c

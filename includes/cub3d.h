@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 13:06:31 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 17:14:24 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdbool.h>
+# include <math.h>
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
 # else
@@ -37,6 +38,53 @@ typedef struct s_textures
     int     we_fd;
     int     ea_fd;
 }              t_textures;
+# ifdef __LINUX__
+	// keyboard keys
+	# define K_W 119 
+	# define K_A 97 
+	# define K_D 100 
+	# define K_S 115 
+
+	// Arrows left up right down
+	# define K_LEFT 65361
+	# define K_UP 65362
+	# define K_RIGHT 65363    
+	# define K_DOWN 65364
+# else
+
+	// keyboard keys
+	# define K_A 0
+	# define K_S 1
+	# define K_D 2
+	# define K_W 13
+	// Arrows left up right down
+	# define K_LEFT 123 
+	# define K_UP 126 
+	# define K_RIGHT 124    
+	# define K_DOWN 125 
+#endif
+
+
+/* 
+structure for Bresenham's line algorithm
+we will use it draw lines 
+*/
+typedef struct	s_line 
+{
+	int		d;
+	int		dx;
+	int		dy;
+	int		xi;
+	int		yi;
+	int		x;
+	int		y;
+	int		color;
+	int		p_x;
+	int		p_y;
+	int		pdxy[2];
+	double 	pa;
+	double	pi;
+}				t_line;
 
 /* mlx enviroment  */
 typedef struct  s_sys 
@@ -62,9 +110,11 @@ typedef struct s_map
     char    **map;
     t_sys   *s_mlx;
     t_img   *s_img;
+	t_line	*l;
     int     lines;
     int     colums;
     t_textures textures;
+	int		pps_pix;
 }              t_map;
 
 typedef struct s_counter
@@ -77,11 +127,26 @@ typedef struct s_counter
 
 
 void        ft_error(char *error, char *where);
+/* execution */
+int ft_buttons(int key, t_map *m);
+
+/* tools */
 int         control_arg(int argc, char **av);
 void        ft_map_size(t_map *mlx, int *cols, int *lines);
 int         ft_rgb_to_int(int r, int g, int b);
 void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
 void    	create_map(t_map *m);
+void		ft_draw_line(t_map *m, int x, int y, int color);
+void		ft_draw_square(t_map *m, int x, int y, int color);
+void		plot_line(t_map *m, int x0, int y0, double angle_r);
+void		ft_find_player(t_map *m);
+
+/* parsing */
+char	    *get_file_str(char *file_entry);
+int         control_map(char **map);
+void		ft_init_struc(t_map *m);
+void		ft_draw_player(t_map *m);
+void		ft_set_image(t_map *m);
 
 /* libft */
 size_t	    ft_strlen(const char *s);
