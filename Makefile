@@ -6,7 +6,7 @@
 #    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/07/14 15:10:29 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/07/18 15:16:10 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ EXEC_FLAGS_MAC = -Lmlx -lmlx -framework OpenGL -framework AppKit
 OBJS_FLAGS_MAC = -Imlx 
 EXEC_FLAGS_LINUX := linux_mlx/libmlx.a -L/usr/include/ -L/usr/lib  -lXext -lX11 -lm -lbsd
 OBJS_FLAGS_LINUX := -I/usr/include -lmlx -O3 -Ilinux_mlx -Llinux_mlx
+LINUX = 
 OBJ_DIR     = Objects
 OBJ_PATH    = $(addprefix $(OBJ_DIR)/, $(OBJS))
 DEPENDES    = $(OBJ_PATH:%.o=%.d)
@@ -49,15 +50,16 @@ DIR_TRACK   = srcs/utils/tracker
 CONFIG      = $(shell find [0-9a-zA-Z]* -type d -name "Config")
 CNAME := $(shell uname -s)
 ifeq ($(CNAME), Linux)
-EXEC_FLAGS_MAC = $(EXEC_FLAGS_LINUX)
-OBJS_FLAGS_MAC = $(OBJS_FLAGS_LINUX)
+	EXEC_FLAGS_MAC = $(EXEC_FLAGS_LINUX)
+	OBJS_FLAGS_MAC = $(OBJS_FLAGS_LINUX)
+	LINUX = -D __LINUX__=1
 endif
 
 #################################################################################
 #                                   Compilation C                               #
 #################################################################################
 $(NAME): mlx $(OBJ_PATH) 
-	@gcc $(CFLAGS) $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
+	gcc $(LINUX) $(CFLAGS)  $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 	
 all: gmk $(NAME) $(HEADER)
@@ -67,7 +69,7 @@ all: gmk $(NAME) $(HEADER)
 #################################################################################
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	@mkdir -p $(@D)
-	@gcc $(CFLAGS) $(INC_INC) \
+	@gcc $(LINUX) $(CFLAGS) $(INC_INC) \
 	-c $< -o $@
 	@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
 

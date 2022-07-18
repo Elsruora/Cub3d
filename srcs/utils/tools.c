@@ -6,12 +6,38 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 22:34:06 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/14 17:03:26 by jvalenci         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/*   Updated: 2022/07/18 11:44:32 by jvalenci         ###   ########.fr       */
+/*                                                                            */ /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+/* 
+inicialize player position in the struc t_line
+we do this in order to draw the player after drawing the entire map 
+in a allowed place, then move its position x, y independently the map.
+*/
+void ft_find_player(t_map *m)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < m->lines - 1)
+    {
+        j = 0;
+        while (j < m->colums)
+        {
+            if (m->map[i + 6][j] == 'N')
+            {
+                m->l->p_x = j * 32;
+                m->l->p_y = i * 32;
+                break;
+            }
+            j++;
+        }
+        i++;
+    }
+}
 
 int ft_rgb_to_int(int r, int g, int b)
 {
@@ -20,7 +46,7 @@ int ft_rgb_to_int(int r, int g, int b)
 
 /* 
 determines the max with and heigth of the map chart
- */
+*/
 void    ft_map_size(t_map *m, int *cols, int *lines)
 {
     int i;
@@ -48,8 +74,8 @@ void	my_mlx_pixel_put(t_img *stru, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = stru->addr + (y * stru->line_length + x * (stru->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+    dst = stru->addr + (y * stru->line_length + x * (stru->bits_per_pixel / 8));
+    *(unsigned int *)dst = color;
 }
 
 /* 
@@ -62,39 +88,13 @@ void    ft_draw_square(t_map *m, int x, int y, int color)
    int j;
 
    i  = 0;
-   while (i < 30)
+   while (i < m->pps_pix)
    {
        j = 0;
-       while (j < 30)
+       while (j < m->pps_pix)
        {
            my_mlx_pixel_put(m->s_img, j + x, i + y, color);
            j++;
-       }
-       i++;
-   }
-}
-
-/* 
-draw each square in the image taking into account the type of sprite
-*/
-void    create_map(t_map *m)
-{
-   int i;
-   int  j;
-
-   i = 0;
-   while (i < m->lines - 1)
-   {
-       j = 0;
-       while (j < m->colums)
-       {
-           if (m->map[i + 6][j] == '1')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(131, 176, 181));
-           else if (m->map[i + 6][j] == '0')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(255, 255, 255));
-           else if (m->map[i + 6][j] == 'N')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(226, 83, 69));
-            j++;
        }
        i++;
    }

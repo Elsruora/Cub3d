@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/14 16:29:08 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:36:11 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,60 @@
 # include <fcntl.h>
 # include <stddef.h>
 # include <stdbool.h>
+# include <math.h>
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
 # else
     # include "../mlx/mlx.h"
 #endif
 
+# ifdef __LINUX__
+	// keyboard keys
+	# define K_W 119 
+	# define K_A 97 
+	# define K_D 100 
+	# define K_S 115 
+
+	// Arrows left up right down
+	# define K_LEFT 65361
+	# define K_UP 65362
+	# define K_RIGHT 65363    
+	# define K_DOWN 65364
+# else
+
+	// keyboard keys
+	# define K_A 0
+	# define K_S 1
+	# define K_D 2
+	# define K_W 13
+	// Arrows left up right down
+	# define K_LEFT 123 
+	# define K_UP 126 
+	# define K_RIGHT 124    
+	# define K_DOWN 125 
+#endif
+
+
+/* 
+structure for Bresenham's line algorithm
+we will use it draw lines 
+*/
+typedef struct	s_line 
+{
+	int		d;
+	int		dx;
+	int		dy;
+	int		xi;
+	int		yi;
+	int		x;
+	int		y;
+	int		color;
+	int		p_x;
+	int		p_y;
+	int		pdxy[2];
+	double 	pa;
+	double	pi;
+}				t_line;
 
 /* mlx enviroment  */
 typedef struct  s_sys 
@@ -53,11 +101,16 @@ typedef struct s_map
     char    **map;
     t_sys   *s_mlx;
     t_img   *s_img;
+	t_line	*l;
     int     lines;
     int     colums;
+	int		pps_pix;
 }              t_map;
 
 
+
+/* execution */
+int ft_buttons(int key, t_map *m);
 
 /* tools */
 void        ft_error(char *error);
@@ -66,6 +119,17 @@ void        ft_map_size(t_map *mlx, int *cols, int *lines);
 int         ft_rgb_to_int(int r, int g, int b);
 void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
 void    	create_map(t_map *m);
+void		ft_draw_line(t_map *m, int x, int y, int color);
+void		ft_draw_square(t_map *m, int x, int y, int color);
+void		plot_line(t_map *m, int x0, int y0, double angle_r);
+void		ft_find_player(t_map *m);
+
+/* parsing */
+char	    *get_file_str(char *file_entry);
+int         control_map(char **map);
+void		ft_init_struc(t_map *m);
+void		ft_draw_player(t_map *m);
+void		ft_set_image(t_map *m);
 
 /* libft */
 size_t	    ft_strlen(const char *s);
@@ -82,8 +146,5 @@ int         ft_strncmp(const char *s1, const char *s2, size_t n);
 char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
 
-/* parsing */
-char	    *get_file_str(char *file_entry);
-int         control_map(char **map);
 
 # endif
