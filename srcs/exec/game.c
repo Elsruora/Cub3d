@@ -6,13 +6,13 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/18 17:50:17 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:15:07 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int ft_buttons(int key, t_map *m)
+void    ft_player_buttons(int key, t_map *m)
 {
     if (key == K_A)
     {
@@ -36,7 +36,13 @@ int ft_buttons(int key, t_map *m)
         m->l->p_y -= sin(m->l->pa) * 5;
         m->l->p_x -= cos(m->l->pa) * 5;
     }
-    printf("key: %d\npx: %d\npy: %d\n K_A macro: %d\n Angle: %f\n", key, m->l->p_x, m->l->p_y, K_A, m->l->pa);
+}
+
+int ft_buttons(int key, t_map *m)
+{
+    ft_player_buttons(key, m);
+    printf("key: %d\npx: %d\npy: %d\n K_A macro: %d\n Angle: %f\n", key, 
+        m->l->p_x, m->l->p_y, K_A, m->l->pa);
     mlx_destroy_image(m->s_mlx->mlx, m->s_img->img);
     ft_set_image(m);
     create_map(m);
