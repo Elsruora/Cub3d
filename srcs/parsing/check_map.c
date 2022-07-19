@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 12:17:16 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/19 16:48:56 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int get_map_start(char **map)
     while (map[c.i])
         c.i++;
     c.i--;
-    while ((map[c.i][0] == '1' || map[c.i][0] == ' ' || map[c.i][0] == '0') && map[c.i])
+    while ((map[c.i][0] == '1' || map[c.i][0] == ' '
+    || map[c.i][0] == '0') && map[c.i])
         c.i--;
     return (c.i + 1);
 }
