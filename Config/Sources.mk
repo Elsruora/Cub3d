@@ -5,6 +5,7 @@ SRCS += srcs/parsing/check_all.c
 SRCS += srcs/parsing/check_map.c
 SRCS += srcs/parsing/init_map.c
 SRCS += srcs/parsing/init.c
+SRCS += srcs/libft/ft_free.c
 SRCS += srcs/libft/ft_strncmp.c
 SRCS += srcs/libft/ft_itoa.c
 SRCS += srcs/libft/ft_strlen.c
