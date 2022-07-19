@@ -6,7 +6,7 @@
 #    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/07/18 15:16:10 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/07/19 10:54:10 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ endif
 #                                   Compilation C                               #
 #################################################################################
 $(NAME): mlx $(OBJ_PATH) 
-	gcc $(LINUX) $(CFLAGS)  $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
+	@gcc $(LINUX) $(CFLAGS)  $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 	
 all: gmk $(NAME) $(HEADER)
