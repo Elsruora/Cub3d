@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/12 18:22:28 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:02:01 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ char	*get_file_str(char *file_entry)
 
 	strmap = NULL;
 	if (open(file_entry, O_DIRECTORY) != -1)
-		ft_error(PATH_IS_DIRECTORY);
+		ft_error(PATH_IS_DIRECTORY, NULL);
 	fd = open(file_entry, O_RDONLY);
 	if (fd == -1)
-		ft_error(NO_MAP_FILE);
+		ft_error(NO_MAP_FILE, NULL);
 	r = read(fd, &buffer, 1);
 	while (r)
 	{

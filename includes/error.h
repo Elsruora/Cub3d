@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:02:47 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/08 17:14:05 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 09:39:55 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 #define CYAN    "\x1b[36m"
 #define RESET   "\x1b[0m"
 
-#define NO_MAP_FILE RED"Can't get map file,"GREEN" type : \"./cub3d map_path\" and make sure file is valid"RESET""
-#define WRONG_EXT RED"Wrong argument extension,"GREEN" please put a .cub file\""RESET""
-#define PARSING_ERROR RED"While parsing map,"GREEN" make sure file content is valid\""RESET""
-#define TEXTURE_ERROR RED"While parsing map,"GREEN" make sure file content is valid\""RESET""
-#define PATH_IS_DIRECTORY RED"Can't open a directory"GREEN" make sure entry is a file.\""RESET""
+#define NO_MAP_FILE         RED"Can't get map file,"GREEN" type : \"./cub3d map_path\" and make sure file is valid"RESET""
+#define WRONG_EXT           RED"Wrong argument extension,"GREEN" please put a .cub file\""RESET""
+#define PARSING_ERROR       RED"While parsing map,"GREEN" make sure file content is valid\""RESET""
+#define TEXTURE_ERROR       RED"While parsing map,"GREEN" make sure file content is valid\""RESET""
+#define PATH_IS_DIRECTORY   RED"Can't open a directory"GREEN" make sure entry is a file.\""RESET""
+#define TEXTURE_NAME_ERROR  RED"Texture name error"GREEN" check your map file.\""RESET""
+#define BAD_TEXTURE_PATH    RED"Unable to find file at path"GREEN" check your map file.\""RESET""
+#define BAD_COLOR_CODE      RED"Bad color code format"GREEN" check your map file.\""RESET""
+#define WRONG_ARG_NB        RED"Wrong arguments number"GREEN" please type just one\""RESET""
+#define BAD_RGB_VALUE       RED"Bad RGB value"GREEN" please type a number between 0 and 255 inclued\""RESET""

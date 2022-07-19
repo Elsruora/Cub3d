@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 12:42:18 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/11 08:23:12 by nchabli          ###   ########.fr       */
+/*   Created: 2021/11/02 14:44:56 by nchabli           #+#    #+#             */
+/*   Updated: 2021/11/08 08:45:23 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
-/**
-    @brief Print error message on terminal then exit program.
-    
-    @param error string with error value
-*/
-void ft_error(char *error, char *where)
+int	ft_isascii(int c)
 {
-    if (where)
-        printf("Error on \"%s\" : %s", where, error);
-    else
-        printf("Error : %s", error);
-    exit(EXIT_FAILURE);
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

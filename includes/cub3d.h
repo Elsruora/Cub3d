@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 16:36:11 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:40:39 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@
     # include "../mlx/mlx.h"
 #endif
 
+typedef struct s_textures
+{
+    int     ceiler_code;
+    int     floor_code;
+    int     no_fd;
+    int     so_fd;
+    int     we_fd;
+    int     ea_fd;
+}              t_textures;
 # ifdef __LINUX__
 	// keyboard keys
 	# define K_W 119 
@@ -104,16 +113,24 @@ typedef struct s_map
 	t_line	*l;
     int     lines;
     int     colums;
+    t_textures textures;
 	int		pps_pix;
 }              t_map;
 
+typedef struct s_counter
+{
+    int         i;
+    int         j;
+    int         k;
+    
+}              t_counter;
 
 
+void        ft_error(char *error, char *where);
 /* execution */
 int ft_buttons(int key, t_map *m);
 
 /* tools */
-void        ft_error(char *error);
 int         control_arg(int argc, char **av);
 void        ft_map_size(t_map *mlx, int *cols, int *lines);
 int         ft_rgb_to_int(int r, int g, int b);
@@ -126,14 +143,15 @@ void		ft_find_player(t_map *m);
 
 /* parsing */
 char	    *get_file_str(char *file_entry);
-int         control_map(char **map);
 void		ft_init_struc(t_map *m);
 void		ft_draw_player(t_map *m);
 void		ft_set_image(t_map *m);
 
 /* libft */
 size_t	    ft_strlen(const char *s);
+int         ft_isprint(int c);
 int         ft_isdigit(int c);
+int         ft_isascii(int c);
 int         ft_is_str_nb(char *str);
 char	    *ft_itoa(int n);
 int         ft_atoi(const char *str);
@@ -145,6 +163,21 @@ char	    *ft_strjoin(char const *s1, char const *s2);
 int         ft_strncmp(const char *s1, const char *s2, size_t n);
 char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
+char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
+char        *find_scnd_word(char *line);
 
+/* CHECKING */
+
+int         check_all_map_file(t_map m);
+void        check_map(t_map m);
+void        check_textures_path_and_color (t_map *m);
+void        check_textures_name (char **map);
+
+
+/* parsing */
+char	    *get_file_str(char *file_entry);
+int         get_color_code(char *rgb_code);
+int         is_color_code (char *code);
+int         open_each_texture (t_map *m, char *path, int i);
 
 # endif

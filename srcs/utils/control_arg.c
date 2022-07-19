@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:46:25 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/12 18:13:56 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:02:07 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int control_arg(int ac, char **av)
     j = 0;
     if (ac == 2)
     {
-        if(av[1][5])
+        if(av[1][4])
         {
             while(av[1][ft_strlen(av[1]) - i])
             {
@@ -32,8 +32,10 @@ int control_arg(int ac, char **av)
             }
             extension[4] = '\0';
             if (ft_strcmp(extension, ".cub"))
-                ft_error(WRONG_EXT);
+                ft_error(WRONG_EXT, NULL);
         }
+        return (0);
     }
+    ft_error(WRONG_ARG_NB, NULL);
     return (1);
 }

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 15:34:18 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:19:01 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/cub3d.h"
 
@@ -31,7 +32,7 @@ int main(int ac, char **av)
 	t_map m;
  	control_arg(ac, av);
 	m.map = ft_split(get_file_str(av[1]), '\n');
-	control_map(m.map);
+	check_all_map_file(m);
 	ft_init_struc(&m);
 	ft_set_window(&m);
 	ft_set_image(&m);
