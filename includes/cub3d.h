@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 17:14:24 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 17:40:39 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 typedef struct s_textures
 {
-    char    *ceiler_code;
-    char    *floor_code;
+    int     ceiler_code;
+    int     floor_code;
     int     no_fd;
     int     so_fd;
     int     we_fd;
@@ -143,7 +143,6 @@ void		ft_find_player(t_map *m);
 
 /* parsing */
 char	    *get_file_str(char *file_entry);
-int         control_map(char **map);
 void		ft_init_struc(t_map *m);
 void		ft_draw_player(t_map *m);
 void		ft_set_image(t_map *m);
@@ -177,8 +176,7 @@ void        check_textures_name (char **map);
 
 /* parsing */
 char	    *get_file_str(char *file_entry);
-int         control_map(t_map map);
-char        *get_color_code(char *rgb_code);
+int         get_color_code(char *rgb_code);
 int         is_color_code (char *code);
 int         open_each_texture (t_map *m, char *path, int i);
 

@@ -1,7 +1,7 @@
 
 #include "../../includes/cub3d.h"
 
-char *get_color_code(char *rgb_code)
+int get_color_code(char *rgb_code)
 {
     t_counter c;
     int     rgb[3];
@@ -24,8 +24,7 @@ char *get_color_code(char *rgb_code)
             c.k = 0;
         }
     }
-    return (ft_convert_base (ft_itoa(rgb[0] << 16 | rgb[1] << 8 | rgb[2]),
-        "0123456789", "0123456789ABCDEF"));
+    return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 
 int is_color_code (char *code)

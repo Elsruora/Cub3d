@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 11:27:42 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/18 17:41:28 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ void check_textures_path_and_color (t_map *m)
         if (!is_color_code(find_scnd_word(m->map[i])))
             ft_error(BAD_COLOR_CODE, find_scnd_word(m->map[i]));
         if (i == 4)
-            m->textures.floor_code = ft_convert_base(get_color_code(m->map[i]),
-                "0123456789", "0123456789ABCDEF");
+            m->textures.floor_code = get_color_code(m->map[i]);
         if (i == 5)
             m->textures.ceiler_code = get_color_code(m->map[i]);
     }
