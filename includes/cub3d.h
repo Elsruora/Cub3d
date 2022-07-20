@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:11:44 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 10:50:34 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,11 @@ char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
 char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
+int         does_char_contain(char c, char *s);
 void		ft_free(void **arr);
 
 /* CHECKING */
-int         check_all_map_file(t_map m);
+int         check_all_map_file(t_map *m);
 void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/18 16:36:12 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:50:08 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ft_init_struc(t_map *m)
 	m->l = l;
 	m->pps_pix = 32;
 	m->l->color = ft_rgb_to_int(242, 160, 160);
-	m->l->pi = 3.14159265359; 
+	m->l->pi = M_PI; 
     m->l->pa =  (2 * m->l->pi);
 	ft_map_size(m, &m->colums, &m->lines);
     ft_find_player(m);

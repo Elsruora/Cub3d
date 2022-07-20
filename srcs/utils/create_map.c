@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/18 17:46:10 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 11:30:29 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ void    create_map(t_map *m)
        {
            if (m->map[i + 6][j] == '1')
                ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(131, 176, 181));
-           else if (m->map[i + 6][j] == '0')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(255, 255, 255));
-           else if (m->map[i + 6][j] == 'N')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(255, 255, 255));
+           else if (does_char_contain(m->map_desc[i][j], "NSEW0"))
+               ft_draw_square(m, j * 32, i * 32, m->textures.ceiler_code);
             j++;
        }
        i++;
@@ -43,5 +41,5 @@ void    ft_draw_player(t_map *m)
 {
     m->pps_pix = 20;
     ft_draw_square(m, m->l->p_x , m->l->p_y,
-        m->textures.ceiler_code);
+        m->textures.floor_code);
 }
