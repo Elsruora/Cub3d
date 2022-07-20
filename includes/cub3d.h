@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/19 15:57:54 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:14:01 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@
 	# define K_DOWN 125 
 #endif
 
+typedef struct	s_rayc
+{
+	/* data */
+}				t_rayc;
+
+
 typedef struct s_textures
 {
     int     ceiler_code;
@@ -68,7 +74,7 @@ typedef struct s_textures
 
 /* 
 structure for Bresenham's line algorithm
-we will use it draw lines 
+we will use it to draw lines 
 */
 typedef struct	s_line 
 {
@@ -109,13 +115,13 @@ typedef struct	s_img
 typedef struct s_map
 {
     char    **map;
+    int     lines;
+    int     colums;
+	int		pps_pix;
     t_sys   *s_mlx;
     t_img   *s_img;
 	t_line	*l;
-    int     lines;
-    int     colums;
     t_textures textures;
-	int		pps_pix;
 }              t_map;
 
 typedef struct s_counter
@@ -126,11 +132,27 @@ typedef struct s_counter
     
 }              t_counter;
 
-/* execution */
+/* CHECKING */
+int         check_all_map_file(t_map m);
+void        check_map(t_map m);
+void        check_textures_path_and_color (t_map *m);
+void        check_textures_name (char **map);
+void        ft_error(char *error, char *where);
+
+/* PARSING */
+char	    *get_file_str(char *file_entry);
+void		ft_init_struc(t_map *m);
+void		ft_draw_player(t_map *m);
+void		ft_set_image(t_map *m);
+int         get_color_code(char *rgb_code);
+int         is_color_code (char *code);
+int         open_each_texture (t_map *m, char *path, int i);
+
+/* EXECUTION */
 int			ft_buttons(int key, t_map *m);
 int			ft_close_window(t_map *m);
 
-/* tools */
+/* TOOLS */
 int         control_arg(int argc, char **av);
 void        ft_map_size(t_map *mlx, int *cols, int *lines);
 int         ft_rgb_to_int(int r, int g, int b);
@@ -141,16 +163,7 @@ void		ft_draw_square(t_map *m, int x, int y, int color);
 void		plot_line(t_map *m, int x0, int y0, double angle_r);
 void		ft_find_player(t_map *m);
 
-/* parsing */
-char	    *get_file_str(char *file_entry);
-void		ft_init_struc(t_map *m);
-void		ft_draw_player(t_map *m);
-void		ft_set_image(t_map *m);
-int         get_color_code(char *rgb_code);
-int         is_color_code (char *code);
-int         open_each_texture (t_map *m, char *path, int i);
-
-/* libft */
+/* LIBFT */
 size_t	    ft_strlen(const char *s);
 int         ft_isprint(int c);
 int         ft_isdigit(int c);
@@ -169,12 +182,5 @@ char	    *ft_strdup(const char *s1);
 char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
 void		ft_free(void **arr);
-
-/* CHECKING */
-int         check_all_map_file(t_map m);
-void        check_map(t_map m);
-void        check_textures_path_and_color (t_map *m);
-void        check_textures_name (char **map);
-void        ft_error(char *error, char *where);
 
 # endif

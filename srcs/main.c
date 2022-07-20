@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/19 16:02:24 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:06:30 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	ft_close_window(t_map *m)
     mlx_destroy_image(m->s_mlx->mlx, m->s_img->img);
 	mlx_clear_window(m->s_mlx->mlx, m->s_mlx->win);
 	mlx_destroy_window(m->s_mlx->mlx, m->s_mlx->win);
+	free(m->s_img);
+	free(m->l);
+	free(m->s_mlx);
 	exit(0);
 	return (0);
 }
@@ -32,9 +35,10 @@ void	ft_set_window(t_map *m)
 
 void ft_set_image(t_map *m)
 {
-	m->s_img->img = mlx_new_image(m->s_mlx->mlx, m->colums * 32, m->lines * 32);
-	m->s_img->addr = mlx_get_data_addr(m->s_img->img, &m->s_img->bits_per_pixel,
-	&m->s_img->line_length, &m->s_img->endian);
+	m->s_img->img = mlx_new_image(m->s_mlx->mlx, m->colums * 32,
+	m->lines * 32);
+	m->s_img->addr = mlx_get_data_addr(m->s_img->img,
+	 &m->s_img->bits_per_pixel, &m->s_img->line_length, &m->s_img->endian);
 }
 
 int main(int ac, char **av)

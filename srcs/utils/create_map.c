@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/18 17:46:10 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 11:04:44 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    create_map(t_map *m)
 
 void    ft_draw_player(t_map *m)
 {
-    m->pps_pix = 20;
+    m->pps_pix = 10; 
     ft_draw_square(m, m->l->p_x , m->l->p_y,
         m->textures.ceiler_code);
 }
