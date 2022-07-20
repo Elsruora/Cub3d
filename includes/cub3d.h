@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:14:01 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:15:36 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,11 @@ typedef struct s_counter
     int         i;
     int         j;
     int         k;
-    
 }              t_counter;
 
 /* CHECKING */
 int         check_all_map_file(t_map m);
-void        check_map(t_map m);
+void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
 void        ft_error(char *error, char *where);
