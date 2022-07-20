@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 14:44:45 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:02:56 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,25 @@
 	# define K_DOWN 125 
 #endif
 
+/* 
+--> atan = -1/tan(angle) this will help us find a x coordinate in a horizontal or 
+  vertical line
+--> ry = is y's nearest coordinate to a horizontal or vertical line, 
+  taking into account the angle
+--> xy = is x's nearest coordinate to a horizontal or vertical line, 
+  taking into account the angle
+-->yo y offset
+-->xo x offset
+ */
+
 typedef struct	s_rayc
 {
-	/* data */
+	float atan;
+	int ry;
+	int rx;
+	int	yo;
+	int xo;
 }				t_rayc;
-
 
 typedef struct s_textures
 {
