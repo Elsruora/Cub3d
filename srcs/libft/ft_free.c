@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_all.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 10:05:31 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:12:10 by nchabli          ###   ########.fr       */
+/*   Created: 2022/03/16 14:10:15 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/07/19 15:40:49 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
-int check_all_map_file(t_map m)
+void	ft_free(void **arr)
 {
-    check_textures_name(m.map);
-    check_textures_path_and_color(&m);
-    // check_map(m);
-    return (0);
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
 }

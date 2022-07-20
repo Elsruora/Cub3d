@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/19 13:52:38 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 10:11:53 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int get_map_start(char **map)
     while (map[c.i])
         c.i++;
     c.i--;
-    while ((map[c.i][0] == '1' || map[c.i][0] == ' ' || map[c.i][0] == '0') && map[c.i])
+    while ((map[c.i][0] == '1' || map[c.i][0] == ' '
+    || map[c.i][0] == '0') && map[c.i])
         c.i--;
     return (c.i + 1);
 }

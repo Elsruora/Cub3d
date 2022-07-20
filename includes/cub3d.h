@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/19 13:55:45 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 10:11:44 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,13 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <math.h>
+
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
 # else
     # include "../mlx/mlx.h"
 #endif
 
-typedef struct s_textures
-{
-    int     ceiler_code;
-    int     floor_code;
-    int     no_fd;
-    int     so_fd;
-    int     we_fd;
-    int     ea_fd;
-}              t_textures;
 # ifdef __LINUX__
 	// keyboard keys
 	# define K_W 119 
@@ -64,6 +56,15 @@ typedef struct s_textures
 	# define K_DOWN 125 
 #endif
 
+typedef struct s_textures
+{
+    int     ceiler_code;
+    int     floor_code;
+    int     no_fd;
+    int     so_fd;
+    int     we_fd;
+    int     ea_fd;
+}              t_textures;
 
 /* 
 structure for Bresenham's line algorithm
@@ -125,10 +126,9 @@ typedef struct s_counter
     int         k;
 }              t_counter;
 
-
-void        ft_error(char *error, char *where);
 /* execution */
-int ft_buttons(int key, t_map *m);
+int			ft_buttons(int key, t_map *m);
+int			ft_close_window(t_map *m);
 
 /* tools */
 int         control_arg(int argc, char **av);
@@ -146,6 +146,9 @@ char	    *get_file_str(char *file_entry);
 void		ft_init_struc(t_map *m);
 void		ft_draw_player(t_map *m);
 void		ft_set_image(t_map *m);
+int         get_color_code(char *rgb_code);
+int         is_color_code (char *code);
+int         open_each_texture (t_map *m, char *path, int i);
 
 /* libft */
 size_t	    ft_strlen(const char *s);
@@ -165,19 +168,13 @@ char        **ft_split(char const *s, char c);
 char	    *ft_strdup(const char *s1);
 char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
+void		ft_free(void **arr);
 
 /* CHECKING */
-
 int         check_all_map_file(t_map m);
 void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
-
-
-/* parsing */
-char	    *get_file_str(char *file_entry);
-int         get_color_code(char *rgb_code);
-int         is_color_code (char *code);
-int         open_each_texture (t_map *m, char *path, int i);
+void        ft_error(char *error, char *where);
 
 # endif
