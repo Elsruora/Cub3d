@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 14:15:36 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:44:45 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct	s_img
 typedef struct s_map
 {
     char    **map;
+    char    **map_desc;
     int     lines;
     int     colums;
 	int		pps_pix;
@@ -132,7 +133,7 @@ typedef struct s_counter
 }              t_counter;
 
 /* CHECKING */
-int         check_all_map_file(t_map m);
+int			check_all_map_file(t_map *m);
 void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);

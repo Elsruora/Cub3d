@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:06:30 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:44:59 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac, char **av)
 
  	control_arg(ac, av);
 	m.map = ft_split(get_file_str(av[1]), '\n');
-	check_all_map_file(m);
+	check_all_map_file(&m);
 	ft_init_struc(&m);
 	ft_set_window(&m);
 	ft_set_image(&m);

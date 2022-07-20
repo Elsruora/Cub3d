@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:11:53 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 14:33:26 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void    check_map(t_map *m)
     
     i = get_map_start(m->map);
     m->map_desc = &m->map[i];
-    printf("%s\n", m->map[0]);
+    // printf("%s\n", m->map[0]);
 }

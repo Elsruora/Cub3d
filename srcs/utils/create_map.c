@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/20 11:04:44 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:35:01 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /* 
 draw each square in the image taking into account the type of sprite
+pps_pix varible will be used by ft_draw_square to create 31 px squares size
 */
 void    create_map(t_map *m)
 {
@@ -22,16 +23,16 @@ void    create_map(t_map *m)
 
    i = 0;
    m->pps_pix = 31;
-   while (i < m->lines - 1)
+   while (i < m->lines)
    {
        j = 0;
        while (j < m->colums)
        {
-           if (m->map[i + 6][j] == '1')
+           if (m->map_desc[i][j] == '1')
                ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(131, 176, 181));
-           else if (m->map[i + 6][j] == '0')
+           else if (m->map_desc[i][j] == '0')
                ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(255, 255, 255));
-           else if (m->map[i + 6][j] == 'N')
+           else if (m->map_desc[i][j] == 'N')
                ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(255, 255, 255));
             j++;
        }
