@@ -6,11 +6,50 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 15:11:29 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 19:05:22 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
+
+void	control_nl_map2(char *strmap, int l)
+{
+	while (strmap[l])
+	{
+		if (strmap[l] == '\n')
+		{
+			while (strmap[l] && strmap[l] == '\n')
+				l++;
+			if (does_char_contain(strmap[l], "01 ")
+				&& strmap[l - 2] == '\n')
+				ft_error(TO_MUCH_NL, NULL);
+		}
+		l++;
+	}
+}
+
+void	control_nl_map(char *strmap)
+{
+	size_t	l;
+	size_t	i;
+
+	l = 0;
+	i = 0;
+	while (strmap[l])
+	{
+		if (strmap[l] == '\n')
+		{
+			while (strmap[l] && strmap[l] == '\n')
+				l++;
+			if (does_char_contain(strmap[l], "NSEWCF "))
+				l++;
+			if (does_char_contain(strmap[l], "01"))
+				control_nl_map2(strmap, l);
+			i++;
+		}
+		l++;
+	}
+}
 
 /* 
 Read from file passed as argument character by character, then return string
@@ -41,15 +80,6 @@ char	*get_file_str(char *file_entry)
 		free(tmp);
 		r = read(fd, &buffer, 1);
 	}
-	r = 0;
-/* 	while (strmap[r])
-	{
-		if (strmap[r])
-		{
-			
-		}
-		
-	} */
-	
+	control_nl_map(strmap);
 	return (strmap);
 }

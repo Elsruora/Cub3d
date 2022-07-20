@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/20 15:17:02 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 15:19:41 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void ft_init_struc(t_map *m)
 	m->l->pi = M_PI;
     m->l->pa =  (2 * m->l->pi);
 	ft_map_size(m, &m->colums, &m->lines);
+	printf("hight: %d\n width: %d\n", m->lines, m->colums);
     ft_find_player(m);
 }

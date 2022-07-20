@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:50:34 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 18:43:08 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,33 @@
 	# define K_S 1
 	# define K_D 2
 	# define K_W 13
+    # define ESC 53
 	// Arrows left up right down
 	# define K_LEFT 123 
 	# define K_UP 126 
 	# define K_RIGHT 124    
 	# define K_DOWN 125 
 #endif
+
+/* 
+--> atan = -1/tan(angle) this will help us find a x coordinate in a horizontal or 
+  vertical line
+--> ry = is y's nearest coordinate to a horizontal or vertical line, 
+  taking into account the angle
+--> xy = is x's nearest coordinate to a horizontal or vertical line, 
+  taking into account the angle
+-->yo y offset
+-->xo x offset
+ */
+
+typedef struct	s_rayc
+{
+	float atan;
+	int ry;
+	int rx;
+	int	yo;
+	int xo;
+}				t_rayc;
 
 typedef struct s_textures
 {
@@ -68,7 +89,7 @@ typedef struct s_textures
 
 /* 
 structure for Bresenham's line algorithm
-we will use it draw lines 
+we will use it to draw lines 
 */
 typedef struct	s_line 
 {
@@ -110,13 +131,13 @@ typedef struct s_map
 {
     char    **map;
     char    **map_desc;
+    int     lines;
+    int     colums;
+	int		pps_pix;
     t_sys   *s_mlx;
     t_img   *s_img;
 	t_line	*l;
-    int     lines;
-    int     colums;
     t_textures textures;
-	int		pps_pix;
 }              t_map;
 
 typedef struct s_counter
@@ -126,11 +147,27 @@ typedef struct s_counter
     int         k;
 }              t_counter;
 
-/* execution */
+/* CHECKING */
+int			check_all_map_file(t_map *m);
+void        check_map(t_map *m);
+void        check_textures_path_and_color (t_map *m);
+void        check_textures_name (char **map);
+void        ft_error(char *error, char *where);
+
+/* PARSING */
+char	    *get_file_str(char *file_entry);
+void		ft_init_struc(t_map *m);
+void		ft_draw_player(t_map *m);
+void		ft_set_image(t_map *m);
+int         get_color_code(char *rgb_code);
+int         is_color_code (char *code);
+int         open_each_texture (t_map *m, char *path, int i);
+
+/* EXECUTION */
 int			ft_buttons(int key, t_map *m);
 int			ft_close_window(t_map *m);
 
-/* tools */
+/* TOOLS */
 int         control_arg(int argc, char **av);
 void        ft_map_size(t_map *mlx, int *cols, int *lines);
 int         ft_rgb_to_int(int r, int g, int b);
@@ -141,16 +178,7 @@ void		ft_draw_square(t_map *m, int x, int y, int color);
 void		plot_line(t_map *m, int x0, int y0, double angle_r);
 void		ft_find_player(t_map *m);
 
-/* parsing */
-char	    *get_file_str(char *file_entry);
-void		ft_init_struc(t_map *m);
-void		ft_draw_player(t_map *m);
-void		ft_set_image(t_map *m);
-int         get_color_code(char *rgb_code);
-int         is_color_code (char *code);
-int         open_each_texture (t_map *m, char *path, int i);
-
-/* libft */
+/* LIBFT */
 size_t	    ft_strlen(const char *s);
 int         ft_isprint(int c);
 int         ft_isdigit(int c);

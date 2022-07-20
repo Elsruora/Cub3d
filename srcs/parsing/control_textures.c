@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 17:41:28 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 19:40:09 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,49 @@ int open_each_texture (t_map *m, char *path, int i)
         return (0);
 }
 
+void    check_textures_doublons(char **map)
+{
+    int i;
+    int comb;
+
+    i = 0;
+    comb = 1;
+    while (i < 6)
+    {
+        if (!ft_strncmp(map[i], "NO ", 3))
+            comb *= 7;
+        else if (!ft_strncmp(map[i], "SO ", 3))
+            comb *= 2;
+        else if (!ft_strncmp(map[i], "WE ", 3))
+            comb *= 87;
+        else if (!ft_strncmp(map[i], "EA ", 3))
+            comb *= 8;
+        else if (!ft_strncmp(map[i], "F ", 2))
+            comb *= 19;
+        else if (!ft_strncmp(map[i], "C ", 2))
+            comb *= 4;
+        i++;
+    }
+    if (comb != 740544)
+        ft_error(DOUBL_ON_TEXTURES, NULL);
+}
+
 void check_textures_name (char **map)
 {
+    int i;
+
+    i = 0;
     if (!map[0][3] || !map[1][3] || !map[2][3] || !map[3][3])
         ft_error(TEXTURE_ERROR, NULL);
-    if (ft_strncmp(map[0], "NO ", 3) || ft_strncmp(map[1], "SO ", 3) 
-        || ft_strncmp(map[2], "WE ", 3) || ft_strncmp(map[3], "EA ", 3)
-        || ft_strncmp(map[4], "F ", 2) || ft_strncmp(map[5], "C ", 2))
-        ft_error(TEXTURE_NAME_ERROR, NULL);
+    while (i < 6)
+    {
+        if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3) 
+            && ft_strncmp(map[i], "WE ", 3) && ft_strncmp(map[i], "EA ", 3)
+            && ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2))
+            ft_error(TEXTURE_NAME_ERROR, map[i]);
+        i++;
+    }
+    check_textures_doublons(map);
 }
 
 void check_textures_path_and_color (t_map *m)

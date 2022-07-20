@@ -22,12 +22,12 @@ void ft_find_player(t_map *m)
     int j;
 
     i = 0;
-    while (i < m->lines - 1)
+    while (i < m->lines)
     {
         j = 0;
         while (j < m->colums)
         {
-            if (m->map[i + 6][j] == 'N')
+            if (m->map_desc[i][j] == 'N')
             {
                 m->l->p_x = j * 32;
                 m->l->p_y = i * 32;
@@ -62,7 +62,7 @@ void    ft_map_size(t_map *m, int *cols, int *lines)
         if (temp > *cols)
             *cols = temp;
     }
-    *lines = i - 5;
+    *lines = i - 6;
 }
 
 /* 
