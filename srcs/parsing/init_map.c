@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 11:56:33 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 15:11:29 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ char	*get_file_str(char *file_entry)
 		r = read(fd, &buffer, 1);
 	}
 	r = 0;
-	while (strmap[r])
+/* 	while (strmap[r])
 	{
 		if (strmap[r])
 		{
 			
 		}
 		
-	}
+	} */
 	
 	return (strmap);
 }
