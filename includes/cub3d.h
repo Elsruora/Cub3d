@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 17:40:39 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/19 13:55:45 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct	s_img
 typedef struct s_map
 {
     char    **map;
+    char    **map_desc;
     t_sys   *s_mlx;
     t_img   *s_img;
 	t_line	*l;
@@ -122,7 +123,6 @@ typedef struct s_counter
     int         i;
     int         j;
     int         k;
-    
 }              t_counter;
 
 
@@ -169,7 +169,7 @@ char        *find_scnd_word(char *line);
 /* CHECKING */
 
 int         check_all_map_file(t_map m);
-void        check_map(t_map m);
+void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
 

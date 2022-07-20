@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/18 12:17:16 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/19 13:52:38 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int get_map_start(char **map)
     return (c.i + 1);
 }
 
-void    check_map(t_map m)
+void    check_map(t_map *m)
 {
     int i;
     
-    i = get_map_start(m.map);
-    printf("%s\n", m.map[i]);
+    i = get_map_start(m->map);
+    m->map_desc = &m->map[i];
+    printf("%s\n", m->map[0]);
 }

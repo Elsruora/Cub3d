@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:05:31 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/13 10:35:07 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/19 13:48:35 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int check_all_map_file(t_map m)
 {
     check_textures_name(m.map);
     check_textures_path_and_color(&m);
-    check_map(m);
+    check_map(&m);
     return (0);
 }
