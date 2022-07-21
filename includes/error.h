@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:02:47 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 19:25:31 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/21 10:10:19 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@
 #define BAD_PLAYER_NB       RED"Bad players numbers"GREEN" please put only one player on map\""RESET""
 #define TO_MUCH_NL          RED"Detected new line on map file"GREEN" please fix this problem\""RESET""
 #define DOUBL_ON_TEXTURES   RED"Doublons on textures"GREEN" please fix this problem\""RESET""
+#define BAD_WALL            RED"Walls don't close map"GREEN" please fix this problem\""RESET""

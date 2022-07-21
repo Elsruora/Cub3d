@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 15:20:50 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/20 19:51:27 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    control_chars(char **map)
         {
             if (!does_char_contain(map[i][j], "NSWE01 \n"))
             {
-                error_line = ft_strjoin("line ", ft_itoa(i + 1));
+                error_line = ft_strjoin("on map line ", ft_itoa(i + 1));
                 ft_error(BAD_CHAR_ON_MAP, error_line);
             }
             j++;
@@ -91,13 +91,6 @@ void    check_map(t_map *m)
     m->map_desc = &m->map[i];
     i = 0;
     control_chars(m->map_desc);
-    while (m->map_desc[i])
-        printf("%s\n", m->map_desc[i++]);
-    if (how_much_players(m->map_desc) == 1)
-    {
-        printf("lalasqdsq");
-    }
-    else
+    if (how_much_players(m->map_desc) != 1)
         ft_error(BAD_PLAYER_NB, NULL);
-    
 }

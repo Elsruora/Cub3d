@@ -29,3 +29,4 @@ SRCS += srcs/parsing/init_map.c
 SRCS += srcs/parsing/init.c
 SRCS += srcs/parsing/control_textures.c
 SRCS += srcs/parsing/check_all.c
+SRCS += srcs/parsing/check_walls.c

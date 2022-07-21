@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 18:43:08 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/21 10:13:21 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,15 @@ typedef struct	s_rayc
 	int	yo;
 	int xo;
 }				t_rayc;
+
+typedef struct s_direction
+{
+	char	up;
+	char	left;
+	char	down;
+	char	right;
+}				t_direction;
+
 
 typedef struct s_textures
 {
@@ -204,6 +213,7 @@ int         check_all_map_file(t_map *m);
 void        check_map(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
+void    	check_walls(t_map *m);
 void        ft_error(char *error, char *where);
 
 # endif
