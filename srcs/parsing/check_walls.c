@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:40:14 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/21 10:32:55 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/21 15:43:33 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void    is_good_around(char **map, int x, int y)
         dir.left = map[x][y - 1];
     if (map[x][y] == '0' && dir.down && dir.left && dir.right && dir.up)
     {
-        printf("x : %d, y : %d\n", x, y);
         if (!does_char_contain(dir.down, "10NSWE")
             || !does_char_contain(dir.up, "10NSWE")
             || !does_char_contain(dir.left, "10NSWE")
@@ -38,7 +37,7 @@ void    is_good_around(char **map, int x, int y)
                 ft_error (BAD_WALL, NULL);
     }
     else
-        ft_error(BAD_WALL, ft_strjoin("line ", ft_itoa(x - 1)));
+        ft_error(BAD_WALL, ft_strjoin("line ", ft_itoa(x)));
 }
 
 void    check_walls(t_map *m)
