@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 15:02:56 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:23:46 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <math.h>
+
+# define PI 3.14159265359
 
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
@@ -43,7 +45,6 @@
 	# define K_RIGHT 65363    
 	# define K_DOWN 65364
 # else
-
 	// keyboard keys
 	# define K_A 0
 	# define K_S 1
@@ -65,6 +66,8 @@
   taking into account the angle
 -->yo y offset
 -->xo x offset
+-->ax (array x) index in the map array
+-->ay (array y) index in the map array
  */
 
 typedef struct	s_rayc
@@ -74,6 +77,8 @@ typedef struct	s_rayc
 	int rx;
 	int	yo;
 	int xo;
+	int	ax;
+	int	ay;
 }				t_rayc;
 
 typedef struct s_textures
@@ -133,6 +138,7 @@ typedef struct s_map
     int     lines;
     int     colums;
 	int		pps_pix;
+	t_rayc	*ray;
     t_sys   *s_mlx;
     t_img   *s_img;
 	t_line	*l;
@@ -196,5 +202,7 @@ char	    *ft_strdup(const char *s1);
 char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
 void		ft_free(void **arr);
+
+void		check_h_line(t_map *m);
 
 # endif

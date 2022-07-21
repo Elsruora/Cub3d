@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/20 14:35:01 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:05:40 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,15 @@ void    create_map(t_map *m)
    }
 }
 
+/* 
+as we want to mesure correctly the player's position we substract 5 so we draw the player
+at the beginning of the square provided as argument
+--> see find_player function to undestand more about player's position and mesurements
+ */
 void    ft_draw_player(t_map *m)
 {
     m->pps_pix = 10; 
-    ft_draw_square(m, m->l->p_x , m->l->p_y,
+    ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
         m->textures.ceiler_code);
+	plot_line(m, m->l->p_x, m->l->p_y, m->l->pa);
 }

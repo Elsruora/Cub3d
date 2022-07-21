@@ -21,6 +21,7 @@ SRCS += srcs/libft/ft_strcmp.c
 SRCS += srcs/libft/ft_putnbr_fd.c
 SRCS += srcs/libft/ft_convert_base.c
 SRCS += srcs/libft/ft_isprint.c
+SRCS += srcs/exec/ray_caster.c
 SRCS += srcs/exec/game.c
 SRCS += srcs/utils/create_map.c
 SRCS += srcs/utils/control_arg.c
