@@ -49,7 +49,7 @@ void    ft_map_size(t_map *m, int *cols, int *lines)
     *lines = 0;
     while (m->map[++i])
     {
-        temp = ft_strlen(m->map[i]);
+        temp = ft_strlen(m->map[i]) - 1;
         if (temp > *cols)
             *cols = temp;
     }

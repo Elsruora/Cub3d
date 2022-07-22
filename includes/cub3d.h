@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/21 12:23:46 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/22 23:53:04 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include <stdbool.h>
 # include <math.h>
 
-# define PI 3.14159265359
-
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
 # else
@@ -38,8 +36,7 @@
 	# define K_A 97 
 	# define K_D 100 
 	# define K_S 115 
-
-	// Arrows left up right down
+// Arrows left up right down
 	# define K_LEFT 65361
 	# define K_UP 65362
 	# define K_RIGHT 65363    
@@ -57,28 +54,16 @@
 	# define K_DOWN 125 
 #endif
 
-/* 
---> atan = -1/tan(angle) this will help us find a x coordinate in a horizontal or 
-  vertical line
---> ry = is y's nearest coordinate to a horizontal or vertical line, 
-  taking into account the angle
---> xy = is x's nearest coordinate to a horizontal or vertical line, 
-  taking into account the angle
--->yo y offset
--->xo x offset
--->ax (array x) index in the map array
--->ay (array y) index in the map array
- */
-
 typedef struct	s_rayc
 {
 	float atan;
-	int ry;
-	int rx;
+	float ry;
+	float rx;
 	int	yo;
 	int xo;
 	int	ax;
 	int	ay;
+	int dist;
 }				t_rayc;
 
 typedef struct s_textures
@@ -105,11 +90,10 @@ typedef struct	s_line
 	int		x;
 	int		y;
 	int		color;
-	int		p_x;
-	int		p_y;
+	float		p_x;
+	float		p_y;
 	int		pdxy[2];
 	double 	pa;
-	double	pi;
 }				t_line;
 
 /* mlx enviroment  */

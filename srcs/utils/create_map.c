@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/21 15:05:40 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:39:46 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ at the beginning of the square provided as argument
  */
 void    ft_draw_player(t_map *m)
 {
+    check_h_line(m);
     m->pps_pix = 10; 
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
         m->textures.ceiler_code);
