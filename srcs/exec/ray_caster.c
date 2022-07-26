@@ -37,14 +37,10 @@ void inc_offset(t_map *m, char type)
     {
         m->ray->ax = (int)m->ray->rx >> 5; // x index in map_desc
         m->ray->ay = (int)m->ray->ry >> 5; // y index in map_desc
-        if ((m->ray->ax < 0 || m->ray->ay < 0))
-        {
-            m->ray->dist = 10000;
-            return;
-        }
-        if ((abs((int)m->ray->ax) >= m->colums - 1 || abs((int)m->ray->ay) 
-        >= m->lines - 1) || m->map_desc[m->ray->ay - m->ray->up][m->ray->ax - 
-        m->ray->left] == '1')
+        if ((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay 
+        >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0 ||
+        m->map_desc[m->ray->ay - m->ray->up][m->ray->ax - m->ray->left] 
+        == '1' )
             i = 1;
         else
         {
@@ -52,6 +48,7 @@ void inc_offset(t_map *m, char type)
             m->ray->rx += m->ray->xo;
         }
     }
+    dist(m, type);
 }
 
 /*
@@ -116,5 +113,5 @@ void check_v_line(t_map *m)
 void ray_caster(t_map *m)
 {
     check_h_line(m);
-    // check_v_line(m);
+    check_v_line(m);
 }

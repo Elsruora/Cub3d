@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/25 21:23:59 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/26 17:33:37 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,23 @@ void    plot_line_hight(t_map *m, int *xy0, int *xy1)
     }
 }
 
-/* 
-Bresenham's line algorithm is a line drawing algorithm that determines 
-the points of an n-dimensional raster that should be selected in order 
-to form a close approximation to a straight line between two points. 
-It is commonly used to draw line primitives in a bitmap image 
+/*
+Bresenham's line algorithm is a line drawing algorithm that determines
+the points of an n-dimensional raster that should be selected in order
+to form a close approximation to a straight line between two points.
+It is commonly used to draw line primitives in a bitmap image
 https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+(void)angle_r;
+// m->l->pdxy[0] = cos(angle_r) * 100 + x0 ;
+// m->l->pdxy[1] = sin(angle_r) * 100 + y0 ;
 */
-void plot_line(t_map *m, int x0, int y0, double angle_r)
+void plot_line(t_map *m, int x0, int y0)
 {
     int xy0[2];
     // int xy1[2];
 
     xy0[0] = x0;
     xy0[1] = y0;
-    (void)angle_r;
-    // m->l->pdxy[0] = cos(angle_r) * 100 + x0 ;
-    // m->l->pdxy[1] = sin(angle_r) * 100 + y0 ;
-    m->l->pdxy[0] = m->ray->rx;
-    m->l->pdxy[1] = m->ray->ry;
     if (abs(m->l->pdxy[1] - xy0[1]) < abs(m->l->pdxy[0] - xy0[0]))
     {
         if (xy0[0] > m->l->pdxy[0])

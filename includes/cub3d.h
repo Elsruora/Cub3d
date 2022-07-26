@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/26 14:22:37 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 20:18:34 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,29 @@
 
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
-# else
-    # include "../mlx/mlx.h"
-#endif
 
-# ifdef __LINUX__
 	// keyboard keys
+	# define K_ESC 65307
 	# define K_W 119 
 	# define K_A 97 
 	# define K_D 100 
 	# define K_S 115 
-// Arrows left up right down
+
+	// Arrows left up right down
 	# define K_LEFT 65361
 	# define K_UP 65362
 	# define K_RIGHT 65363    
 	# define K_DOWN 65364
 # else
+    # include "../mlx/mlx.h"
+
 	// keyboard keys
 	# define K_A 0
 	# define K_S 1
 	# define K_D 2
 	# define K_W 13
     # define ESC 53
+
 	// Arrows left up right down
 	# define K_LEFT 123 
 	# define K_UP 126 
@@ -60,17 +61,20 @@
 
 typedef struct	s_rayc
 {
-	float atan;
-	float ntan;
-	float ry;
-	float rx;
-	int	yo;
-	int xo;
-	int	ax;
-	int	ay;
-	int dist;
-	int	up;
-	int	left;
+	float	atan;
+	float	ntan;
+	float	ry;
+	float	rx;
+	float	hxy[2];
+	float	vxy[2];
+	int		yo;
+	int		xo;
+	int		ax;
+	int		ay;
+	int		hdist;
+	int		vdist;
+	int		up;
+	int		left;
 }				t_rayc;
 
 typedef struct s_direction
@@ -100,18 +104,18 @@ we will use it to draw lines
 */
 typedef struct	s_line 
 {
-	int		d;
-	int		dx;
-	int		dy;
-	int		xi;
-	int		yi;
-	int		x;
-	int		y;
-	int		color;
+	int			d;
+	int			dx;
+	int			dy;
+	int			xi;
+	int			yi;
+	int			x;
+	int			y;
+	int			color;
 	float		p_x;
 	float		p_y;
-	int		pdxy[2];
-	double 	pa;
+	int			pdxy[2];
+	double 		pa;
 }				t_line;
 
 /* mlx enviroment  */
@@ -174,6 +178,7 @@ int         open_each_texture (t_map *m, char *path, int i);
 /* EXECUTION */
 int			ft_buttons(int key, t_map *m);
 int			ft_close_window(t_map *m);
+void		ray_caster(t_map *m);
 
 /* TOOLS */
 int         control_arg(int argc, char **av);
@@ -183,8 +188,11 @@ void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
 void    	create_map(t_map *m);
 void		ft_draw_line(t_map *m, int x, int y, int color);
 void		ft_draw_square(t_map *m, int x, int y, int color);
-void		plot_line(t_map *m, int x0, int y0, double angle_r);
+void		plot_line(t_map *m, int x0, int y0);
 void		ft_find_player(t_map *m);
+float		pythagoras(t_map *m, float *xy0, float *xy1);
+void		max(t_map *m);
+void		dist(t_map *m, char type);
 
 /* LIBFT */
 size_t	    ft_strlen(const char *s);
@@ -206,7 +214,5 @@ char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
 int         does_char_contain(char c, char *s);
 void		ft_free(void **arr);
-
-void		ray_caster(t_map *m);
 
 # endif

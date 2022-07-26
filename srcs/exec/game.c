@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 14:15:25 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 15:27:09 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    ft_player_buttons(int key, t_map *m)
         else if (m->map_desc[(int)(m->l->p_y/32)][next_case_x] == '1' && m->map_desc[next_case_y][(int)(m->l->p_x/32)] != '1')
             m->l->p_y -= sin(m->l->pa) * 5;
     }
-    else if (key == ESC)
+    else if (key == K_ESC)
     {
         exit(EXIT_FAILURE);
     }
