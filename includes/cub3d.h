@@ -6,11 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/07/21 10:13:21 by nchabli          ###   ########.fr       */
-=======
-/*   Updated: 2022/07/26 10:02:37 by jvalenci         ###   ########.fr       */
->>>>>>> jvalenci
+/*   Updated: 2022/07/26 14:22:37 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +90,8 @@ typedef struct s_textures
     int     so_fd;
     int     we_fd;
     int     ea_fd;
+	int		char_color;
+	char	player_dir;
 }              t_textures;
 
 /* 
@@ -159,6 +157,7 @@ typedef struct s_counter
 /* CHECKING */
 int			check_all_map_file(t_map *m);
 void        check_map(t_map *m);
+void		check_walls(t_map *m);
 void        check_textures_path_and_color (t_map *m);
 void        check_textures_name (char **map);
 void        ft_error(char *error, char *where);

@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 19:51:27 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 14:23:27 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@ void    control_chars(char **map)
     }
 }
 
-int how_much_players(char **map)
+char how_much_players(char **map)
 {
-    int i;
-    int j;
-    int nb_players;
+    int     i;
+    int     j;
+    int     nb_players;
+    char    player_dir;
 
     i = 0;
     nb_players = 0;
@@ -75,12 +76,18 @@ int how_much_players(char **map)
         while (map[i][j] != '\n' && map[i][j])
         {
             if (does_char_contain(map[i][j], "NSWE"))
+            {
                 nb_players++;
+                player_dir = map[i][j];
+            }
             j++;
         }
         i++;
     }
-    return (nb_players);
+    if (nb_players == 1)
+        return (player_dir);
+    else
+        return ('0');
 }
 
 void    check_map(t_map *m)
@@ -91,6 +98,7 @@ void    check_map(t_map *m)
     m->map_desc = &m->map[i];
     i = 0;
     control_chars(m->map_desc);
-    if (how_much_players(m->map_desc) != 1)
+    m->textures.player_dir = how_much_players(m->map_desc);
+    if (m->textures.player_dir == '0')
         ft_error(BAD_PLAYER_NB, NULL);
 }

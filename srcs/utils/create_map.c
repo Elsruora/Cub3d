@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 11:30:47 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 14:09:08 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void ft_draw_player(t_map *m)
     ray_caster(m);
     m->pps_pix = 10;
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
-                   m->textures.ceiler_code);
+                   m->textures.char_color);
 
     printf("ry: %f\n rx: %f\n yo: %d\n xo: %d\n pa %f\n", m->ray->ry, m->ray->rx, m->ray->xo,
            m->ray->yo, m->l->pa);

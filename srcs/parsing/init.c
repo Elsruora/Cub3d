@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 11:30:52 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 14:10:40 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void ft_init_struc(t_map *m)
 	t_rayc	*ray;
 
     mlx = malloc(sizeof(t_sys));
+	m->textures.char_color = ft_rgb_to_int(123,34,12);
     img = malloc(sizeof(t_img));
     l = malloc(sizeof(t_line));
     ray = malloc(sizeof(t_rayc));
