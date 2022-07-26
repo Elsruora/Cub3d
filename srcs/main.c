@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 15:19:47 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/26 11:30:29 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_close_window(t_map *m)
 	free(m->s_img);
 	free(m->l);
 	free(m->s_mlx);
+	free(m->ray);
 	exit(0);
 	return (0);
 }

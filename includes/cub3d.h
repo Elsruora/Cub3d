@@ -6,7 +6,11 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/07/21 10:13:21 by nchabli          ###   ########.fr       */
+=======
+/*   Updated: 2022/07/26 10:02:37 by jvalenci         ###   ########.fr       */
+>>>>>>> jvalenci
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +27,9 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <math.h>
+# define PI1 (3 * M_PI) / 2
+# define PI2  M_PI / 2
+
 
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
@@ -36,14 +43,12 @@
 	# define K_A 97 
 	# define K_D 100 
 	# define K_S 115 
-
-	// Arrows left up right down
+// Arrows left up right down
 	# define K_LEFT 65361
 	# define K_UP 65362
 	# define K_RIGHT 65363    
 	# define K_DOWN 65364
 # else
-
 	// keyboard keys
 	# define K_A 0
 	# define K_S 1
@@ -57,24 +62,19 @@
 	# define K_DOWN 125 
 #endif
 
-/* 
---> atan = -1/tan(angle) this will help us find a x coordinate in a horizontal or 
-  vertical line
---> ry = is y's nearest coordinate to a horizontal or vertical line, 
-  taking into account the angle
---> xy = is x's nearest coordinate to a horizontal or vertical line, 
-  taking into account the angle
--->yo y offset
--->xo x offset
- */
-
 typedef struct	s_rayc
 {
 	float atan;
-	int ry;
-	int rx;
+	float ntan;
+	float ry;
+	float rx;
 	int	yo;
 	int xo;
+	int	ax;
+	int	ay;
+	int dist;
+	int	up;
+	int	left;
 }				t_rayc;
 
 typedef struct s_direction
@@ -110,11 +110,10 @@ typedef struct	s_line
 	int		x;
 	int		y;
 	int		color;
-	int		p_x;
-	int		p_y;
+	float		p_x;
+	float		p_y;
 	int		pdxy[2];
 	double 	pa;
-	double	pi;
 }				t_line;
 
 /* mlx enviroment  */
@@ -143,6 +142,7 @@ typedef struct s_map
     int     lines;
     int     colums;
 	int		pps_pix;
+	t_rayc	*ray;
     t_sys   *s_mlx;
     t_img   *s_img;
 	t_line	*l;
@@ -208,12 +208,6 @@ char        *find_scnd_word(char *line);
 int         does_char_contain(char c, char *s);
 void		ft_free(void **arr);
 
-/* CHECKING */
-int         check_all_map_file(t_map *m);
-void        check_map(t_map *m);
-void        check_textures_path_and_color (t_map *m);
-void        check_textures_name (char **map);
-void    	check_walls(t_map *m);
-void        ft_error(char *error, char *where);
+void		ray_caster(t_map *m);
 
 # endif

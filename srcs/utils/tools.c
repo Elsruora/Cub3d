@@ -1,20 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 22:34:06 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/18 11:44:32 by jvalenci         ###   ########.fr       */
-/*                                                                            */ /* ************************************************************************** */
-
 #include "../../includes/cub3d.h"
 
 /* 
 inicialize player position in the struc t_line
 we do this in order to draw the player after drawing the entire map 
-in a allowed place, then move its position x, y independently the map.
+in a allowed place, then we move its position x, y independently the map.
+-> we add 5 to the x and y coordinates in order to center the player's mesurements,
+   we take it into account from his center not from the first player's pixel
 */
 void ft_find_player(t_map *m)
 {
@@ -29,8 +20,8 @@ void ft_find_player(t_map *m)
         {
             if (m->map_desc[i][j] == 'N')
             {
-                m->l->p_x = j * 32;
-                m->l->p_y = i * 32;
+                m->l->p_x = (j * 32) + 5;
+                m->l->p_y = (i * 32) + 5;
                 break;
             }
             j++;
@@ -58,7 +49,7 @@ void    ft_map_size(t_map *m, int *cols, int *lines)
     *lines = 0;
     while (m->map[++i])
     {
-        temp = ft_strlen(m->map[i]);
+        temp = ft_strlen(m->map[i]) - 1;
         if (temp > *cols)
             *cols = temp;
     }
