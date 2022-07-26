@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/22 23:53:04 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:02:37 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <stddef.h>
 # include <stdbool.h>
 # include <math.h>
+# define PI1 (3 * M_PI) / 2
+# define PI2  M_PI / 2
+
 
 # ifdef __LINUX__
     # include "../linux_mlx/mlx.h"
@@ -57,6 +60,7 @@
 typedef struct	s_rayc
 {
 	float atan;
+	float ntan;
 	float ry;
 	float rx;
 	int	yo;
@@ -64,6 +68,8 @@ typedef struct	s_rayc
 	int	ax;
 	int	ay;
 	int dist;
+	int	up;
+	int	left;
 }				t_rayc;
 
 typedef struct s_textures
@@ -187,6 +193,6 @@ char        *ft_convert_base(char *nbr, char *base_from, char *base_to);
 char        *find_scnd_word(char *line);
 void		ft_free(void **arr);
 
-void		check_h_line(t_map *m);
+void		ray_caster(t_map *m);
 
 # endif

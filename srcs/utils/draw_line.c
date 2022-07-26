@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/22 23:38:35 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:23:59 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,6 @@ void plot_line(t_map *m, int x0, int y0, double angle_r)
     (void)angle_r;
     // m->l->pdxy[0] = cos(angle_r) * 100 + x0 ;
     // m->l->pdxy[1] = sin(angle_r) * 100 + y0 ;
-    printf("ry: %f\n rx: %f\n yo: %d\n xo: %d\n pa %f\n", m->ray->ry, m->ray->rx, m->ray->xo,
-           m->ray->yo, m->l->pa);
-    if (m->ray->ax < 0 || m->ray->ay < 0)
-        return;
     m->l->pdxy[0] = m->ray->rx;
     m->l->pdxy[1] = m->ray->ry;
     if (abs(m->l->pdxy[1] - xy0[1]) < abs(m->l->pdxy[0] - xy0[0]))
