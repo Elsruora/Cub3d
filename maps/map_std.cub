@@ -1,7 +1,7 @@
-NO ./includes/cub3d.h
-EA ./includes/cub3d.h
-SO ./includes/cub3d.h
-WE ./includes/cub3d.h
+NO ./textures/test.xpm
+EA ./textures/test.xpm
+WE ./textures/test.xpm
+SO ./textures/test.xpm
 
 F 150,255,255
 C 255,255,0

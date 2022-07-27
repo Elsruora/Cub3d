@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 19:40:09 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/28 01:47:17 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,57 @@ char    *find_scnd_word(char *line)
     return (line + i);
 }
 
+void check_texture_ext(char *path)
+{
+    char    extension[5];
+    int     i;
+    int     j;
+    
+    j = 0;
+    i = 4;
+    if (path[4])
+    {
+        while(path[i])
+            extension[j++] = path[ft_strlen(path) - i--];
+        extension[4] = '\0';
+        if (ft_strcmp(extension, ".xpm"))  
+            ft_error(WRONG_TEXTURE_EXT, path);
+    }
+}
+
+int    open_one_texture(char *path)
+{
+    int fd;
+    check_texture_ext(path);
+    if (open(path, O_DIRECTORY) != -1)
+		ft_error(PATH_IS_DIRECTORY, "textures");
+    fd = open(path, O_RDONLY);
+    return (fd);
+}
+
 int open_each_texture (t_map *m, char *path, int i)
 {
     if (ft_strncmp(m->map[i], "NO ", 3))
     {
-        m->textures.no_fd = open(path, O_RDONLY);
+        m->textures.no_fd = open_one_texture(path);
         return (m->textures.no_fd);
     }
     else if (ft_strncmp(m->map[i], "SO ", 3))
     {
-        m->textures.so_fd = open(path, O_RDONLY);
+        m->textures.so_fd = open_one_texture(path);
         return (m->textures.so_fd);
     }
     else if (ft_strncmp(m->map[i], "WE ", 3))
     {
-        m->textures.we_fd = open(path, O_RDONLY);
+        m->textures.we_fd = open_one_texture(path);
         return (m->textures.we_fd);
     }
     else if (ft_strncmp(m->map[i], "EA ", 3))
     {
-        m->textures.ea_fd = open(path, O_RDONLY);
+        m->textures.ea_fd = open_one_texture(path);
         return (m->textures.ea_fd);
     }
     else
-    ft_error("LALALALA", NULL);
         return (0);
 }
 
