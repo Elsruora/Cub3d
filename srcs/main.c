@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/26 11:30:29 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/07/28 11:07:27 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_set_window(t_map *m)
 
 void ft_set_image(t_map *m)
 {
-	m->s_img->img = mlx_new_image(m->s_mlx->mlx, m->colums * 32,
-	m->lines * 32);
+	m->s_img->img = mlx_new_image(m->s_mlx->mlx, m->colums * m->pps_pix,
+	m->lines * m->pps_pix);
 	m->s_img->addr = mlx_get_data_addr(m->s_img->img,
 	 &m->s_img->bits_per_pixel, &m->s_img->line_length, &m->s_img->endian);
 }

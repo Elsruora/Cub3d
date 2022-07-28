@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 20:41:19 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:28:48 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void    create_map(t_map *m)
        }
        i++;
    }
+   m->pps_pix = 32;
 }
 
 /* 
@@ -47,14 +48,27 @@ void    create_map(t_map *m)
  */
 void ft_draw_player(t_map *m)
 {
-    m->ray->hdist = 10000;
-    m->ray->vdist = 10000;
-    ray_caster(m);
+    int i;
+
+    i = 0;
     m->pps_pix = 10;
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
                    m->textures.char_color);
-    printf("ry: %f\n rx: %f\n yo: %d\n xo: %d\n pa %f\n", m->ray->ry, m->ray->rx, m->ray->xo,
-           m->ray->yo, m->l->pa);
-    max(m);
-    plot_line(m, m->l->p_x, m->l->p_y);
+    m->pps_pix = 32;
+    m->ray->ra = m->l->pa - (DR * 30);
+    while (i < 60) 
+    {
+        printf("angle ra: %f\n px: %f\n py: %f\n", m->ray->ra, m->l->p_x, m->l->p_y);
+        m->ray->hdist = 10000;
+        m->ray->vdist = 10000;
+        if (m->ray->ra < 0)
+            m->ray->ra += (float)(2 * M_PI);
+        if (m->ray->ra > (float)(2 * M_PI))
+            m->ray->ra -= (float)(2 * M_PI);
+        ray_caster(m);
+        max(m);
+        plot_line(m, m->l->p_x, m->l->p_y);
+        i++;
+        m->ray->ra += DR;
+    }
 }

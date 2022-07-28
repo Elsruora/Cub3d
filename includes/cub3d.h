@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/26 20:18:34 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:40:41 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <math.h>
 # define PI1 (3 * M_PI) / 2
 # define PI2  M_PI / 2
+# define DR 0.0174533
 
 
 # ifdef __LINUX__
@@ -67,6 +68,7 @@ typedef struct	s_rayc
 	float	rx;
 	float	hxy[2];
 	float	vxy[2];
+	float 	ra;
 	int		yo;
 	int		xo;
 	int		ax;
@@ -104,18 +106,18 @@ we will use it to draw lines
 */
 typedef struct	s_line 
 {
-	int			d;
-	int			dx;
-	int			dy;
-	int			xi;
-	int			yi;
+	float			d;
+	float			dx;
+	float			dy;
+	float			xi;
+	float			yi;
 	int			x;
 	int			y;
 	int			color;
 	float		p_x;
 	float		p_y;
-	int			pdxy[2];
-	double 		pa;
+	float			pdxy[2];
+	float 		pa;
 }				t_line;
 
 /* mlx enviroment  */
@@ -188,7 +190,7 @@ void        my_mlx_pixel_put(t_img *stru, int x, int y, int color);
 void    	create_map(t_map *m);
 void		ft_draw_line(t_map *m, int x, int y, int color);
 void		ft_draw_square(t_map *m, int x, int y, int color);
-void		plot_line(t_map *m, int x0, int y0);
+void		plot_line(t_map *m, float x0, float y0);
 void		ft_find_player(t_map *m);
 float		pythagoras(t_map *m, float *xy0, float *xy1);
 void		max(t_map *m);
