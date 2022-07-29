@@ -6,12 +6,11 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:06:19 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 21:02:15 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:01:27 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
 
 /* 
 Pythagorean theorem,
@@ -24,7 +23,9 @@ float    pythagoras(t_map *m, float *xy0, float *xy1)
     num = sqrt((xy1[0] - xy0[0]) * (xy1[0] - xy0[0]) + 
     (xy1[1] - xy0[1]) * (xy1[1] - xy0[1]));
     if ((m->ray->ax < 0 || m->ray->ay < 0) || (m->ray->ax > m->colums - 1 
-    || m->ray->ay > m->lines - 1))
+    || m->ray->ay > m->lines - 1) || (m->l->p_y < m->ray->ry && 
+    m->ray->ra < (float)(2 * M_PI) && m->ray->ra > (float)M_PI) ||
+    (m->l->p_y > m->ray->ry && m->ray->ra > 0 && m->ray->ra < (float)M_PI))
         num = 10000;
     return (num);
 }
@@ -56,7 +57,7 @@ void    dist(t_map *m, char type)
 }
 
 /* 
-Set minimum  distance between hdist and vdist 
+Set minimum distance between hdist and vdist 
 */
 void max(t_map *m)
 {

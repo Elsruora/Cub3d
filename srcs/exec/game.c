@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/28 14:30:13 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/29 20:46:11 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void    ft_player_buttons(int key, t_map *m)
 {
     int next_case_y = 0;
     int next_case_x = 0;
-    printf("next_y : %d\n next_x :%d\n actual y : %d\n actual x : %d\n", next_case_y, next_case_x, (int)m->l->p_y/m->pps_pix, (int)m->l->p_x/m->pps_pix);
+
+    // printf("next_y : %d\n next_x :%d\n actual y : %d\n actual x : %d\n", next_case_y, next_case_x, (int)m->l->p_y/m->pps_pix, (int)m->l->p_x/m->pps_pix);
     if (key == K_A)
     {
         m->l->pa -= 0.1;

@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/28 10:51:22 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/29 18:31:34 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void    plot_line_hight(t_map *m, float *xy0, float *xy1)
     m->l->dx = xy1[0] - xy0[0];
     m->l->dy = xy1[1] - xy0[1];
     m->l->xi = 1;
+/*     if (((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay 
+        >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0))
+        return ;  */
     if (m->l->dx < 0)
     {
         m->l->xi = -1; 

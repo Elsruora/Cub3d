@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/28 14:28:48 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:00:44 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void    create_map(t_map *m)
 }
 
 /* 
---> as we want to mesure correctly the player's position we substract 5
-    so we draw the player at the beginning of the square provided as
-    argument
---> see find_player function to undestand more about player's position and
-    mesurements
- */
+--> creates player representation
+--> set angle 30 degrees to the left to start representating the player's view which is a 
+    60 degrees field 
+--> each loop difines a line, do all the math with the function ray_caster
+--> with max(m) we we take the shortest line
+--> and we draw it with plot_line
+*/
 void ft_draw_player(t_map *m)
 {
     int i;
@@ -55,10 +56,9 @@ void ft_draw_player(t_map *m)
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
                    m->textures.char_color);
     m->pps_pix = 32;
-    m->ray->ra = m->l->pa - (DR * 30);
+    m->ray->ra = m->l->pa - (DR * 30); 
     while (i < 60) 
     {
-        printf("angle ra: %f\n px: %f\n py: %f\n", m->ray->ra, m->l->p_x, m->l->p_y);
         m->ray->hdist = 10000;
         m->ray->vdist = 10000;
         if (m->ray->ra < 0)
@@ -67,6 +67,7 @@ void ft_draw_player(t_map *m)
             m->ray->ra -= (float)(2 * M_PI);
         ray_caster(m);
         max(m);
+        // printf("hdist: %d\n vdist: %d\n", m->ray->hdist, m->ray->vdist);
         plot_line(m, m->l->p_x, m->l->p_y);
         i++;
         m->ray->ra += DR;
