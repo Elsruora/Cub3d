@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/29 20:46:11 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 09:18:51 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int ft_buttons(int key, t_map *m)
     ft_set_image(m);
     create_map(m);
     ft_draw_player(m);
-	mlx_put_image_to_window(m->s_mlx->mlx, m->s_mlx->win, m->s_img->img, 0, 0);
-    // mlx_do_sync(m->s_mlx->mlx);
+	mlx_put_image_to_window(m->s_mlx->mlx, m->s_mlx->win, m->s_img->img, 0, (m->lines * 32));
+    mlx_do_sync(m->s_mlx->mlx);
+    printf("heigth: %d width %d\n", m->lines * 32, m->colums * 32);
     return (0);
 }

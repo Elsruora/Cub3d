@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/28 11:07:27 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 09:18:21 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_set_window(t_map *m)
 {
 	m->s_mlx->mlx = mlx_init(); 
 	m->s_mlx->win = mlx_new_window(m->s_mlx->mlx, m->colums * m->pps_pix,
-	m->lines * m->pps_pix, "Cub3d");
+	(m->lines * m->pps_pix) * 2, "Cub3d");
 }
 
 void ft_set_image(t_map *m)
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 	ft_set_image(&m);
 	create_map(&m);
 	ft_draw_player(&m);
-	mlx_put_image_to_window(m.s_mlx->mlx, m.s_mlx->win, m.s_img->img, 0, 0);
+	mlx_put_image_to_window(m.s_mlx->mlx, m.s_mlx->win, m.s_img->img, 0, (m.lines * 32));
 	mlx_hook(m.s_mlx->win, 2, 1L << 0, ft_buttons, &m);
 	mlx_hook(m.s_mlx->win, 17, 0, ft_close_window, &m);
 	m.s_mlx->loop = mlx_loop(m.s_mlx->mlx);
