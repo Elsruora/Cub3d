@@ -84,7 +84,7 @@ void    ft_draw_square(t_map *m, int x, int y, int color)
        j = 0;
        while (j < m->pps_pix)
        {
-           my_mlx_pixel_put(m->s_img, j + x, i + y, color);
+           my_mlx_pixel_put(m->s_img[0], j + x, i + y, color);
            j++;
        }
        i++;

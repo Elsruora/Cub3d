@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/29 18:31:34 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:27:28 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    plot_line_low(t_map *m, float *xy0, float *xy1)
     m->l->y = xy0[1];
     while (m->l->x <  xy1[0])
     {
-        my_mlx_pixel_put(m->s_img, m->l->x, m->l->y, m->l->color);
+        my_mlx_pixel_put(m->s_img[0], m->l->x, m->l->y, m->l->color);
         if (m->l->d > 0)
         {
             m->l->y += m->l->yi;
@@ -57,7 +57,7 @@ void    plot_line_hight(t_map *m, float *xy0, float *xy1)
     m->l->x = xy0[0];
     while (m->l->y <  xy1[1])
     {
-        my_mlx_pixel_put(m->s_img, m->l->x, m->l->y, m->l->color);
+        my_mlx_pixel_put(m->s_img[0], m->l->x, m->l->y, m->l->color);
         if (m->l->d > 0)
         {
             m->l->x += m->l->xi;

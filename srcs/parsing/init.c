@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/28 14:28:59 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:19:03 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void ft_init_struc(t_map *m)
 
     mlx = malloc(sizeof(t_sys));
 	m->textures.char_color = ft_rgb_to_int(123,34,12);
-    img = malloc(sizeof(t_img));
+    img = malloc(sizeof(t_img) * 2);
     l = malloc(sizeof(t_line));
     ray = malloc(sizeof(t_rayc));
     if (!mlx || !img || !l || !ray)
 		return (perror("Error allocating structures"));
-	m->s_img = img;
+	m->s_img[0] = &img[0];
+	m->s_img[1] = &img[1];
 	m->s_mlx = mlx;
 	m->l = l;
 	m->ray = ray;
