@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/29 18:01:12 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:11:12 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,16 @@ typedef struct s_rayc
 	float hxy[2];
 	float vxy[2];
 	float ra;
+	float ca;
 	float yo;
 	float xo;
 	int ax;
 	int ay;
 	int hdist;
 	int vdist;
+	int	tdist;
+	int	line_h;
+	int line_o;
 	int up;
 	int left;
 	int x_off;
@@ -156,7 +160,7 @@ typedef struct s_map
 	int pps_pix;
 	t_rayc *ray;
 	t_sys *s_mlx;
-	t_img *s_img;
+	t_img *s_img[2];
 	t_line *l;
 	t_textures textures;
 } t_map;
@@ -189,7 +193,7 @@ int open_each_texture(t_map *m, char *path, int i);
 int		ft_buttons(int key, t_map *m);
 int		ft_close_window(t_map *m);
 void	ray_caster(t_map *m);
-int		skip_angles(t_map *m, char type);
+void	max(t_map *m);
 
 /* TOOLS */
 int control_arg(int argc, char **av);
@@ -202,7 +206,6 @@ void ft_draw_square(t_map *m, int x, int y, int color);
 void plot_line(t_map *m, float x0, float y0);
 void ft_find_player(t_map *m);
 float pythagoras(t_map *m, float *xy0, float *xy1);
-void max(t_map *m);
 void dist(t_map *m, char type);
 
 /* LIBFT */

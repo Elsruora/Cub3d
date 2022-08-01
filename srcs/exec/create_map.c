@@ -6,11 +6,30 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/29 21:00:44 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:20:06 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
+
+void    draw_line_h(t_map *m, int x, int y, int color)
+{
+   int i;
+   int j;
+
+   i  = 0;
+   while (i < m->ray->line_h)
+   {
+       j = 0;
+       while (j < 16)
+       {
+           my_mlx_pixel_put(m->s_img[1], j + x, i + y, color);
+           j++;
+       }
+       i++;
+   }
+
+}
 
 /* 
 draw each square in the image taking into account the type of sprite
@@ -67,7 +86,21 @@ void ft_draw_player(t_map *m)
             m->ray->ra -= (float)(2 * M_PI);
         ray_caster(m);
         max(m);
-        // printf("hdist: %d\n vdist: %d\n", m->ray->hdist, m->ray->vdist);
+
+        m->ray->ca = m->l->pa - m->ray->ra;
+        if (m->ray->ca < 0)
+            m->ray->ca += (float)(M_PI * 2);
+        else if (m->ray->ca > (float)(M_PI * 2))
+            m->ray->ca -= (float)(M_PI *2);
+        m->ray->tdist *= cos(m->ray->ca);
+
+        m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
+        if (m->ray->line_h > 448)
+            m->ray->line_h = 448;
+        m->ray->line_o = 224 - m->ray->line_h / 2;
+        draw_line_h(m, i * 16, m->ray->line_o, 0xeb4034);
+
+        printf("tdist: %d\n line_h: %d\n", m->ray->tdist, m->ray->line_h);
         plot_line(m, m->l->p_x, m->l->p_y);
         i++;
         m->ray->ra += DR;

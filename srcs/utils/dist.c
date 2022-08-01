@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:06:19 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/29 21:01:27 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 14:44:10 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ void max(t_map *m)
     {
         m->l->pdxy[0] = m->ray->hxy[0];
         m->l->pdxy[1] = m->ray->hxy[1];
+        m->ray->tdist = m->ray->hdist;
     }
     else
     {
         m->l->pdxy[0] = m->ray->vxy[0];
         m->l->pdxy[1] = m->ray->vxy[1];
+        m->ray->tdist = m->ray->vdist;
     }
 }
