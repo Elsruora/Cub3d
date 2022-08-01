@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/29 18:01:12 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:52:19 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 #define K_S 1
 #define K_D 2
 #define K_W 13
-#define ESC 53
+#define K_ESC 53
 
 // Arrows left up right down
 #define K_LEFT 123
