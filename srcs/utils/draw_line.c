@@ -6,13 +6,13 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/26 17:33:37 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/01 16:27:28 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
-void    plot_line_low(t_map *m, int *xy0, int *xy1)
+void    plot_line_low(t_map *m, float *xy0, float *xy1)
 {
     m->l->dx = xy1[0] - xy0[0];
     m->l->dy = xy1[1] - xy0[1];
@@ -27,7 +27,7 @@ void    plot_line_low(t_map *m, int *xy0, int *xy1)
     m->l->y = xy0[1];
     while (m->l->x <  xy1[0])
     {
-        my_mlx_pixel_put(m->s_img, m->l->x, m->l->y, m->l->color);
+        my_mlx_pixel_put(m->s_img[0], m->l->x, m->l->y, m->l->color);
         if (m->l->d > 0)
         {
             m->l->y += m->l->yi;
@@ -39,11 +39,14 @@ void    plot_line_low(t_map *m, int *xy0, int *xy1)
     }
 }
 
-void    plot_line_hight(t_map *m, int *xy0, int *xy1)
+void    plot_line_hight(t_map *m, float *xy0, float *xy1)
 {
     m->l->dx = xy1[0] - xy0[0];
     m->l->dy = xy1[1] - xy0[1];
     m->l->xi = 1;
+/*     if (((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay 
+        >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0))
+        return ;  */
     if (m->l->dx < 0)
     {
         m->l->xi = -1; 
@@ -54,7 +57,7 @@ void    plot_line_hight(t_map *m, int *xy0, int *xy1)
     m->l->x = xy0[0];
     while (m->l->y <  xy1[1])
     {
-        my_mlx_pixel_put(m->s_img, m->l->x, m->l->y, m->l->color);
+        my_mlx_pixel_put(m->s_img[0], m->l->x, m->l->y, m->l->color);
         if (m->l->d > 0)
         {
             m->l->x += m->l->xi;
@@ -76,14 +79,14 @@ https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 // m->l->pdxy[0] = cos(angle_r) * 100 + x0 ;
 // m->l->pdxy[1] = sin(angle_r) * 100 + y0 ;
 */
-void plot_line(t_map *m, int x0, int y0)
+void plot_line(t_map *m, float x0, float y0)
 {
-    int xy0[2];
+    float xy0[2];
     // int xy1[2];
 
     xy0[0] = x0;
     xy0[1] = y0;
-    if (abs(m->l->pdxy[1] - xy0[1]) < abs(m->l->pdxy[0] - xy0[0]))
+    if (abs((int)m->l->pdxy[1] - (int)xy0[1]) < abs((int)m->l->pdxy[0] - (int)xy0[0]))
     {
         if (xy0[0] > m->l->pdxy[0])
             plot_line_low(m, m->l->pdxy, xy0);
