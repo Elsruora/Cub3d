@@ -6,38 +6,60 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/01 22:43:57 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/02 12:33:53 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+int is_there_wall(t_map *m, int i)
+{
+    int next_case_y = 0;
+    int next_case_x = 0;
+    while (i != 0)
+    {
+        next_case_y = (m->l->p_y + sin(m->l->pa) * i) / m->pps_pix;
+        next_case_x = (m->l->p_x + cos(m->l->pa) * i) / m->pps_pix;
+        if (!does_char_contain(m->map_desc[next_case_y][next_case_x], "0NSWE") || m->map_desc[next_case_y][next_case_x] == '1')
+            return (1);
+        i--;
+    }
+    return(0);
+}
+
 void    ft_player_buttons(int key, t_map *m)
 {
     int next_case_y = 0;
     int next_case_x = 0;
+    int i = 0;
 
     // printf("next_y : %d\n next_x :%d\n actual y : %d\n actual x : %d\n", next_case_y, next_case_x, (int)m->l->p_y/m->pps_pix, (int)m->l->p_x/m->pps_pix);
     if (key == K_A)
     {
-        m->l->pa -= 0.1;
+        m->l->pa -= 0.23;
         if (m->l->pa < 0)
             m->l->pa = (float)(2 * M_PI);
     }
     else if (key == K_D)
     {
-        m->l->pa += 0.1;
+        m->l->pa += 0.23;
         if (m->l->pa > (float)(2 * M_PI))
             m->l->pa = (float)0;
     }
     else if (key == K_W)
     {
+        i = 5;
         next_case_y = (m->l->p_y + sin(m->l->pa) * 5) / m->pps_pix;
-        next_case_x = (m->l->p_x + cos(m->l->pa) * 5) / m->pps_pix;
-        if (does_char_contain(m->map_desc[next_case_y][next_case_x], "0NSWE"))
+        next_case_x = (m->l->p_x - cos(m->l->pa) * 5) / m->pps_pix;
+        printf("%d \n %d \n %c\n\n", next_case_x, next_case_y,m->map_desc[next_case_y][next_case_x]);
+        if (!is_there_wall(m, 10))
         {
-            m->l->p_y += sin(m->l->pa) * 5;
-            m->l->p_x += cos(m->l->pa) * 5;
+            while (i != 0 && !is_there_wall(m, 10))
+            {
+                m->l->p_y += sin(m->l->pa) * 1;
+                m->l->p_x += cos(m->l->pa) * 1;
+                i--;
+            }
         }
         else if (m->map_desc[next_case_y][(int)(m->l->p_x/m->pps_pix)] == '1' && m->map_desc[(int)(m->l->p_y/m->pps_pix)][next_case_x] != '1')
             m->l->p_x += cos(m->l->pa) * 5;
