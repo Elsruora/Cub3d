@@ -18,7 +18,6 @@ void line_offset(t_map *m, char type)
 {
     m->ray->up = 0;
     m->ray->left = 0;
-    m->ray->x_off = 0;
     if (m->ray->ra > (float)M_PI && m->ray->ra < (float)(2 * M_PI) && type == 'h')
         m->ray->up = 1;
     if (m->ray->ra < (float)PI1 && m->ray->ra > (float)PI2 && type == 'v')

@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/01 18:06:51 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/02 09:10:35 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_close_window(t_map *m)
 void	ft_set_window(t_map *m)
 {
 	m->s_mlx->mlx = mlx_init(); 
-	m->s_mlx->win = mlx_new_window(m->s_mlx->mlx, m->colums * m->pps_pix,
+	m->s_mlx->win = mlx_new_window(m->s_mlx->mlx, 1080,
 	(m->lines * m->pps_pix) * 2, "Cub3d");
 }
 
@@ -42,7 +42,7 @@ void ft_set_image(t_map *m)
 	i = -1;
 	while (++i < 2)
 	{
-		m->s_img[i]->img = mlx_new_image(m->s_mlx->mlx, m->colums * m->pps_pix,
+		m->s_img[i]->img = mlx_new_image(m->s_mlx->mlx, 1080,
 		m->lines * m->pps_pix);
 		m->s_img[i]->addr = mlx_get_data_addr(m->s_img[i]->img,
 		&m->s_img[i]->bits_per_pixel, &m->s_img[i]->line_length, &m->s_img[i]->endian);

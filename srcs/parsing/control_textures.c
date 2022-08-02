@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/28 01:47:17 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/02 10:50:35 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 char    *find_scnd_word(char *line)
 {
-    int     i;
-    
-    i = 0;
+    int     i; i = 0;
     while (line[i] && line[i] == ' ')
         i++;
     while (ft_isprint(line[i]))

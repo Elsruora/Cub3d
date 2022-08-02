@@ -6,11 +6,27 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/01 18:20:06 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:07:48 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
+
+void    draw_backgroud(t_map *m, int x, int y, int color)
+{
+    int i;
+    int j;
+    int width;
+
+    i = -1;
+    width = (18 * 60);
+    while (++i < 224)
+    {
+        j = -1;
+        while (++j < width)
+            my_mlx_pixel_put(m->s_img[1], x + j, y + i, color);
+    }
+}
 
 void    draw_line_h(t_map *m, int x, int y, int color)
 {
@@ -21,14 +37,29 @@ void    draw_line_h(t_map *m, int x, int y, int color)
    while (i < m->ray->line_h)
    {
        j = 0;
-       while (j < 16)
+       while (j < 18)
        {
            my_mlx_pixel_put(m->s_img[1], j + x, i + y, color);
            j++;
        }
        i++;
    }
+}
 
+void draw_raycaster(t_map *m, int i)
+{
+    m->ray->ca = m->l->pa - m->ray->ra;
+    if (m->ray->ca < 0)
+        m->ray->ca += (float)(M_PI * 2);
+    else if (m->ray->ca > (float)(M_PI * 2))
+        m->ray->ca -= (float)(M_PI * 2);
+    m->ray->tdist *= cos(m->ray->ca);
+    m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
+    if (m->ray->line_h > 448)
+        m->ray->line_h = 448;
+    m->ray->line_o = 224 - m->ray->line_h / 2;
+    draw_line_h(m, i * 18, m->ray->line_o, choose_color(m, 
+    m->textures.wall_code));
 }
 
 /* 
@@ -48,7 +79,7 @@ void    create_map(t_map *m)
        while (j < m->colums)
        {
             if (m->map_desc[i][j] == '1')
-               ft_draw_square(m, j * 32, i * 32, ft_rgb_to_int(131, 176, 181));
+               ft_draw_square(m, j * 32, i * 32, m->textures.floor_code);
             else if (does_char_contain(m->map_desc[i][j], "NSEW0"))
                ft_draw_square(m, j * 32, i * 32, m->textures.ceiler_code);
             j++;
@@ -70,13 +101,15 @@ void ft_draw_player(t_map *m)
 {
     int i;
 
-    i = 0;
+    i = -1;
     m->pps_pix = 10;
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
                    m->textures.char_color);
     m->pps_pix = 32;
-    m->ray->ra = m->l->pa - (DR * 30); 
-    while (i < 60) 
+    m->ray->ra = m->l->pa - (DR * 30);
+    draw_backgroud(m, 0, 0, m->textures.ceiler_code);
+    draw_backgroud(m, 0, 224, m->textures.floor_code);
+    while (++i < 60) 
     {
         m->ray->hdist = 10000;
         m->ray->vdist = 10000;
@@ -86,23 +119,9 @@ void ft_draw_player(t_map *m)
             m->ray->ra -= (float)(2 * M_PI);
         ray_caster(m);
         max(m);
-
-        m->ray->ca = m->l->pa - m->ray->ra;
-        if (m->ray->ca < 0)
-            m->ray->ca += (float)(M_PI * 2);
-        else if (m->ray->ca > (float)(M_PI * 2))
-            m->ray->ca -= (float)(M_PI *2);
-        m->ray->tdist *= cos(m->ray->ca);
-
-        m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
-        if (m->ray->line_h > 448)
-            m->ray->line_h = 448;
-        m->ray->line_o = 224 - m->ray->line_h / 2;
-        draw_line_h(m, i * 16, m->ray->line_o, 0xeb4034);
-
+        draw_raycaster(m, i);
         printf("tdist: %d\n line_h: %d\n", m->ray->tdist, m->ray->line_h);
         plot_line(m, m->l->p_x, m->l->p_y);
-        i++;
         m->ray->ra += DR;
     }
 }
