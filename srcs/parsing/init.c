@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 10:04:35 by jvalenci         ###   ########.fr       */
+/*   Created: 2022/08/02 15:37:41 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/08/02 15:37:43 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void ft_init_struc(t_map *m)
 	m->l = l;
 	m->ray = ray;
 	m->pps_pix = 32;
-	m->l->color = rgb_to_int(242, 160, 160);
     m->l->pa =  (float)(2 * M_PI);
 	ft_map_size(m, &m->colums, &m->lines);
     ft_find_player(m);
