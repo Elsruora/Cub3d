@@ -29,6 +29,7 @@ SRCS += srcs/exec/game.c
 SRCS += srcs/utils/dist.c
 SRCS += srcs/utils/control_arg.c
 SRCS += srcs/utils/draw_line.c
+SRCS += srcs/utils/colors.c
 SRCS += srcs/utils/ft_error.c
 SRCS += srcs/utils/tools.c
 SRCS += srcs/main.c

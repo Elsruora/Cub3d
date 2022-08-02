@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 19:40:09 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/02 08:16:24 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 char    *find_scnd_word(char *line)
 {
-    int     i;
-    
-    i = 0;
+    int     i; i = 0;
     while (line[i] && line[i] == ' ')
         i++;
     while (ft_isprint(line[i]))

@@ -30,9 +30,12 @@ void ft_find_player(t_map *m)
     }
 }
 
-int ft_rgb_to_int(int r, int g, int b)
+int choose_color(t_map *m, int color)
 {
-	return ((r<<16) + (g<<8) + b);
+    if (m->ray->c_dir == 'h')
+        return (color);
+    else
+        return (add_shadow(color));
 }
 
 /* 

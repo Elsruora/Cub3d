@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/01 18:11:12 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:04:22 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ typedef struct s_rayc
 	int hdist;
 	int vdist;
 	int	tdist;
+	char c_dir;
 	int	line_h;
 	int line_o;
 	int up;
 	int left;
-	int x_off;
 } t_rayc;
 
 typedef struct s_direction
@@ -104,6 +104,7 @@ typedef struct s_textures
 {
 	int ceiler_code;
 	int floor_code;
+	int	wall_code;
 	int no_fd;
 	int so_fd;
 	int we_fd;
@@ -196,17 +197,19 @@ void	ray_caster(t_map *m);
 void	max(t_map *m);
 
 /* TOOLS */
-int control_arg(int argc, char **av);
-void ft_map_size(t_map *mlx, int *cols, int *lines);
-int ft_rgb_to_int(int r, int g, int b);
-void my_mlx_pixel_put(t_img *stru, int x, int y, int color);
-void create_map(t_map *m);
-void ft_draw_line(t_map *m, int x, int y, int color);
-void ft_draw_square(t_map *m, int x, int y, int color);
-void plot_line(t_map *m, float x0, float y0);
-void ft_find_player(t_map *m);
-float pythagoras(t_map *m, float *xy0, float *xy1);
-void dist(t_map *m, char type);
+int		control_arg(int argc, char **av);
+void	ft_map_size(t_map *mlx, int *cols, int *lines);
+void	my_mlx_pixel_put(t_img *stru, int x, int y, int color);
+void	create_map(t_map *m);
+void	ft_draw_line(t_map *m, int x, int y, int color);
+void	ft_draw_square(t_map *m, int x, int y, int color);
+void	plot_line(t_map *m, float x0, float y0);
+void	ft_find_player(t_map *m);
+float	pythagoras(t_map *m, float *xy0, float *xy1);
+void	dist(t_map *m, char type);
+int		rgb_to_int(int r, int g, int b);
+int		add_shadow(int rgb);
+int		choose_color(t_map *m, int color);
 
 /* LIBFT */
 size_t ft_strlen(const char *s);
