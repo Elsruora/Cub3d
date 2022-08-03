@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/02 15:36:06 by jvalenci         ###   ########.fr       */
-=======
-/*   Updated: 2022/08/03 16:46:03 by jvalenci         ###   ########.fr       */
->>>>>>> main
+/*   Created: 2022/08/03 17:49:29 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/08/03 17:49:31 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +106,6 @@ int ft_buttons(int key, t_map *m)
      (m->lines * 32));
 	mlx_put_image_to_window(m->s_mlx->mlx, m->s_mlx->win, m->s_img[1]->img, 0, 0);
     mlx_do_sync(m->s_mlx->mlx);
-    printf("\n\n heigth: %d width %d\n", (m->lines * 32) * 2, (m->colums * 32));
+    // printf("\n\n heigth: %d width %d\n", (m->lines * 32) * 2, (m->colums * 32));
     return (0);
 }
