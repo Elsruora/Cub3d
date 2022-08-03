@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 12:02:33 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/02 23:38:23 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,6 @@ void ft_draw_player(t_map *m)
         ray_caster(m);
         max(m);
         draw_raycaster(m, i);
-        if(i == 0)
-            m->ray->ray_first = m->ray->tdist;
-        if(i == 29)
-            m->ray->ray_mid = m->ray->tdist;
-        if(i == 59)
-            m->ray->ray_last = m->ray->tdist;
         // printf("tdist: %d\n line_h: %d\n", m->ray->tdist, m->ray->line_h);
         plot_line(m, m->l->p_x, m->l->p_y);
         m->ray->ra += DR;
