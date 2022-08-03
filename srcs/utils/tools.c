@@ -35,7 +35,7 @@ int choose_color(t_map *m, int color)
     if (m->ray->c_dir == 'h')
         return (color);
     else
-        return (add_shadow(color));
+        return (add_shadow(color, 0.5));
 }
 
 /* 

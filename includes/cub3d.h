@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/02 10:47:21 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:33:46 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ typedef struct s_rayc
 	int line_o;
 	int up;
 	int left;
+	int	ray_mid;
+	int	ray_first;
+	int	ray_last;
 } t_rayc;
 
 typedef struct s_direction
@@ -208,7 +211,7 @@ void	ft_find_player(t_map *m);
 float	pythagoras(t_map *m, float *xy0, float *xy1);
 void	dist(t_map *m, char type);
 int		rgb_to_int(int r, int g, int b);
-int		add_shadow(int rgb);
+int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
 
 /* LIBFT */
