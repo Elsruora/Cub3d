@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 23:45:26 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/03 16:46:03 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void    ft_player_buttons(int key, t_map *m)
     // printf("next_y : %d\n next_x :%d\n actual y : %d\n actual x : %d\n", next_case_y, next_case_x, (int)m->l->p_y/m->pps_pix, (int)m->l->p_x/m->pps_pix);
     if (key == K_A)
     {
-        m->l->pa -= 0.23;
+        m->l->pa -= 0.1;
         if (m->l->pa < 0)
             m->l->pa = (float)(2 * M_PI);
     }
     else if (key == K_D)
     {
-        m->l->pa += 0.23;
+        m->l->pa += 0.1;
         if (m->l->pa > (float)(2 * M_PI))
             m->l->pa = (float)0;
     }

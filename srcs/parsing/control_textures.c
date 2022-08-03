@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/02 17:43:21 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/03 13:42:53 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void check_texture_ext(char *path)
     i = 4;
     if (path[4])
     {
-        while(path[i])
+        while(i)
             extension[j++] = path[ft_strlen(path) - i--];
         extension[4] = '\0';
         if (ft_strcmp(extension, ".xpm"))  

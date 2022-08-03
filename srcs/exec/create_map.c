@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 23:38:23 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/03 17:38:23 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void    create_map(t_map *m)
        while (j < m->colums)
        {
             if (m->map_desc[i][j] == '1')
-               ft_draw_square(m, j * 32, i * 32, m->textures.floor_code);
-            else if (does_char_contain(m->map_desc[i][j], "NSEW0"))
-               ft_draw_square(m, j * 32, i * 32, m->textures.ceiler_code);
+               ft_draw_square(m, j * 32, i * 32, 0x008083);
+            else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
+               ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
             j++;
        }
        i++;
@@ -91,8 +91,8 @@ void    create_map(t_map *m)
 
 /* 
 --> creates player representation
---> set angle 30 degrees to the left to start representating the player's view which is a 
-    60 degrees field 
+--> set angle 30 degrees to the left to start representating the player's 
+    view which is a 60 degrees field 
 --> each loop difines a line, do all the math with the function ray_caster
 --> with max(m) we we take the shortest line
 --> and we draw it with plot_line

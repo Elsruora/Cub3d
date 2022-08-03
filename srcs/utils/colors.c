@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 09:45:11 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 09:51:06 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:38:56 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,19 @@ int rgb_to_int(int r, int g, int b)
 	return ((r<<16) + (g<<8) + b);
 }
 
-int	add_shadow(int rgb)
+int	add_shadow(int rgb, float intensity)
 {
     int r;
     int g;
     int b;
+    int temp;
 
     r = get_r(rgb);
-    b = get_g(rgb);
     g = get_b(rgb);
-    return (rgb_to_int(r * 0.5, g * 0.5 , b * 0.5));
+    b = get_g(rgb);
+    temp = rgb_to_int(r, g, b);
+    r = get_r(temp);
+    g = get_b(temp);
+    b = get_g(temp);
+    return (rgb_to_int(r * intensity, g * intensity, b * intensity));
 }

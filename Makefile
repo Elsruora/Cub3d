@@ -6,7 +6,7 @@
 #    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/07/19 10:54:10 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/08/03 12:52:21 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ OBJS        = $(SRCS:%.c=%.o)
 EXEC_FLAGS_MAC = -Lmlx -lmlx -framework OpenGL -framework AppKit 
 OBJS_FLAGS_MAC = -Imlx 
 EXEC_FLAGS_LINUX := linux_mlx/libmlx.a -L/usr/include/ -L/usr/lib  -lXext -lX11 -lm -lbsd
-OBJS_FLAGS_LINUX := -I/usr/include -lmlx -O3 -Ilinux_mlx -Llinux_mlx
+OBJS_FLAGS_LINUX := -I/usr/include -lmlx -Ilinux_mlx -Llinux_mlx
 LINUX = 
 OBJ_DIR     = Objects
 OBJ_PATH    = $(addprefix $(OBJ_DIR)/, $(OBJS))

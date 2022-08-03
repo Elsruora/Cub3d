@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/02 10:04:35 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:22:12 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_init_struc(t_map *m)
 
     mlx = malloc(sizeof(t_sys));
 	m->textures.char_color = rgb_to_int(123,34,12);
-	m->textures.wall_code = rgb_to_int(210, 41, 26);
+	m->textures.wall_code = rgb_to_int( 217, 72, 125);
     img = malloc(sizeof(t_img) * 2);
     l = malloc(sizeof(t_line));
     ray = malloc(sizeof(t_rayc));

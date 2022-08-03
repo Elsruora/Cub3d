@@ -37,10 +37,6 @@ void inc_offset(t_map *m, char type)
     {
         m->ray->ax = (int)m->ray->rx  >> 5; // x index in map_desc
         m->ray->ay = (int)m->ray->ry >> 5; // y index in map_desc
-/*         printf("angle ra: %f\n px: %f\n py: %f\n ind y: %d\n ind x: %d\n rx: %f\n ry %f\n index rx: %d\n \
-index ry: %d\n xo: %f\n yo: %f\n type: %c\n" , m->ray->ra, m->l->p_x, m->l->p_y, (int)m->l->p_x >> 5, 
-        (int)m->l->p_y >> 5, m->ray->rx, m->ray->ry, (int)m->ray->rx >> 5, (int)m->ray->ry >> 5, 
-        m->ray->xo, m->ray->yo, type); */
         if (((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay 
         >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0) || m->map_desc[m->ray->ay - m->ray->up]
         [m->ray->ax - m->ray->left] == '1')
@@ -97,7 +93,7 @@ void check_v_line(t_map *m)
     if (r->ra > PI1 || r->ra < PI2)
     {
         r->ntan = -tan(r->ra);                              // formula to get y coordinates as per x
-        r->rx = (((int)m->l->p_x >> 5) << 5);             // the nearest x horizontal coordinate line as per the player
+        r->rx = (((int)m->l->p_x >> 5) << 5) + 32;             // the nearest x horizontal coordinate line as per the player
         r->ry = ((m->l->p_x - r->rx) * r->ntan + (m->l->p_y)); // apply the formula to get y
         r->xo = 32;                                            // the x offset is 32 as we are pointing upwards
         r->yo = -r->xo * r->ntan;                              // the y offset

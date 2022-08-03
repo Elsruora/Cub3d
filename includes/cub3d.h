@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/02 11:31:25 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/03 17:33:46 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ void	ft_find_player(t_map *m);
 float	pythagoras(t_map *m, float *xy0, float *xy1);
 void	dist(t_map *m, char type);
 int		rgb_to_int(int r, int g, int b);
-int		add_shadow(int rgb);
+int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
 
 /* LIBFT */

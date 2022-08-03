@@ -3,8 +3,8 @@ EA ./textures/test.xpm
 WE ./textures/test.xpm
 SO ./textures/test.xpm
 
-F 136,144,153
-C  89,90,97
+F  163,207,217
+C  242,194,194
 
 1111111111111111111111111
 1000000000110000000000001

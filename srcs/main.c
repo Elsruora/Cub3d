@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/02 09:10:35 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:52:20 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_close_window(t_map *m)
 	free(m->l);
 	free(m->s_mlx);
 	free(m->ray);
-	ft_free((void **)m->s_img);
+	free(m->s_img[0]);
 	exit(0);
 	return (0);
 }
