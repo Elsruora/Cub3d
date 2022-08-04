@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:49:29 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/04 10:34:13 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/04 12:26:06 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void    ft_player_buttons(int key, t_map *m)
         i = 5;
         next_case_y = (m->l->p_y + sin(m->l->pa) * 5) / m->pps_pix;
         next_case_x = (m->l->p_x + cos(m->l->pa) * 5) / m->pps_pix;
-        printf("%d \n %d \n %c\n\n", next_case_x, next_case_y,m->map_desc[next_case_y][next_case_x]);
         if (does_char_contain(m->map_desc[next_case_y][next_case_x], "0NSWE"))
         {
                 m->l->p_y += sin(m->l->pa) * 5;
