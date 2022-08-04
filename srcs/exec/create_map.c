@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/03 17:38:23 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:07:55 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void draw_raycaster(t_map *m, int i)
     else if (m->ray->ca > (float)(M_PI * 2))
         m->ray->ca -= (float)(M_PI * 2);
     m->ray->tdist *= cos(m->ray->ca);
-    m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
+    m->ray->line_h = (m->pps_pix * 448) / (m->ray->tdist + 10);
     if (m->ray->line_h > 448)
         m->ray->line_h = 448;
     m->ray->line_o = 224 - m->ray->line_h / 2;
@@ -109,7 +109,7 @@ void ft_draw_player(t_map *m)
     m->ray->ra = m->l->pa - (DR * 30);
     draw_backgroud(m, 0, 0, m->textures.ceiler_code);
     draw_backgroud(m, 0, 224, m->textures.floor_code);
-    while (++i < 60) 
+    while (i < 60) 
     {
         m->ray->hdist = 10000;
         m->ray->vdist = 10000;

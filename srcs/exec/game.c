@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:49:29 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/03 17:49:31 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:34:13 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,18 @@ void    ft_player_buttons(int key, t_map *m)
     {
         i = 5;
         next_case_y = (m->l->p_y + sin(m->l->pa) * 5) / m->pps_pix;
-        next_case_x = (m->l->p_x - cos(m->l->pa) * 5) / m->pps_pix;
+        next_case_x = (m->l->p_x + cos(m->l->pa) * 5) / m->pps_pix;
         printf("%d \n %d \n %c\n\n", next_case_x, next_case_y,m->map_desc[next_case_y][next_case_x]);
-        if (!is_there_wall(m, 10))
+        if (does_char_contain(m->map_desc[next_case_y][next_case_x], "0NSWE"))
         {
-            while (i != 0 && !is_there_wall(m, 10))
-            {
-                m->l->p_y += sin(m->l->pa) * 1;
-                m->l->p_x += cos(m->l->pa) * 1;
+                m->l->p_y += sin(m->l->pa) * 5;
+                m->l->p_x += cos(m->l->pa) * 5;
                 i--;
-            }
         }
-        // else if (m->map_desc[next_case_y][(int)(m->l->p_x/m->pps_pix)] == '1' && m->map_desc[(int)(m->l->p_y/m->pps_pix)][next_case_x] != '1')
-        //     m->l->p_x += cos(m->l->pa) * 5;
-        // else if (m->map_desc[(int)(m->l->p_y/m->pps_pix)][next_case_x] == '1' && m->map_desc[next_case_y][(int)(m->l->p_x/m->pps_pix)] != '1')
-        //     m->l->p_y += sin(m->l->pa) * 5;
+        else if (m->map_desc[next_case_y][(int)(m->l->p_x/m->pps_pix)] == '1' && m->map_desc[(int)(m->l->p_y/m->pps_pix)][next_case_x] != '1')
+            m->l->p_x += cos(m->l->pa) * 5;
+        else if (m->map_desc[(int)(m->l->p_y/m->pps_pix)][next_case_x] == '1' && m->map_desc[next_case_y][(int)(m->l->p_x/m->pps_pix)] != '1')
+            m->l->p_y += sin(m->l->pa) * 5;
     }
     else if (key == K_S)
     {

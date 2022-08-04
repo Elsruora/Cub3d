@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
+#    By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/08/03 12:52:21 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/08/04 10:21:07 by nchabli          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,9 +75,15 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@printf "\033[1;32mCreate OBJS_DIR $(CO_DELET)\033[3;32m [√]\033[0m\n"
+	
+mlx:
+	$(MAKE) -C ./mlx
 
+ifeq ($(CNAME), Linux)
 mlx:
 	$(MAKE) -C ./linux_mlx
+	
+endif
 
 #################################################################################
 #                                   Clean                                       #
