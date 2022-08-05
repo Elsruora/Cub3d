@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/04 11:07:55 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/08/05 21:30:06 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void ft_draw_player(t_map *m)
     m->ray->ra = m->l->pa - (DR * 30);
     draw_backgroud(m, 0, 0, m->textures.ceiler_code);
     draw_backgroud(m, 0, 224, m->textures.floor_code);
-    while (i < 60) 
+    while (++i < 60) 
     {
         m->ray->hdist = 10000;
         m->ray->vdist = 10000;
