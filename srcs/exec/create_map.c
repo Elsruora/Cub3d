@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/05 21:30:06 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/03 08:16:25 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,11 @@ void    draw_backgroud(t_map *m, int x, int y, int color)
 void    draw_line_h(t_map *m, int x, int y, int color)
 {
    int i;
-   int j;
 
    i  = 0;
    while (i < m->ray->line_h)
    {
-       j = 0;
-       while (j < 18)
-       {
-           my_mlx_pixel_put(m->s_img[1], j + x, i + y, color);
-           j++;
-       }
+       my_mlx_pixel_put(m->s_img[1], x, i + y, color);
        i++;
    }
 }
@@ -58,7 +52,7 @@ void draw_raycaster(t_map *m, int i)
     if (m->ray->line_h > 448)
         m->ray->line_h = 448;
     m->ray->line_o = 224 - m->ray->line_h / 2;
-    draw_line_h(m, i * 18, m->ray->line_o, choose_color(m, 
+    draw_line_h(m, i , m->ray->line_o, choose_color(m, 
     m->textures.wall_code));
 }
 
@@ -106,10 +100,10 @@ void ft_draw_player(t_map *m)
     ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
                    m->textures.char_color);
     m->pps_pix = 32;
-    m->ray->ra = m->l->pa - (DR * 30);
+    m->ray->ra = m->l->pa - (DR * (30 * 18));
     draw_backgroud(m, 0, 0, m->textures.ceiler_code);
     draw_backgroud(m, 0, 224, m->textures.floor_code);
-    while (++i < 60) 
+    while (++i < (60 * 18)) 
     {
         m->ray->hdist = 10000;
         m->ray->vdist = 10000;
