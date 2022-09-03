@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/03 17:33:46 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/03 08:09:33 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #include <math.h>
 #define PI1 (3 * M_PI) / 2
 #define PI2 M_PI / 2
-#define DR 0.0174533
+#define DR 0.000969628
 
 #ifdef __LINUX__
 #include "../linux_mlx/mlx.h"
@@ -82,12 +82,12 @@ typedef struct s_rayc
 	float xo;
 	int ax;
 	int ay;
-	int hdist;
-	int vdist;
-	int	tdist;
+	float hdist;
+	float vdist;
+	float	tdist;
 	char c_dir;
-	int	line_h;
-	int line_o;
+	float	line_h;
+	float line_o;
 	int up;
 	int left;
 	int	ray_mid;
