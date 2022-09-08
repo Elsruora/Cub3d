@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+    "end": "block/slab_acacia_top",
+    "side": "block/stairs_acacia_front"
+    }
+}

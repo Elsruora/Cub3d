@@ -1,11 +1,12 @@
-/* ************************************************************************** */ /*                                                                            */
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ray_caster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 10:23:13 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/07/25 10:35:50 by jvalenci         ###   ########.fr       */
+/*   Created: 2022/09/05 11:08:03 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/09/08 07:06:38 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +39,8 @@ void inc_offset(t_map *m, char type)
         m->ray->ax = (int)m->ray->rx  >> 5; // x index in map_desc
         m->ray->ay = (int)m->ray->ry >> 5; // y index in map_desc
         if (((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay 
-        >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0) || m->map_desc[m->ray->ay - m->ray->up]
+        >= m->lines - 1 || m->ray->ax < 0 || m->ray->ay < 0) ||
+         m->map_desc[m->ray->ay - m->ray->up]
         [m->ray->ax - m->ray->left] == '1')
             i = 1;
         else

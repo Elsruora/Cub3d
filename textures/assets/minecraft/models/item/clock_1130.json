@@ -1,0 +1,6 @@
+{
+    "parent": "item/aa_clock",
+    "textures": {
+        "layer0": "item/clock_1130"
+    }
+}

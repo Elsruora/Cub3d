@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+    "particle": "block/green_terracotta",
+    "end": "block/green_terracotta_top",
+    "side": "block/green_terracotta"
+    }
+}

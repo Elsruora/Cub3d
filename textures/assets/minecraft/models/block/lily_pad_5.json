@@ -1,0 +1,35 @@
+{
+"textures": {
+    "particle": "block/lily_pad",
+    "texture": "block/lily_pad_4",
+    "flower_oxeye_daisy": "blocks/double_plant_sunflower_front"
+},
+"elements": [ 
+{
+    "from": [ -3, 15, 4 ],
+    "to": [ -3, 16, 5 ],
+    "faces": {
+        "west":  { "uv": [ 4, 0, 5, 1 ], "texture": "#texture" },
+        "east":  { "uv": [ 11, 0, 12, 1 ], "texture": "#texture" }
+    }
+},
+{
+    "from": [ 5, 2, 3 ],
+    "to": [ 11, 2, 9 ],
+    "faces": {
+        "down":  { "uv": [ 3.5, 12.5, 12.5, 3.5 ], "texture": "#flower_oxeye_daisy" },
+        "up":    { "uv": [ 3.5, 3.5, 12.5, 12.5 ], "texture": "#flower_oxeye_daisy" }
+    }
+},
+{
+    "from": [ 7.75, 0, 5.75 ],
+    "to": [ 8.25, 2, 6.25 ],
+    "faces": {
+        "north": { "uv": [ 8, 10.5, 8.5, 12.5 ], "texture": "#texture", "tintindex": 0 },
+        "south": { "uv": [ 8, 10.5, 8.5, 12.5 ], "texture": "#texture", "tintindex": 0 },
+        "west":  { "uv": [ 8, 10.5, 8.5, 12.5 ], "texture": "#texture", "tintindex": 0 },
+        "east":  { "uv": [ 8, 10.5, 8.5, 12.5 ], "texture": "#texture", "tintindex": 0 }
+    }
+}
+]
+}

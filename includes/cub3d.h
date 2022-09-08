@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/03 08:09:33 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:54:03 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@
 #include <math.h>
 #define PI1 (3 * M_PI) / 2
 #define PI2 M_PI / 2
-#define DR 0.000969628
+
+/* 
+A degree it's equal to 0.0174533 radians that at the same are equalt to 18 pixels
+as (1080 width screes) / (60 degrees players range view) so we divide a degree into
+18 to represent each pixel
+ */
+#define DR 0.0174533 / 18 
 
 #ifdef __LINUX__
 #include "../linux_mlx/mlx.h"

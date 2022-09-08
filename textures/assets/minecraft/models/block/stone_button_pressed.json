@@ -1,0 +1,19 @@
+{
+"textures": {
+    "particle": "block/stone_button",
+    "texture": "block/stone_button"
+},
+"elements": [ 
+{
+    "from": [ 5, 0, 6 ],
+    "to": [ 11, 0.5, 10 ],
+    "faces": {
+        "up":    { "uv": [ 5, 10, 11, 6 ], "texture": "#texture" },
+        "north": { "uv": [ 5, 15.5, 11, 16 ], "texture": "#texture" },
+        "south": { "uv": [ 5, 15.5, 11, 16 ], "texture": "#texture" },
+        "west":  { "uv": [ 6, 15.5, 10, 16 ], "texture": "#texture" },
+        "east":  { "uv": [ 6, 15.5, 10, 16 ], "texture": "#texture" }
+    }
+}
+]
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom": { "model": "block/cobblestone_half_slab" },
+        "half=top": { "model": "block/cobblestone_upper_slab" }
+    }
+}

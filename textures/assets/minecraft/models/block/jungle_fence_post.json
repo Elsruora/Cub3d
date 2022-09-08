@@ -1,0 +1,22 @@
+{
+"textures": {
+    "particle": "block/jungle_planks",
+    "fence_jungle_post": "block/jungle_fence_post",
+    "fence_jungle": "block/jungle_fence"
+},
+"elements": [ 
+{
+    "__comment": "Center post*",
+    "from": [ 6.5, 0, 6.5 ],
+    "to": [ 9.5, 16, 9.5 ],
+    "faces": {
+        "down":  { "uv": [ 6.5, 9.5, 9.5, 6.5 ], "texture": "#fence_jungle_post", "cullface": "down" },
+        "up":    { "uv": [ 6.5, 6.5, 9.5, 9.5 ], "texture": "#fence_jungle_post" },
+        "north": { "uv": [ 6.5, 0, 9.5, 16 ], "texture": "#fence_jungle_post" },
+        "south": { "uv": [ 6.5, 0, 9.5, 16 ], "texture": "#fence_jungle_post" },
+        "west":  { "uv": [ 6.5, 0, 9.5, 16 ], "texture": "#fence_jungle_post" },
+        "east":  { "uv": [ 6.5, 0, 9.5, 16 ], "texture": "#fence_jungle_post" }
+    }
+}
+]
+}

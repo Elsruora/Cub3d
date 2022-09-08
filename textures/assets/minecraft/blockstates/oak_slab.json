@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "half=bottom": [
+                    { "model": "block/oak_half_slab" }
+                    ],
+        "half=top": [
+                    { "model": "block/oak_upper_slab" }
+                    ]
+    }
+}

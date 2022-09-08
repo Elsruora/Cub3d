@@ -1,0 +1,35 @@
+{
+"__comment": "Designed by Ozo with BDcraft Cubik PRO 0.95 Beta - http://bdcraft.net",
+"textures": {
+    "particle": "block/stone_bricks",
+    "texture": "block/stone_bricks",
+    "stone_brick_stairs_side": "block/stone_brick_stairs_side",
+    "stone_brick_stairs_top": "block/stone_brick_stairs_top",
+    "stone_bricks_continuous": "block/stone_bricks_continuous"
+},
+"elements": [ 
+{
+    "from": [ 8, 8, 0 ],
+    "to": [ 16, 16, 16 ],
+    "faces": {
+        "up":    { "uv": [ 8, 0, 16, 16 ], "texture": "#stone_brick_stairs_top", "cullface": "up" },
+        "north": { "uv": [ 8, 0, 16, 8 ], "texture": "#stone_brick_stairs_side", "cullface": "north" },
+        "south": { "uv": [ 8, 0, 16, 8 ], "texture": "#stone_brick_stairs_side", "cullface": "south" },
+        "west":  { "uv": [ 0, 0, 16, 8 ], "texture": "#texture" },
+        "east":  { "uv": [ 0, 0, 16, 8 ], "texture": "#texture", "cullface": "east" }
+    }
+},
+{
+    "from": [ 0, 0, 0 ],
+    "to": [ 16, 8, 16 ],
+    "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#stone_brick_stairs_top" },
+        "north": { "uv": [ 0, 0, 16, 8 ], "texture": "#stone_bricks_continuous", "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 8 ], "texture": "#stone_bricks_continuous", "cullface": "south" },
+        "west":  { "uv": [ 0, 8, 16, 16 ], "texture": "#stone_bricks_continuous", "cullface": "west" },
+        "east":  { "uv": [ 0, 8, 16, 16 ], "texture": "#stone_bricks_continuous", "cullface": "east" }
+    }
+}
+]
+}

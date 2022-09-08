@@ -6,12 +6,19 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/03 07:58:51 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/08 10:29:03 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../../includes/cub3d.h"
 
+/* 
+The entire players view will have a rage of 60 degrees, we need to break down 
+the deegres into the screen size, which I personally determined as 1080 so 
+(60 degrees / 1080) = 18 pixels per deegree.
+ */
+
+/* set roof and floor backgroud */
 void    draw_backgroud(t_map *m, int x, int y, int color)
 {
     int i;
@@ -19,7 +26,7 @@ void    draw_backgroud(t_map *m, int x, int y, int color)
     int width;
 
     i = -1;
-    width = (18 * 60);
+    width = (60 * 18);
     while (++i < 224)
     {
         j = -1;
@@ -28,6 +35,7 @@ void    draw_backgroud(t_map *m, int x, int y, int color)
     }
 }
 
+/* Draw each ray sumulating a 3d view  */
 void    draw_line_h(t_map *m, int x, int y, int color)
 {
    int i;
@@ -40,6 +48,15 @@ void    draw_line_h(t_map *m, int x, int y, int color)
    }
 }
 
+/* 
+    Draw the entire ray casting view
+--> ca is the difference between player direction and fist ray to 
+    the left  which is 30 degrees or 0.523599 radians
+--> Then we get rid of the fish eye effect, as the rays in the
+    middle are shorter than the fist arrays to the left or right,
+    so we use tdist * cos(ca)
+--> raycaster screen heigth 448
+ */
 void draw_raycaster(t_map *m, int i)
 {
     m->ray->ca = m->l->pa - m->ray->ra;
@@ -57,7 +74,7 @@ void draw_raycaster(t_map *m, int i)
 }
 
 /* 
-draw each square in the image taking into account the type of sprite
+Draw each square in the image taking into account the
 pps_pix varible will be used by ft_draw_square to create 31 px squares size
 */
 void    create_map(t_map *m)
@@ -85,11 +102,11 @@ void    create_map(t_map *m)
 
 /* 
 --> creates player representation
---> set angle 30 degrees to the left to start representating the player's 
-    view which is a 60 degrees field 
---> each loop difines a line, do all the math with the function ray_caster
+--> set ra(angle) to 30 degrees to the left to start representating the 
+    player's view which is a 60 degrees field 
+--> each loop difines a line,  we do all the math in the function ray_caster
 --> with max(m) we we take the shortest line
---> and we draw it with plot_line
+--> and we draw it with plot_line in the map
 */
 void ft_draw_player(t_map *m)
 {
@@ -114,7 +131,7 @@ void ft_draw_player(t_map *m)
         ray_caster(m);
         max(m);
         draw_raycaster(m, i);
-        // printf("tdist: %d\n line_h: %d\n", m->ray->tdist, m->ray->line_h);
+    // printf("tdist: %f\n line_h: %f\n line_o: %f\n", m->ray->tdist, m->ray->line_h, m->ray->line_o);
         plot_line(m, m->l->p_x, m->l->p_y);
         m->ray->ra += DR;
     }

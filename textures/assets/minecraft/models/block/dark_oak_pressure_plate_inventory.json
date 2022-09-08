@@ -1,0 +1,6 @@
+{
+    "parent": "block/pressure_plate_inventory",
+    "textures": {
+        "texture": "block/dark_oak_pressure_plate"
+    }
+}

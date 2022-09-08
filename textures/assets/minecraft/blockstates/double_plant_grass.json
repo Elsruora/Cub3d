@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "": [ { "model": "block/double_plant_grass" },
+                    { "model": "block/double_plant_grass", "y": 90 },
+                    { "model": "block/double_plant_grass", "y": 180 },
+                    { "model": "block/double_plant_grass", "y": 270 }
+        ]
+    }
+}

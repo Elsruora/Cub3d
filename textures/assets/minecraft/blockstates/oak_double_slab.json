@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "": [ 
+                  { "model": "block/oak_double_slab" }
+
+        "all":    { "model": "block/double_oak_top" }
+    }
+}

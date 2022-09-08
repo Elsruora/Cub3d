@@ -1,0 +1,35 @@
+{
+    "parent": "block/jungle_stairs",
+    "display": {
+            "thirdperson_righthand": {
+            "rotation": [ 45, 45, 0 ],
+            "translation": [ 0, 2, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+            },
+            "thirdperson_lefthand": {
+            "rotation": [ 45, 225, 0 ],
+            "translation": [ 0, 2, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+            },
+            "firstperson_righthand": {
+            "rotation": [ 0, 35, 0 ],
+            "translation": [ 1, 2, 0 ],
+            "scale": [ 0.3, 0.3, 0.3 ]
+            },
+            "firstperson_lefthand": {
+            "rotation": [ 0, 215, 0 ],
+            "translation": [ 1, 2, 0 ],
+            "scale": [ 0.3, 0.3, 0.3 ]
+            },
+            "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.625, 0.625, 0.625 ]
+            },
+            "ground": {
+            "rotation": [ 5, 5, 5 ],
+            "translation": [ 0, 4, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        }
+    }
+}

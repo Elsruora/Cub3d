@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "particle": "block/cobblestone",
+        "side": "block/cobblestone_1",
+        "end": "block/cobblestone_top_1"
+    }
+}

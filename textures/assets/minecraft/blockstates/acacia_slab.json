@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "half=bottom": [ { "model": "block/acacia_half_slab", "weight": 2 },
+                         { "model": "block/acacia_half_slab_1" },
+                         { "model": "block/acacia_half_slab_2" }
+                       ],
+        "half=top": [ { "model": "block/acacia_upper_slab", "weight": 2 },
+                      { "model": "block/acacia_upper_slab_1" },
+                      { "model": "block/acacia_upper_slab_2" }
+                    ]
+    }
+}
