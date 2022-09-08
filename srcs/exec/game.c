@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/03 17:46:43 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/08 16:16:41 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void    ft_player_buttons(int key, t_map *m)
         i = 5;
         next_case_y = (m->l->p_y + sin(m->l->pa) * 5) / m->pps_pix;
         next_case_x = (m->l->p_x - cos(m->l->pa) * 5) / m->pps_pix;
-        printf("%d \n %d \n %c\n\n", next_case_x, next_case_y,m->map_desc[next_case_y][next_case_x]);
+        //printf("%d \n %d \n %c\n\n", next_case_x, next_case_y,m->map_desc[next_case_y][next_case_x]);
         if (!is_there_wall(m, 10))
         {
             while (i != 0 && !is_there_wall(m, 10))

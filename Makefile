@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
+#    By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/23 00:32:08 by nchabli           #+#    #+#              #
-#    Updated: 2022/08/03 12:52:21 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/09/08 16:27:26 by nchabli          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ EXEC_FLAGS_MAC = -Lmlx -lmlx -framework OpenGL -framework AppKit
 OBJS_FLAGS_MAC = -Imlx 
 EXEC_FLAGS_LINUX := linux_mlx/libmlx.a -L/usr/include/ -L/usr/lib  -lXext -lX11 -lm -lbsd
 OBJS_FLAGS_LINUX := -I/usr/include -lmlx -Ilinux_mlx -Llinux_mlx
-LINUX = 
+LINUX 		= 
+MLX_PATH	= ./mlx
 OBJ_DIR     = Objects
 OBJ_PATH    = $(addprefix $(OBJ_DIR)/, $(OBJS))
 DEPENDES    = $(OBJ_PATH:%.o=%.d)
@@ -53,12 +54,14 @@ ifeq ($(CNAME), Linux)
 	EXEC_FLAGS_MAC = $(EXEC_FLAGS_LINUX)
 	OBJS_FLAGS_MAC = $(OBJS_FLAGS_LINUX)
 	LINUX = -D __LINUX__=1
+	MLX_PATH = ./linux_mlx
 endif
 
 #################################################################################
 #                                   Compilation C                               #
 #################################################################################
 $(NAME): mlx $(OBJ_PATH) 
+	@make -C $(MLX_PATH)
 	@gcc $(LINUX) $(CFLAGS)  $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 	
@@ -76,17 +79,17 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 $(OBJ_DIR):
 	@printf "\033[1;32mCreate OBJS_DIR $(CO_DELET)\033[3;32m [√]\033[0m\n"
 
-mlx:
-	$(MAKE) -C ./linux_mlx
-
 #################################################################################
 #                                   Clean                                       #
 #################################################################################
+
 clean:
 	@$(RM) $(OBJ_PATH)
+	@make clean -C $(MLX_PATH)
 	@printf "\033[1;31mDelete OBJS $(CO_DELET)$(NAME)\033[3;32m [√]\033[0m\n"
 
 fclean:
+	@make clean -C $(MLX_PATH)
 	@$(RM) $(OBJ_PATH)
 	@$(RM) $(NAME)
 	@$(RM) -rf $(NAME).dSYM a.out Objects
