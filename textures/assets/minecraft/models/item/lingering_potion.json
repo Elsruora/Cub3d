@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "item/potion_overlay_lingering",
-        "layer1": "item/lingering_potion"
-    }
-}

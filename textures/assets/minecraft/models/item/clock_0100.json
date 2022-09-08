@@ -1,6 +1,0 @@
-{
-    "parent": "item/aa_clock",
-    "textures": {
-        "layer0": "item/clock_0100"
-    }
-}
