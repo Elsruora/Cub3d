@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/03 08:16:25 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:21:53 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    create_map(t_map *m)
    while (i < m->lines)
    {
        j = 0;
-       while (j < m->colums)
+       while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
        {
             if (m->map_desc[i][j] == '1')
                ft_draw_square(m, j * 32, i * 32, 0x008083);

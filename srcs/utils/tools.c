@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:50:31 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/03 17:50:36 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/08 15:31:03 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ft_find_player(t_map *m)
         j = 0;
         while (j < m->colums)
         {
-            if (m->map_desc[i][j] == 'N')
+            if (does_char_contain(m->map_desc[i][j], "SEWN"))
             {
                 m->l->p_x = (j * 32) + 5;
                 m->l->p_y = (i * 32) + 5;
