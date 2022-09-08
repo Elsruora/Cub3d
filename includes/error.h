@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:02:47 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/28 01:29:06 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/08 17:04:47 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef __ERROR_H
+# define __ERROR_H
 
 /* Here are writen all error macros */
 
@@ -36,3 +39,5 @@
 #define DOUBL_ON_TEXTURES   RED"Doublons on textures"GREEN" please fix this problem\""RESET""
 #define BAD_WALL            RED"Walls don't close map"GREEN" please fix this problem\""RESET""
 #define WRONG_TEXTURE_EXT   RED"Wrong texture extention"GREEN" please put .xpm files\""RESET""
+
+#endif
