@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/08 21:20:40 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/09 10:17:52 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,19 @@ void	draw_backgroud(t_map *m, int x, int y, int color)
 void	draw_line_h(t_map *m, int x, int y, int color)
 {
 	int	i;
+	// int c;
+	// (void)color;
 
 	i = 0;
+	// m->ray->ti = 0; 
+	// m->ray->t_step = 32.0 / m->ray->line_h; 
 	while (i < m->ray->line_h)
 	{
-		my_mlx_pixel_put(m->s_img[1], x, i + y, color);
+		// c = texture_n[(int)m->ray->ti * 32];
+		my_mlx_pixel_put(m->s_img[1], x, i + y, color); 
+		// choose_color(m, rgb_to_int(c, c, c)));
 		i++;
+		// m->ray->ti += m->ray->t_step;
 	}
 }
 

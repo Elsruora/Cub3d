@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/08/03 17:49:52 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:16:49 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void ft_init_struc(t_map *m)
     m->l->pa =  (float)(2 * M_PI);
 	ft_map_size(m, &m->colums, &m->lines);
     ft_find_player(m);
+	init_texture(m);
 }

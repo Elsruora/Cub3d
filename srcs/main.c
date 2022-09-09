@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/03 17:50:50 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:15:08 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 {
 	t_map m;
 
- 	control_arg(ac, av);
+	control_arg(ac, av);
 	m.map = ft_split(get_file_str(av[1]), '\n');
 	check_all_map_file(&m);
 	ft_init_struc(&m);
@@ -63,7 +63,7 @@ int main(int ac, char **av)
 	create_map(&m);
 	ft_draw_player(&m);
 	mlx_put_image_to_window(m.s_mlx->mlx, m.s_mlx->win, m.s_img[0]->img,
-	 0, (m.lines * 32));
+							0, (m.lines * 32));
 	mlx_put_image_to_window(m.s_mlx->mlx, m.s_mlx->win, m.s_img[1]->img, 0, 0);
 	mlx_hook(m.s_mlx->win, 2, 1L << 0, ft_buttons, &m);
 	mlx_hook(m.s_mlx->win, 17, 0, ft_close_window, &m);

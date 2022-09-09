@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 04:39:56 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/08 17:45:28 by nchabli          ###   ########lyon.fr   */
+/*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
+/*   Updated: 2022/09/09 15:15:47 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@
 # include "../mlx/mlx.h"
 # define PI1 (3 * M_PI)/2
 # define PI2 M_PI/2
+
+/* 
+ ─── Textures ────────────────────────────────────────────────────
+*/
+
+# define FNORTH "textures/north.ppm"
+# define FSOUTH "textures/south.ppm"
+# define FWEST "textures/west.ppm"
+# define FEAST "textures/east.ppm"
 
 /*
 A degree it's equal to 0.0174533 radians that at the same are equalt
@@ -87,14 +96,16 @@ typedef struct s_rayc
 	float	ca;
 	float	yo;
 	float	xo;
-	int		ax;
-	int		ay;
 	float	hdist;
 	float	vdist;
 	float	tdist;
-	char	c_dir;
 	float	line_h;
 	float	line_o;
+	float	ti;
+	float	t_step;
+	int		ax;
+	int		ay;
+	char	c_dir;
 	int		up;
 	int		left;
 	int		ray_mid;
@@ -119,6 +130,10 @@ typedef struct s_textures
 	int		so_fd;
 	int		we_fd;
 	int		ea_fd;
+	int		*t_north;
+	int		*t_south;
+	int		*t_west;
+	int		*t_east;
 	int		char_color;
 	char	player_dir;
 }		t_textures;
@@ -194,11 +209,14 @@ void	ft_error(char *error, char *where);
 /* PARSING */
 char	*get_file_str(char *file_entry);
 void	ft_init_struc(t_map *m);
+void    init_texture(t_map *m);
 void	ft_draw_player(t_map *m);
 void	ft_set_image(t_map *m);
 int		get_color_code(char *rgb_code);
 int		is_color_code(char *code);
 int		open_each_texture(t_map *m, char *path, int i);
+char	*get_rgbffile(char *file);
+int		*filter_rgb_file(char *file);
 
 /* EXECUTION */
 int		ft_buttons(int key, t_map *m);
