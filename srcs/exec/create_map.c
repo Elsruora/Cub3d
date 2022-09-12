@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 07:07:47 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:54:20 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	draw_line_h(t_map *m, int x, int y, int *texture)
 		c[2] = texture[pixel + 2];
 		my_mlx_pixel_put(m->s_img[1], x, i + y,
 		choose_color(m, rgb_to_int(c[0], c[1], c[2])));
-		// choose_color(m, rgb_to_int(c>0?(c<<8) - 1: 0, c>0?(c<<8) - 1: 0, c>0?(c<<8) - 1: 0)));
 		i++;
 		m->ray->ty += m->ray->t_step;
 	}
@@ -104,22 +103,25 @@ void create_map(t_map *m)
 	int i;
 	int j;
 
-   i = 0;
-   m->pps_pix = 31;
-   while (i < m->lines)
-   {
-       j = 0;
-       while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
-       {
-            if (m->map_desc[i][j] == '1')
-               ft_draw_square(m, j * 32, i * 32, 0x008083);
-            else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
-               ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
-            j++;
-       }
-       i++;
-   }
-   m->pps_pix = 32;
+	i = 0;
+	if (m->height <= 448 && m->width <= 1024)
+	{
+		m->pps_pix = 31;
+		while (i < m->lines)
+		{
+			j = 0;
+			while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
+			{
+				if (m->map_desc[i][j] == '1')
+					ft_draw_square(m, j * 32, i * 32, 0x008083);
+				else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
+					ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
+				j++;
+			}
+			i++;
+		}
+		m->pps_pix = 32;
+	}
 }
 
 /**

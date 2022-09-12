@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:50:31 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/08 15:31:03 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:54:00 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void    ft_map_size(t_map *m, int *cols, int *lines)
             *cols = temp;
     }
     *lines = i;
+    m->height = *lines * 32; 
+    m->width = *cols * 32;
+    printf("%d\n %d\n", m->height, m->width);
 }
 
 /* 
@@ -94,14 +97,17 @@ void    ft_draw_square(t_map *m, int x, int y, int color)
    int j;
 
    i  = 0;
-   while (i < m->pps_pix)
+   if (m->height <= 448 && m->width <= 1024)
    {
-       j = 0;
-       while (j < m->pps_pix)
+       while (i < m->pps_pix)
        {
-           my_mlx_pixel_put(m->s_img[0], j + x, i + y, color);
-           j++;
+           j = 0;
+           while (j < m->pps_pix)
+           {
+               my_mlx_pixel_put(m->s_img[0], j + x, i + y, color);
+               j++;
+           }
+           i++;
        }
-       i++;
    }
 }

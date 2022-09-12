@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/11 21:11:23 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:35:58 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,8 @@ typedef struct s_map
 	char		**map_desc;
 	int			lines;
 	int			colums;
+	int			height;
+	int			width;
 	int			pps_pix;
 	t_rayc		*ray;
 	t_sys		*s_mlx;

@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 10:32:44 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/11 21:13:03 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:54:46 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,22 @@ void plot_line(t_map *m, float x0, float y0)
 
     xy0[0] = x0;
     xy0[1] = y0;
-    if (abs((int)m->l->pdxy[1] - (int)xy0[1]) < 
-    abs((int)m->l->pdxy[0] - (int)xy0[0]))
-    {
-        if (xy0[0] > m->l->pdxy[0])
-            plot_line_low(m, m->l->pdxy, xy0);
-        else
-            plot_line_low(m, xy0, m->l->pdxy);
-    }
-    else
-    {
-        if (xy0[1] > m->l->pdxy[1])
-            plot_line_hight(m, m->l->pdxy, xy0);
-        else
-            plot_line_hight(m, xy0, m->l->pdxy);
-    }
+   if (m->height <= 448 && m->width <= 1024)
+   {
+       if (abs((int)m->l->pdxy[1] - (int)xy0[1]) <
+           abs((int)m->l->pdxy[0] - (int)xy0[0]))
+       {
+           if (xy0[0] > m->l->pdxy[0])
+               plot_line_low(m, m->l->pdxy, xy0);
+           else
+               plot_line_low(m, xy0, m->l->pdxy);
+       }
+       else
+       {
+           if (xy0[1] > m->l->pdxy[1])
+               plot_line_hight(m, m->l->pdxy, xy0);
+           else
+               plot_line_hight(m, xy0, m->l->pdxy);
+       }
+   }
 }
