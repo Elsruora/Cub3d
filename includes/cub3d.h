@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/11 21:11:23 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:23:14 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,8 @@ char	*ft_strdup(const char *s1);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 char	*find_scnd_word(char *line);
 int		does_char_contain(char c, char *s);
+void	check_textures_name(char **map);
+void	check_textures_path_and_color(t_map *m);
 void	ft_free(void **arr);
 
 #endif
