@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/09 15:16:49 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:45:58 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void ft_init_struc(t_map *m)
 	t_img	*img; 
 	t_line	*l;
 	t_rayc	*ray;
+	t_textures *t;
 
+	t = malloc(sizeof(t_textures));
     mlx = malloc(sizeof(t_sys));
-	m->textures.char_color = rgb_to_int(123,34,12);
-	m->textures.wall_code = rgb_to_int( 217, 72, 125);
     img = malloc(sizeof(t_img) * 2);
     l = malloc(sizeof(t_line));
     ray = malloc(sizeof(t_rayc));
@@ -36,9 +36,8 @@ void ft_init_struc(t_map *m)
 	m->s_mlx = mlx;
 	m->l = l;
 	m->ray = ray;
+	m->t = t;
 	m->pps_pix = 32;
     m->l->pa =  (float)(2 * M_PI);
-	ft_map_size(m, &m->colums, &m->lines);
-    ft_find_player(m);
 	init_texture(m);
 }

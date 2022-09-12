@@ -6,31 +6,14 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:38:53 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/09 15:23:21 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:33:06 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 /** 
-    @param replases the character c passed as argument in the string buffer 
-    by 0
- */
-void    erase_char(char **buffer, char c)
-{
-    int i;
-
-    i = 0;
-    while (buffer[0][i])
-    {
-        if (buffer[0][i] == c)
-            buffer[0][i] = 0;
-        i++;
-    }
-}
-
-/** 
-    @param Feches all chars from the specified file passed as argument 
+    @brief Feches all chars from the specified file passed as argument 
     @param return a char array
 */
 char *get_rgbffile(char *file)
@@ -63,7 +46,7 @@ char *get_rgbffile(char *file)
 }
 
 /**
-    @param split file elements by '\n', then get rid of ',' character 
+    @brief split file elements by ',' character 
     and store each element in a int array
     @param return a int array
  */
@@ -78,20 +61,19 @@ int *filter_rgb_file(char *file)
     i = 0;
     count = 0;
     input = get_rgbffile(file);
-    output = ft_split(input, '\n');
+    output = ft_split(input, ',');
     if (!input || !output)
         return (NULL);
     i = -1;
     while (output[++i])
-    {
-        erase_char(&output[i], ',');
         count++;
-    }
     result = malloc(count * sizeof(int));
     if (!result)
         return (NULL);
     i = -1;
     while (output[++i])
         result[i] = ft_atoi(output[i]);
+    free(input);
+    ft_free((void**)output);
     return (result);
 }

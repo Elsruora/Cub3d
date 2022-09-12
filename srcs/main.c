@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/09 15:15:08 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:45:34 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_close_window(t_map *m)
 void	ft_set_window(t_map *m)
 {
 	m->s_mlx->mlx = mlx_init(); 
-	m->s_mlx->win = mlx_new_window(m->s_mlx->mlx, 1080,
+	m->s_mlx->win = mlx_new_window(m->s_mlx->mlx, 1024,
 	(m->lines * m->pps_pix) * 2, "Cub3d");
 }
 
@@ -42,7 +42,7 @@ void ft_set_image(t_map *m)
 	i = -1;
 	while (++i < 2)
 	{
-		m->s_img[i]->img = mlx_new_image(m->s_mlx->mlx, 1080,
+		m->s_img[i]->img = mlx_new_image(m->s_mlx->mlx, 1024,
 		m->lines * m->pps_pix);
 		m->s_img[i]->addr = mlx_get_data_addr(m->s_img[i]->img,
 		&m->s_img[i]->bits_per_pixel, &m->s_img[i]->line_length, 
@@ -55,9 +55,11 @@ int main(int ac, char **av)
 	t_map m;
 
 	control_arg(ac, av);
+	ft_init_struc(&m);
 	m.map = ft_split(get_file_str(av[1]), '\n');
 	check_all_map_file(&m);
-	ft_init_struc(&m);
+	ft_map_size(&m, &m.colums, &m.lines);
+    ft_find_player(&m);
 	ft_set_window(&m);
 	ft_set_image(&m);
 	create_map(&m);

@@ -6,13 +6,12 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/09 15:15:47 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:11:23 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
 # include "cub3d.h"
 # include "error.h"
 # include <unistd.h>
@@ -24,7 +23,11 @@
 # include <stdbool.h>
 # include <math.h>
 # include "../mlx/mlx.h"
+
+/** @brief 90 degrees */
 # define PI1 (3 * M_PI)/2
+
+/** @brief 270 degrees */
 # define PI2 M_PI/2
 
 /* 
@@ -36,13 +39,15 @@
 # define FWEST "textures/west.ppm"
 # define FEAST "textures/east.ppm"
 
-/*
-A degree it's equal to 0.0174533 radians that at the same are equalt
-to 18 pixels as (1080 width screes) / (60 degrees players range view)
-so we divide a degree into
-18 to represent each pixel
+/**
+ @param DR radians per pixel
+ @a --> degree = 0.0174533, we know our player will have a vision
+	 	range of 60 degrees, (1 rad * 60 degree) = number of rads 
+	 	in the player's vision.
+ @b	--> then we divide the previous operation by the screen width 
+		having as result the number of rays we will print
  */
-# define DR 0.0174533/18
+# define DR (0.0174533*60)/1024
 
 # ifdef __LINUX__
 #  include "../linux_mlx/mlx.h"
@@ -101,7 +106,9 @@ typedef struct s_rayc
 	float	tdist;
 	float	line_h;
 	float	line_o;
-	float	ti;
+	float	ty;
+	float	tx;
+	float 	t_offset;
 	float	t_step;
 	int		ax;
 	int		ay;
@@ -188,7 +195,7 @@ typedef struct s_map
 	t_sys		*s_mlx;
 	t_img		*s_img[2];
 	t_line		*l;
-	t_textures	textures;
+	t_textures	*t;
 }		t_map;
 
 typedef struct s_counter
@@ -238,6 +245,7 @@ void	dist(t_map *m, char type);
 int		rgb_to_int(int r, int g, int b);
 int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
+int		*choose_texture(t_map *m);
 
 /* LIBFT */
 size_t	ft_strlen(const char *s);

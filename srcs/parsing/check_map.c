@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/26 14:23:27 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/11 21:12:28 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void    check_map(t_map *m)
     m->map_desc = &m->map[i];
     i = 0;
     control_chars(m->map_desc);
-    m->textures.player_dir = how_much_players(m->map_desc);
-    if (m->textures.player_dir == '0')
+    m->t->player_dir = how_much_players(m->map_desc);
+    if (m->t->player_dir == '0')
         ft_error(BAD_PLAYER_NB, NULL);
 }

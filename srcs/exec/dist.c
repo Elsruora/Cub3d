@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   dist.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:06:19 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/08 17:55:08 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/11 09:07:19 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*
-Pythagorean theorem,
-https://en.wikipedia.org/wiki/Hypotenuse
+/**
+ @param Pythagorean_theorem,
+		https://en.wikipedia.org/wiki/Hypotenuse
 */
 float	pythagoras(t_map *m, float *xy0, float *xy1)
 {
@@ -30,9 +30,9 @@ float	pythagoras(t_map *m, float *xy0, float *xy1)
 	return (num);
 }
 
-/*
-Calculates hdist and vdist which is the hypotenuse
-or the distance between the player and the wall
+/**
+ @brief Calculates hdist and vdist which is the hypotenuse
+		or the distance between the player and the wall
 */
 void	dist(t_map *m, char type)
 {
@@ -56,8 +56,8 @@ void	dist(t_map *m, char type)
 	}
 }
 
-/*
-Set minimum distance between hdist and vdist
+/**
+	@brief Set minimum distance between hdist and vdist
 */
 void	max(t_map *m)
 {

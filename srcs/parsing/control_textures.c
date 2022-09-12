@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/08/03 13:42:53 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:14:25 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ int open_each_texture (t_map *m, char *path, int i)
 {
     if (ft_strncmp(m->map[i], "NO ", 3))
     {
-        m->textures.no_fd = open_one_texture(path);
-        return (m->textures.no_fd);
+        m->t->no_fd = open_one_texture(path);
+        return (m->t->no_fd);
     }
     else if (ft_strncmp(m->map[i], "SO ", 3))
     {
-        m->textures.so_fd = open_one_texture(path);
-        return (m->textures.so_fd);
+        m->t->so_fd = open_one_texture(path);
+        return (m->t->so_fd);
     }
     else if (ft_strncmp(m->map[i], "WE ", 3))
     {
-        m->textures.we_fd = open_one_texture(path);
-        return (m->textures.we_fd);
+        m->t->we_fd = open_one_texture(path);
+        return (m->t->we_fd);
     }
     else if (ft_strncmp(m->map[i], "EA ", 3))
     {
-        m->textures.ea_fd = open_one_texture(path);
-        return (m->textures.ea_fd);
+        m->t->ea_fd = open_one_texture(path);
+        return (m->t->ea_fd);
     }
     else
         return (0);
@@ -139,8 +139,8 @@ void check_textures_path_and_color (t_map *m)
         if (!is_color_code(find_scnd_word(m->map[i])))
             ft_error(BAD_COLOR_CODE, find_scnd_word(m->map[i]));
         if (i == 4)
-            m->textures.floor_code = get_color_code(m->map[i]);
+            m->t->floor_code = get_color_code(m->map[i]);
         if (i == 5)
-            m->textures.ceiler_code = get_color_code(m->map[i]);
+            m->t->ceiler_code = get_color_code(m->map[i]);
     }
 }

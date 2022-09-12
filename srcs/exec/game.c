@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/08 21:20:47 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 07:10:11 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	ft_player_buttons(int key, t_map *m)
 	i = 0;
 	if (key == K_A)
 	{
-		m->l->pa -= 0.1;
+		m->l->pa -= 0.08;
 		if (m->l->pa < 0)
 			m->l->pa = (float)(2 * M_PI);
 	}
 	else if (key == K_D)
 	{
-		m->l->pa += 0.1;
+		m->l->pa += 0.08;
 		if (m->l->pa > (float)(2 * M_PI))
 			m->l->pa = (float)0;
 	}
