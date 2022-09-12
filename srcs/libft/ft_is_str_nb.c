@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_str_nb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:33:37 by nchabli           #+#    #+#             */
-/*   Updated: 2022/06/24 19:08:29 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:06:53 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_isdigit(int c)
 
 int	ft_is_str_nb(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i] != '\0')
 	{

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 09:36:22 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/13 09:36:27 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:06:30 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		display(int nb, char *str, char *result, int index)
+int	display(int nb, char *str, char *result, int index)
 {
 	unsigned int	nbr;
 	unsigned int	str_length;
@@ -33,7 +33,7 @@ int		display(int nb, char *str, char *result, int index)
 	return (index);
 }
 
-int		get_number_length(int number, char *base)
+int	get_number_length(int number, char *base)
 {
 	int	length;
 	int	base_length;
@@ -50,7 +50,7 @@ int		get_number_length(int number, char *base)
 	return (++length);
 }
 
-int		get_nb(char c, char *base)
+int	get_nb(char c, char *base)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ int		get_nb(char c, char *base)
 	return (i);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	s;
 	int	i;
@@ -73,16 +73,16 @@ int		ft_atoi_base(char *str, char *base)
 		++base_length;
 	s = 0;
 	while (str[s] != '\0' && (str[s] == ' ' || str[s] == '\t' || str[s] == '\r'
-				|| str[s] == '\n' || str[s] == '\v' || str[s] == '\f'))
+			|| str[s] == '\n' || str[s] == '\v' || str[s] == '\f'))
 		s++;
 	i = s - 1;
 	res = 0;
 	negative = 1;
-	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s) ||
-				(str[i] != '-' && str[i] != '+')))
+	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s)
+			|| (str[i] != '-' && str[i] != '+')))
 		if (str[i] == '-')
 			negative = -1;
-		else if (str[i] != '+')
+	else if (str[i] != '+')
 			res = (res * base_length) + (get_nb(str[i], base));
 	return (res * negative);
 }
@@ -98,7 +98,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	number = ft_atoi_base(nbr, base_from);
 	result = malloc(sizeof(char) * get_number_length(number, base_to));
 	last_index = display(number, base_to, result,
-		get_number_length(number, base_to) - 1);
+			get_number_length(number, base_to) - 1);
 	result[last_index + 1] = '\0';
 	return (result);
 }

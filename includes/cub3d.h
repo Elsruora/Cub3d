@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 14:23:14 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 16:06:13 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include "../mlx/mlx.h"
 
 /** @brief 90 degrees */
-# define PI1 (3 * M_PI)/2
+# define PI1 4.71238898038
 
 /** @brief 270 degrees */
-# define PI2 M_PI/2
+# define PI2 1.57079632679
 
 /* 
  ─── Textures ────────────────────────────────────────────────────
@@ -47,7 +47,7 @@
  @b	--> then we divide the previous operation by the screen width 
 		having as result the number of rays we will print
  */
-# define DR (0.0174533*60)/1024
+# define DR 0.00102265429
 
 # ifdef __LINUX__
 #  include "../linux_mlx/mlx.h"
@@ -108,7 +108,7 @@ typedef struct s_rayc
 	float	line_o;
 	float	ty;
 	float	tx;
-	float 	t_offset;
+	float	t_offset;
 	float	t_step;
 	int		ax;
 	int		ay;
@@ -216,7 +216,7 @@ void	ft_error(char *error, char *where);
 /* PARSING */
 char	*get_file_str(char *file_entry);
 void	ft_init_struc(t_map *m);
-void    init_texture(t_map *m);
+void	init_texture(t_map *m);
 void	ft_draw_player(t_map *m);
 void	ft_set_image(t_map *m);
 int		get_color_code(char *rgb_code);
@@ -269,5 +269,16 @@ int		does_char_contain(char c, char *s);
 void	check_textures_name(char **map);
 void	check_textures_path_and_color(t_map *m);
 void	ft_free(void **arr);
+char	*find_scnd_word(char *line);
+void	check_texture_ext(char *path);
+int		open_one_texture(char *path);
+int		open_each_texture(t_map *m, char *path, int i);
+void	check_textures_doublons(char **map);
+void	go_lr(int key, t_map *m);
+void	go_down(t_map *m);
+void	go_up(t_map *m);
+int		is_there_wall(t_map *m, int i);
+void	ft_player_buttons(int key, t_map *m);
+int		ft_buttons(int key, t_map *m);
 
 #endif

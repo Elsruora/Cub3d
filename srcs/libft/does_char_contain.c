@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   does_str_contain.c                                 :+:      :+:    :+:   */
+/*   does_char_contain.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:47:59 by nchabli           #+#    #+#             */
-/*   Updated: 2022/07/20 10:50:46 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:10:58 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int does_char_contain(char c, char *s)
+int	does_char_contain(char c, char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        if (c == s[i])
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (s[i])
+	{
+		if (c == s[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

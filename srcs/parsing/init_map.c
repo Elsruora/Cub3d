@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:08:53 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/12 14:47:08 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/12 14:59:15 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ void	control_nl_map(char *strmap)
 	}
 }
 
+int	check_if_oppenable(char *file_entry, int fd)
+{
+	if (open(file_entry, O_DIRECTORY) != -1)
+		ft_error(PATH_IS_DIRECTORY, NULL);
+	fd = open(file_entry, O_RDONLY);
+	if (fd == -1)
+		ft_error(NO_MAP_FILE, NULL);
+	return (fd);
+}
+
 /* 
 Read from file passed as argument character by character, then return string
 */
@@ -63,11 +73,8 @@ char	*get_file_str(char *file_entry)
 	char	*tmp;
 
 	strmap = NULL;
-	if (open(file_entry, O_DIRECTORY) != -1)
-		ft_error(PATH_IS_DIRECTORY, NULL);
-	fd = open(file_entry, O_RDONLY);
-	if (fd == -1)
-		ft_error(NO_MAP_FILE, NULL);
+	fd = 0;
+	fd = check_if_oppenable(file_entry, fd);
 	r = read(fd, &buffer, 1);
 	while (r)
 	{

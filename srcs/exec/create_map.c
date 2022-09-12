@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 07:07:47 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:09:38 by nchabli          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ void	draw_backgroud(t_map *m, int x, int y, int color)
 }
 
 /**
- @brief  each ray simulating a 3d view 
+ @brief  each ray simulating a 3d view
 */
 void	draw_line_h(t_map *m, int x, int y, int *texture)
 {
 	int	i;
-	// int c;
 	int	pixel;
 	int	c[3];
 
@@ -48,8 +47,7 @@ void	draw_line_h(t_map *m, int x, int y, int *texture)
 		m->ray->tx = (int)(m->l->pdxy[1] * 4) % 64;
 	else
 		m->ray->tx = (int)(m->l->pdxy[0] * 4) % 64;
-
-	m->ray->ty = m->ray->t_step * m->ray->t_offset; 
+	m->ray->ty = m->ray->t_step * m->ray->t_offset;
 	while (i < m->ray->line_h)
 	{
 		pixel = ((int)m->ray->ty * 64 + (int)m->ray->tx) * 3;
@@ -57,12 +55,10 @@ void	draw_line_h(t_map *m, int x, int y, int *texture)
 		c[1] = texture[pixel + 1];
 		c[2] = texture[pixel + 2];
 		my_mlx_pixel_put(m->s_img[1], x, i + y,
-		choose_color(m, rgb_to_int(c[0], c[1], c[2])));
-		// choose_color(m, rgb_to_int(c>0?(c<<8) - 1: 0, c>0?(c<<8) - 1: 0, c>0?(c<<8) - 1: 0)));
+			choose_color(m, rgb_to_int(c[0], c[1], c[2])));
 		i++;
 		m->ray->ty += m->ray->t_step;
 	}
-	
 }
 
 /**
@@ -83,7 +79,7 @@ void	draw_raycaster(t_map *m, int i)
 		m->ray->ca -= (float)(M_PI * 2);
 	m->ray->tdist *= cos(m->ray->ca);
 	m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
-	m->ray->t_step = 64.0 / (float)m->ray->line_h; 
+	m->ray->t_step = 64.0 / (float)m->ray->line_h;
 	m->ray->t_offset = 0;
 	if (m->ray->line_h > 448)
 	{
@@ -99,34 +95,34 @@ void	draw_raycaster(t_map *m, int i)
 		pps_pix varible that will be used by ft_draw_square to
 		create 31 px squares size
 */
-void create_map(t_map *m)
+void	create_map(t_map *m)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-   i = 0;
-   m->pps_pix = 31;
-   while (i < m->lines)
-   {
-       j = 0;
-       while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
-       {
-            if (m->map_desc[i][j] == '1')
-               ft_draw_square(m, j * 32, i * 32, 0x008083);
-            else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
-               ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
-            j++;
-       }
-       i++;
-   }
-   m->pps_pix = 32;
+	i = 0;
+	m->pps_pix = 31;
+	while (i < m->lines)
+	{
+		j = 0;
+		while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
+		{
+			if (m->map_desc[i][j] == '1')
+				ft_draw_square(m, j * 32, i * 32, 0x008083);
+			else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
+				ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
+			j++;
+		}
+		i++;
+	}
+	m->pps_pix = 32;
 }
 
 /**
  @a --> creates player representation
  @a --> set ra(angle) to 30 degrees to the left to start representating
 		the player's view which is a 60 degrees field
- @a -->	pixels per degree = (1024/60) 
+ @a -->	pixels per degree = (1024/60)
  @a --> each loop difines a line,  we do all the math in the function
 		ray_caster
  @a --> with max(m) we we take the shortest line
@@ -141,7 +137,7 @@ void	ft_draw_player(t_map *m)
 	ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
 		m->t->char_color);
 	m->pps_pix = 32;
-	m->ray->ra = m->l->pa - (DR * ((1024/60) * 30));
+	m->ray->ra = m->l->pa - (DR * ((1024 / 60) * 30));
 	draw_backgroud(m, 0, 0, m->t->ceiler_code);
 	draw_backgroud(m, 0, 224, m->t->floor_code);
 	while (++i < (1024))
