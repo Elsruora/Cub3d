@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:38:53 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/11 21:33:06 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 08:56:49 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ char *get_rgbffile(char *file)
     int i;
 
     fd = open(file, O_RDONLY, 00700);
+    count = 0;
     if (fd < 0)
-    {
-        printf("Permission denied: %s\n", file);
-        return NULL;
-    }
+        perror("Permission denied: %s\n");
     while (read(fd, temp, 1))
         count++;
     close(fd);

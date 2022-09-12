@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/11 21:14:25 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/12 10:56:05 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,24 +84,24 @@ void    check_textures_doublons(char **map)
     int comb;
 
     i = 0;
-    comb = 1;
+    comb = 0;
     while (i < 6)
     {
         if (!ft_strncmp(map[i], "NO ", 3))
-            comb *= 7;
+            comb += 3;
         else if (!ft_strncmp(map[i], "SO ", 3))
-            comb *= 2;
+            comb += 5;
         else if (!ft_strncmp(map[i], "WE ", 3))
-            comb *= 87;
+            comb += 7;
         else if (!ft_strncmp(map[i], "EA ", 3))
-            comb *= 8;
+            comb += 11;
         else if (!ft_strncmp(map[i], "F ", 2))
-            comb *= 19;
+            comb += 13;
         else if (!ft_strncmp(map[i], "C ", 2))
-            comb *= 4;
+            comb += 17;
         i++;
     }
-    if (comb != 740544)
+    if (comb != 56)
         ft_error(DOUBL_ON_TEXTURES, NULL);
 }
 
