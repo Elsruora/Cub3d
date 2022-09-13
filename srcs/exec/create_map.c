@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 14:54:20 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/13 19:28:59 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_backgroud(t_map *m, int x, int y, int color)
 
 	i = -1;
 	width = (1024);
-	height = m->lines * m->pps_pix;
+	height = 448;
 	while (++i < height / 2)
 	{
 		j = -1;
@@ -39,7 +39,6 @@ void	draw_backgroud(t_map *m, int x, int y, int color)
 void	draw_line_h(t_map *m, int x, int y, int *texture)
 {
 	int	i;
-	// int c;
 	int	pixel;
 	int	c[3];
 
@@ -110,7 +109,7 @@ void create_map(t_map *m)
 		while (i < m->lines)
 		{
 			j = 0;
-			while (j < m->colums && does_char_contain(m->map_desc[i][j], "1SEW0N"))
+			while (j < m->colums)
 			{
 				if (m->map_desc[i][j] == '1')
 					ft_draw_square(m, j * 32, i * 32, 0x008083);
@@ -148,8 +147,8 @@ void	ft_draw_player(t_map *m)
 	draw_backgroud(m, 0, 224, m->t->floor_code);
 	while (++i < (1024))
 	{
-		m->ray->hdist = 10000;
-		m->ray->vdist = 10000;
+		m->ray->hdist = 10000000;
+		m->ray->vdist = 10000000;
 		if (m->ray->ra < (float)0)
 			m->ray->ra += (float)(2 * M_PI);
 		if (m->ray->ra > (float)(2 * M_PI))
@@ -160,4 +159,6 @@ void	ft_draw_player(t_map *m)
 		plot_line(m, m->l->p_x, m->l->p_y);
 		m->ray->ra += DR;
 	}
+	// printf("tdist: %f ----- (ax): %d --- (ay): %d  player position [%d][%d]\n", m->ray->tdist, m->ray->ax,
+	//  m->ray->ay, (int)m->l->p_x >> 5, (int)m->l->p_y >> 5);
 }

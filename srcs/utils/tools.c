@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:50:31 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 14:54:00 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:41:30 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ void ft_find_player(t_map *m)
 {
     int i;
     int j;
+    int j_len;
 
     i = 0;
+    j_len = 0;
     while (i < m->lines)
     {
         j = 0;
-        while (j < m->colums)
+        j_len = strlen(m->map_desc[i]);
+        while (j < j_len)
         {
             if (does_char_contain(m->map_desc[i][j], "SEWN"))
             {
@@ -64,14 +67,14 @@ void    ft_map_size(t_map *m, int *cols, int *lines)
     *lines = 0;
     while (m->map_desc[++i])
     {
-        temp = ft_strlen(m->map[i]);
+        temp = ft_strlen(m->map_desc[i]);
         if (temp > *cols)
             *cols = temp;
     }
     *lines = i;
     m->height = *lines * 32; 
     m->width = *cols * 32;
-    printf("%d\n %d\n", m->height, m->width);
+    printf("%d\n %d\n", m->lines, m->colums);
 }
 
 /* 

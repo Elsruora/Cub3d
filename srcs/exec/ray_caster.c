@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:08:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/08 21:25:28 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:50:36 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	inc_offset(t_map *m, char type)
 			m->ray->rx += m->ray->xo;
 		}
 	}
+	// printf("ax %d --- ay %d\n", m->ray->ax, m->ray->ay);
 	dist(m, type);
 }
 

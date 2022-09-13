@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 16:06:19 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/11 09:07:19 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:17:15 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 float	pythagoras(t_map *m, float *xy0, float *xy1)
 {
 	float	num;
+	(void)m;
 
 	num = sqrt((xy1[0] - xy0[0]) * (xy1[0] - xy0[0])
 			+ (xy1[1] - xy0[1]) * (xy1[1] - xy0[1]));
