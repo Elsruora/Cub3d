@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/13 19:28:59 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/14 22:00:04 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	draw_line_h(t_map *m, int x, int y, int *texture)
 	}
 	
 }
-
 /**
  @brief Draw the entire ray casting view
  @a --> ca is the difference between player direction and fist ray to
@@ -123,6 +122,54 @@ void create_map(t_map *m)
 	}
 }
 
+/* void	set_offset_player( t_map *m, int *y, int *x)
+{
+	int counter;
+	
+	counter = 0;
+	*x = (int)m->l->p_x >> 5;
+	*y = (int)m->l->p_y >> 5;
+	if (*y > 14)
+		(*y) -= 14;
+	while (m->map_desc[(*y) - 1][*x] && counter <= 32)
+	{
+		counter++;
+		(*x)--;
+		if (counter >= 31)
+			break;
+	}
+	(*x) += 1;
+	// printf("y = %d x = %d", *x, *y);
+}
+
+void create_map(t_map *m)
+{
+	int i;
+	int j;
+	int x;
+	int y;
+
+	i = 0;
+	set_offset_player(m, &y, &x);
+	m->pps_pix = 31;
+	while (i < 12 && i < m->lines)
+	{
+		j = 0;
+		while (j < 32 && m->map_desc[y][x])
+		{
+			if (m->map_desc[y][x] == '1')
+				ft_draw_square(m, j * 32, i * 32, 0x008083);
+			else if (does_char_contain(m->map_desc[y][x], "SEW0N"))
+				ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
+			j++;
+			x++;
+		}
+		i++;
+		y++;
+	}
+	m->pps_pix = 32;
+} */
+
 /**
  @a --> creates player representation
  @a --> set ra(angle) to 30 degrees to the left to start representating
@@ -139,8 +186,8 @@ void	ft_draw_player(t_map *m)
 
 	i = -1;
 	m->pps_pix = 10;
-	ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
-		m->t->char_color);
+	// ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
+	// 	m->t->char_color);
 	m->pps_pix = 32;
 	m->ray->ra = m->l->pa - (DR * ((1024/60) * 30));
 	draw_backgroud(m, 0, 0, m->t->ceiler_code);
@@ -156,7 +203,7 @@ void	ft_draw_player(t_map *m)
 		ray_caster(m);
 		max(m);
 		draw_raycaster(m, i);
-		plot_line(m, m->l->p_x, m->l->p_y);
+		// plot_line(m, m->l->p_x, m->l->p_y);
 		m->ray->ra += DR;
 	}
 	// printf("tdist: %f ----- (ax): %d --- (ay): %d  player position [%d][%d]\n", m->ray->tdist, m->ray->ax,
