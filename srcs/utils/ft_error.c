@@ -13,15 +13,15 @@
 #include "../../includes/cub3d.h"
 
 /**
-    @brief Print error message on terminal then exit program.
-    
-    @param error string with error value
-*/
-void ft_error(char *error, char *where)
+  @brief Print error message on terminal then exit program.
+
+  @param error string with error value
+ */
+void	ft_error(char *error, char *where)
 {
-    if (where)
-        printf("Error\n on \"%s\" : %s", where, error);
-    else
-        printf("Error\n %s", error);
-    exit(EXIT_FAILURE);
+	if (where)
+		printf("Error\n on \"%s\" : %s", where, error);
+	else
+		printf("Error\n %s", error);
+	exit(EXIT_FAILURE);
 }

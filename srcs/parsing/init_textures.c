@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:07:46 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 07:07:27 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:23:17 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void    init_texture(t_map *m)
 {
 	m->t->char_color = rgb_to_int(123,34,12);
 	m->t->wall_code = rgb_to_int( 217, 72, 125);
-    m->t->t_north = filter_rgb_file(FNORTH);
-    m->t->t_south = filter_rgb_file(FSOUTH);
-    m->t->t_west = filter_rgb_file(FWEST);
-    m->t->t_east = filter_rgb_file(FEAST);
+    m->t->textures = malloc(4 * sizeof(int*));
+    if (!m->t->textures)
+        return ; 
+    m->t->textures[north] = filter_rgb_file(FNORTH);
+    m->t->textures[south] = filter_rgb_file(FSOUTH);
+    m->t->textures[east] = filter_rgb_file(FEAST);
+    m->t->textures[west] = filter_rgb_file(FWEST);
 }
 
 /** 
@@ -28,12 +31,12 @@ void    init_texture(t_map *m)
 int *choose_texture(t_map *m)
 {
     if (m->ray->c_dir == 'v' && (m->ray->ra > PI1 || m->ray->ra < PI2))
-        return (m->t->t_east);
+        return (m->t->textures[east]);
     else if (m->ray->c_dir == 'v' && (m->ray->ra < PI1 && m->ray->ra > PI2))
-        return (m->t->t_west);
+        return (m->t->textures[west]);
     else if (m->ray->c_dir == 'h' && m->ray->ra > M_PI)
-        return (m->t->t_north);
+        return (m->t->textures[north]);
     else if (m->ray->c_dir == 'h' && m->ray->ra < M_PI)
-        return (m->t->t_south);
+        return (m->t->textures[south]);
     return (NULL);
 }

@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int does_char_contain(char c, char *s)
+int	does_char_contain(char c, char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        if (c == s[i])
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (s[i])
+	{
+		if (c == s[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

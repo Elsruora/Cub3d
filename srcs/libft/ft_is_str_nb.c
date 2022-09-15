@@ -20,8 +20,8 @@ int	ft_isdigit(int c)
 
 int	ft_is_str_nb(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i] != '\0')
 	{

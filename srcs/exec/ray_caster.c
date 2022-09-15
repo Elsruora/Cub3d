@@ -12,9 +12,10 @@
 
 #include "../../includes/cub3d.h"
 
-/*
-function called by inc_offset in order to calculte the line offset
+/**
+ @brief function called by inc_offset in order to calculte the line offset
 */
+
 void	line_offset(t_map *m, char type)
 {
 	m->ray->up = 0;
@@ -26,9 +27,11 @@ void	line_offset(t_map *m, char type)
 		m->ray->left = 1;
 }
 
-/*
-Increment offset function allow us to increase offset up until we reach a wall
+/**
+	@brief Increment offset function allow us to increase offset up until 
+	we reach a wall
 */
+
 void	inc_offset(t_map *m, char type)
 {
 	int	i;
@@ -37,8 +40,8 @@ void	inc_offset(t_map *m, char type)
 	line_offset(m, type);
 	while (!i)
 	{
-		m->ray->ax = (int)m->ray->rx >> 5; // x index in map_desc
-		m->ray->ay = (int)m->ray->ry >> 5; // y index in map_desc
+		m->ray->ax = (int)m->ray->rx >> 5;
+		m->ray->ay = (int)m->ray->ry >> 5;
 		if (((int)m->ray->ax >= m->colums - 1 || (int)m->ray->ay >= m->lines - 1
 				|| m->ray->ax < 0 || m->ray->ay < 0)
 			|| m->map_desc[m->ray->ay - m->ray->up]
@@ -50,15 +53,15 @@ void	inc_offset(t_map *m, char type)
 			m->ray->rx += m->ray->xo;
 		}
 	}
-	// printf("ax %d --- ay %d\n", m->ray->ax, m->ray->ay);
 	dist(m, type);
 }
 
-/*
-gets horizontal raytrace from 0 to PI and from PI to (2 * PI)
---> for a deeper undestanding see the next video:
-https://www.youtube.com/watch?v=eOCQfxRQ2pY
+/**
+ @brief gets horizontal raytrace from 0 to PI and from PI to (2 * PI)
+		--> for a deeper undestanding see the next video:
+		https://www.youtube.com/watch?v=eOCQfxRQ2pY
 */
+
 void	check_h_line(t_map *m)
 {
 	t_rayc	*r;
@@ -106,7 +109,7 @@ void	check_v_line(t_map *m)
 		r->ntan = -tan(r->ra);
 		r->rx = ((int)m->l->p_x >> 5) << 5;
 		r->ry = ((m->l->p_x - r->rx) * r->ntan + (m->l->p_y));
-		r->xo = -32; // as we are poiting downwards +32 is y offset
+		r->xo = -32;
 		r->yo = -r->xo * r->ntan;
 	}
 	if (r->ra == (float)PI1 || r->ra == (float)PI2)

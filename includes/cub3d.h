@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 14:35:58 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:22:42 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include "../mlx/mlx.h"
 
 /** @brief 90 degrees */
-# define PI1 (3 * M_PI)/2
+# define PI1 (3 * M_PI) / 2
 
 /** @brief 270 degrees */
-# define PI2 M_PI/2
+# define PI2 M_PI / 2
 
 /* 
  ─── Textures ────────────────────────────────────────────────────
@@ -89,6 +89,14 @@
 #  define K_DOWN 125
 # endif
 
+enum e_textures
+{
+	north,
+	south,
+	east,
+	west
+};
+
 typedef struct s_rayc
 {
 	float	atan;
@@ -108,7 +116,7 @@ typedef struct s_rayc
 	float	line_o;
 	float	ty;
 	float	tx;
-	float 	t_offset;
+	float	t_offset;
 	float	t_step;
 	int		ax;
 	int		ay;
@@ -137,10 +145,7 @@ typedef struct s_textures
 	int		so_fd;
 	int		we_fd;
 	int		ea_fd;
-	int		*t_north;
-	int		*t_south;
-	int		*t_west;
-	int		*t_east;
+	int		**textures;
 	int		char_color;
 	char	player_dir;
 }		t_textures;
@@ -218,7 +223,7 @@ void	ft_error(char *error, char *where);
 /* PARSING */
 char	*get_file_str(char *file_entry);
 void	ft_init_struc(t_map *m);
-void    init_texture(t_map *m);
+void	init_texture(t_map *m);
 void	ft_draw_player(t_map *m);
 void	ft_set_image(t_map *m);
 int		get_color_code(char *rgb_code);
@@ -248,6 +253,7 @@ int		rgb_to_int(int r, int g, int b);
 int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
 int		*choose_texture(t_map *m);
+float	player_direction(char c);
 
 /* LIBFT */
 size_t	ft_strlen(const char *s);

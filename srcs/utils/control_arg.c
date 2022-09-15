@@ -13,29 +13,30 @@
 #include"../../includes/cub3d.h"
 
 /* check extention .cub */
-int control_arg(int ac, char **av)
+
+int	control_arg(int ac, char **av)
 {
-    int     i;
-    int     j;
-    char    extension[5];
-    
-    i = 4;
-    j = 0;
-    if (ac == 2)
-    {
-        if(av[1][4])
-        {
-            while(av[1][ft_strlen(av[1]) - i])
-            {
-                extension[j++] = av[1][ft_strlen(av[1]) - i];
-                i--;
-            }
-            extension[4] = '\0';
-            if (ft_strcmp(extension, ".cub"))
-                ft_error(WRONG_EXT, NULL);
-        }
-        return (0);
-    }
-    ft_error(WRONG_ARG_NB, NULL);
-    return (1);
+	int		i;
+	int		j;
+	char	extension[5];
+
+	i = 4;
+	j = 0;
+	if (ac == 2)
+	{
+		if (av[1][4])
+		{
+			while (av[1][ft_strlen(av[1]) - i])
+			{
+				extension[j++] = av[1][ft_strlen(av[1]) - i];
+				i--;
+			}
+			extension[4] = '\0';
+			if (ft_strcmp(extension, ".cub"))
+				ft_error(WRONG_EXT, NULL);
+		}
+		return (0);
+	}
+	ft_error(WRONG_ARG_NB, NULL);
+	return (1);
 }

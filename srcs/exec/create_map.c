@@ -6,15 +6,15 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:06:30 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/14 22:00:04 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:08:55 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 /**
- @brief set roof and floor backgroud
-*/
+  @brief set roof and floor backgroud
+ */
 void	draw_backgroud(t_map *m, int x, int y, int color)
 {
 	int	i;
@@ -34,8 +34,8 @@ void	draw_backgroud(t_map *m, int x, int y, int color)
 }
 
 /**
- @brief  each ray simulating a 3d view 
-*/
+  @brief  each ray simulating a 3d view 
+ */
 void	draw_line_h(t_map *m, int x, int y, int *texture)
 {
 	int	i;
@@ -47,30 +47,29 @@ void	draw_line_h(t_map *m, int x, int y, int *texture)
 		m->ray->tx = (int)(m->l->pdxy[1] * 4) % 64;
 	else
 		m->ray->tx = (int)(m->l->pdxy[0] * 4) % 64;
-
-	m->ray->ty = m->ray->t_step * m->ray->t_offset; 
+	m->ray->ty = m->ray->t_step * m->ray->t_offset;
 	while (i < m->ray->line_h)
 	{
 		pixel = ((int)m->ray->ty * 64 + (int)m->ray->tx) * 3;
 		c[0] = texture[pixel + 0];
 		c[1] = texture[pixel + 1];
 		c[2] = texture[pixel + 2];
-		my_mlx_pixel_put(m->s_img[1], x, i + y,
-		choose_color(m, rgb_to_int(c[0], c[1], c[2])));
+		my_mlx_pixel_put(m->s_img[1], x, i + y, \
+				choose_color(m, rgb_to_int(c[0], c[1], c[2])));
 		i++;
 		m->ray->ty += m->ray->t_step;
 	}
-	
 }
 /**
- @brief Draw the entire ray casting view
- @a --> ca is the difference between player direction and fist ray to
-		the left  which is 30 degrees or 0.523599 radians
- @a --> fish_eye_effect, we get rid of it,  as the rays in the
-		middle are shorter than the fist arrays to the left or right,
-		so we use tdist * cos(ca)
- @a --> screen heigth 448
- */
+  @brief Draw the entire ray casting view
+  @a --> ca is the difference between player direction and fist ray to
+  the left  which is 30 degrees or 0.523599 radians
+  @a --> fish_eye_effect, we get rid of it,  as the rays in the
+  middle are shorter than the fist arrays to the left or right,
+  so we use tdist * cos(ca)
+  @a --> screen heigth 448
+*/
+
 void	draw_raycaster(t_map *m, int i)
 {
 	m->ray->ca = m->l->pa - m->ray->ra;
@@ -80,7 +79,7 @@ void	draw_raycaster(t_map *m, int i)
 		m->ray->ca -= (float)(M_PI * 2);
 	m->ray->tdist *= cos(m->ray->ca);
 	m->ray->line_h = (m->pps_pix * 448) / m->ray->tdist;
-	m->ray->t_step = 64.0 / (float)m->ray->line_h; 
+	m->ray->t_step = 64.0 / (float)m->ray->line_h;
 	m->ray->t_offset = 0;
 	if (m->ray->line_h > 448)
 	{
@@ -92,14 +91,15 @@ void	draw_raycaster(t_map *m, int i)
 }
 
 /**
- @brief Draw each square in the image taking into account the
-		pps_pix varible that will be used by ft_draw_square to
-		create 31 px squares size
-*/
-void create_map(t_map *m)
+  @brief Draw each square in the image taking into account the
+  pps_pix varible that will be used by ft_draw_square to
+  create 31 px squares size
+ */
+
+void	create_map(t_map *m)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (m->height <= 448 && m->width <= 1024)
@@ -113,7 +113,8 @@ void create_map(t_map *m)
 				if (m->map_desc[i][j] == '1')
 					ft_draw_square(m, j * 32, i * 32, 0x008083);
 				else if (does_char_contain(m->map_desc[i][j], "SEW0N"))
-					ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
+					ft_draw_square(m, j * 32, i * 32, \
+							add_shadow(0x249EA0, 1.2));
 				j++;
 			}
 			i++;
@@ -122,74 +123,27 @@ void create_map(t_map *m)
 	}
 }
 
-/* void	set_offset_player( t_map *m, int *y, int *x)
-{
-	int counter;
-	
-	counter = 0;
-	*x = (int)m->l->p_x >> 5;
-	*y = (int)m->l->p_y >> 5;
-	if (*y > 14)
-		(*y) -= 14;
-	while (m->map_desc[(*y) - 1][*x] && counter <= 32)
-	{
-		counter++;
-		(*x)--;
-		if (counter >= 31)
-			break;
-	}
-	(*x) += 1;
-	// printf("y = %d x = %d", *x, *y);
-}
-
-void create_map(t_map *m)
-{
-	int i;
-	int j;
-	int x;
-	int y;
-
-	i = 0;
-	set_offset_player(m, &y, &x);
-	m->pps_pix = 31;
-	while (i < 12 && i < m->lines)
-	{
-		j = 0;
-		while (j < 32 && m->map_desc[y][x])
-		{
-			if (m->map_desc[y][x] == '1')
-				ft_draw_square(m, j * 32, i * 32, 0x008083);
-			else if (does_char_contain(m->map_desc[y][x], "SEW0N"))
-				ft_draw_square(m, j * 32, i * 32, add_shadow(0x249EA0, 1.2));
-			j++;
-			x++;
-		}
-		i++;
-		y++;
-	}
-	m->pps_pix = 32;
-} */
-
 /**
- @a --> creates player representation
- @a --> set ra(angle) to 30 degrees to the left to start representating
-		the player's view which is a 60 degrees field
- @a -->	pixels per degree = (1024/60) 
- @a --> each loop difines a line,  we do all the math in the function
-		ray_caster
- @a --> with max(m) we we take the shortest line
- @a --> and we draw it with plot_line in the map
-*/
+  @a --> creates player representation
+  @a --> set ra(angle) to 30 degrees to the left to start representating
+  the player's view which is a 60 degrees field
+  @a -->	pixels per degree = (1024/60) 
+  @a --> each loop difines a line,  we do all the math in the function
+  ray_caster
+  @a --> with max(m) we we take the shortest line
+  @a --> and we draw it with plot_line in the map
+ */
+
 void	ft_draw_player(t_map *m)
 {
 	int	i;
 
 	i = -1;
 	m->pps_pix = 10;
-	// ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5,
-	// 	m->t->char_color);
+	ft_draw_square(m, m->l->p_x - 5, m->l->p_y - 5, \
+			m->t->char_color);
 	m->pps_pix = 32;
-	m->ray->ra = m->l->pa - (DR * ((1024/60) * 30));
+	m->ray->ra = m->l->pa - (DR * ((1024 / 60) * 30));
 	draw_backgroud(m, 0, 0, m->t->ceiler_code);
 	draw_backgroud(m, 0, 224, m->t->floor_code);
 	while (++i < (1024))
@@ -203,9 +157,7 @@ void	ft_draw_player(t_map *m)
 		ray_caster(m);
 		max(m);
 		draw_raycaster(m, i);
-		// plot_line(m, m->l->p_x, m->l->p_y);
+		plot_line(m, m->l->p_x, m->l->p_y);
 		m->ray->ra += DR;
 	}
-	// printf("tdist: %f ----- (ax): %d --- (ay): %d  player position [%d][%d]\n", m->ray->tdist, m->ray->ax,
-	//  m->ray->ay, (int)m->l->p_x >> 5, (int)m->l->p_y >> 5);
 }

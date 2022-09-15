@@ -19,7 +19,6 @@
 float	pythagoras(t_map *m, float *xy0, float *xy1)
 {
 	float	num;
-	(void)m;
 
 	num = sqrt((xy1[0] - xy0[0]) * (xy1[0] - xy0[0])
 			+ (xy1[1] - xy0[1]) * (xy1[1] - xy0[1]));
