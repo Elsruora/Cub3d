@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 16:06:13 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/16 09:29:14 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@
 # include "../mlx/mlx.h"
 
 /** @brief 90 degrees */
-# define PI1 4.71238898038
+# define PI1 (3 * M_PI) / 2
 
 /** @brief 270 degrees */
-# define PI2 1.57079632679
-
+# define PI2 M_PI / 2
 /* 
  ─── Textures ────────────────────────────────────────────────────
 */
@@ -89,6 +88,14 @@
 #  define K_DOWN 125
 # endif
 
+enum e_textures
+{
+	north,
+	south,
+	east,
+	west
+};
+
 typedef struct s_rayc
 {
 	float	atan;
@@ -137,10 +144,7 @@ typedef struct s_textures
 	int		so_fd;
 	int		we_fd;
 	int		ea_fd;
-	int		*t_north;
-	int		*t_south;
-	int		*t_west;
-	int		*t_east;
+	int		**textures;
 	int		char_color;
 	char	player_dir;
 }		t_textures;
@@ -190,6 +194,8 @@ typedef struct s_map
 	char		**map_desc;
 	int			lines;
 	int			colums;
+	int			height;
+	int			width;
 	int			pps_pix;
 	t_rayc		*ray;
 	t_sys		*s_mlx;
@@ -246,6 +252,7 @@ int		rgb_to_int(int r, int g, int b);
 int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
 int		*choose_texture(t_map *m);
+float	player_direction(char c);
 
 /* LIBFT */
 size_t	ft_strlen(const char *s);

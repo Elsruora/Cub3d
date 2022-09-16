@@ -41,10 +41,10 @@ void	go_down(t_map *m)
 		m->l->p_x -= cos(m->l->pa) * 5;
 	}
 	else if (m->map_desc[next_case_y][(int)(m->l->p_x / m->pps_pix)] == '1'
-		&& m->map_desc[(int)(m->l->p_y / m->pps_pix)][next_case_x] != '1')
+			&& m->map_desc[(int)(m->l->p_y / m->pps_pix)][next_case_x] != '1')
 		m->l->p_x -= cos(m->l->pa) * 5;
 	else if (m->map_desc[(int)(m->l->p_y / m->pps_pix)][next_case_x] == '1'
-		&& m->map_desc[next_case_y][(int)(m->l->p_x / m->pps_pix)] != '1')
+			&& m->map_desc[next_case_y][(int)(m->l->p_x / m->pps_pix)] != '1')
 		m->l->p_y -= sin(m->l->pa) * 5;
 }
 

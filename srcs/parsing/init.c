@@ -3,18 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 14:48:35 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/16 09:27:31 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*
-inicialize main structures see header file to know more about it,
-fetch map size and player position
+
+/** 
+	@brief determines player's inicial potition
+ */
+float player_direction(char c)
+{
+	if (c == 'N')
+		return ((float)PI1);
+	else if (c == 'S')
+		return ((float)PI2);
+	else if (c == 'E')
+		return ((float)(2 * M_PI));
+	else
+		return ((float)(M_PI));
+}
+
+/** 
+ @brief inicialize main structures see header file to know more about it,
+		fetch map size and player position 
 */
 void	ft_init_struc(t_map *m)
 {

@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ray_caster.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:08:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 15:06:18 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/16 09:21:27 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*
-function called by inc_offset in order to calculte the line offset
+/**
+ @brief function called by inc_offset in order to calculte the line offset
 */
+
 void	line_offset(t_map *m, char type)
 {
 	m->ray->up = 0;
@@ -26,9 +27,11 @@ void	line_offset(t_map *m, char type)
 		m->ray->left = 1;
 }
 
-/*
-Increment offset function allow us to increase offset up until we reach a wall
+/**
+	@brief Increment offset function allow us to increase offset up until 
+	we reach a wall
 */
+
 void	inc_offset(t_map *m, char type)
 {
 	int	i;
@@ -53,11 +56,12 @@ void	inc_offset(t_map *m, char type)
 	dist(m, type);
 }
 
-/*
-gets horizontal raytrace from 0 to PI and from PI to (2 * PI)
---> for a deeper undestanding see the next video:
-https://www.youtube.com/watch?v=eOCQfxRQ2pY
+/**
+ @brief gets horizontal raytrace from 0 to PI and from PI to (2 * PI)
+		--> for a deeper undestanding see the next video:
+		https://www.youtube.com/watch?v=eOCQfxRQ2pY
 */
+
 void	check_h_line(t_map *m)
 {
 	t_rayc	*r;
