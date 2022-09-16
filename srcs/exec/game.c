@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:30:03 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/12 16:03:43 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/16 08:43:36 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,11 @@ int	is_there_wall(t_map *m, int i)
 
 void	ft_player_buttons(int key, t_map *m)
 {
-	int	next_case_y;
-	int	next_case_x;
-	int	i;
-
-	next_case_y = 0;
-	next_case_x = 0;
-	i = 0;
-	if (key == K_A || key == K_D)
+	if (key == K_A || key == K_D || key == K_LEFT || key == K_RIGHT)
 		go_lr(key, m);
-	else if (key == K_W)
+	else if (key == K_W || key == K_UP)
 		go_up(m);
-	else if (key == K_S)
+	else if (key == K_S || key == K_DOWN)
 		go_down(m);
 	else if (key == K_ESC)
 	{
