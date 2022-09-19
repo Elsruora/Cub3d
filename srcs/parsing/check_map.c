@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/19 20:59:39 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/19 21:09:37 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_map_start(char **map)
 	return (c.i + 1);
 }
 
-int	 ch(char **map)
+int	nb_lines(char **map)
 {
 	int	i;
 
@@ -96,7 +96,6 @@ void	check_map(t_map *m)
 
 	i = get_map_start(m->map);
 	m->map_desc = &m->map[i];
-	check_map_desc_len(m->map_desc);
 	i = 0;
 	control_chars(m->map_desc);
 	m->t->player_dir = how_much_players(m->map_desc);
