@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/16 09:28:22 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:49:34 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_close_window(t_map *m)
 {
-	int i;
+	int	i;
 
 	ft_free((void **)m->map);
 	mlx_destroy_image(m->s_mlx->mlx, m->s_img[0]->img);

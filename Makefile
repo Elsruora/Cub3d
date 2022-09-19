@@ -6,7 +6,7 @@
 #    By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 21:22:22 by jvalenci          #+#    #+#              #
-#    Updated: 2022/09/09 11:06:57 by jvalenci         ###   ########.fr        #
+#    Updated: 2022/09/19 15:57:10 by jvalenci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ endif
 #################################################################################
 #                                   Compilation C                               #
 #################################################################################
-$(NAME): mlx $(OBJ_PATH) 
+$(NAME): mlx $(OBJ_PATH) ./includes/Cub3d.h
 	@make -C $(MLX_PATH)
 	@gcc $(LINUX) $(CFLAGS)  $(OBJ_PATH) -o $(NAME) $(EXEC_FLAGS_MAC)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
