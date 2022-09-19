@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:40:14 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/18 15:10:46 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/19 20:54:25 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	is_good_around(char **map, int x, int y)
 		dir.down = map[x + 1][y];
 	if (map[x][y - 1])
 		dir.left = map[x][y - 1];
-	if (map[x][y] == '0' && dir.down && dir.left && dir.right && dir.up)
+	if (does_char_contain(map[x][y],"0NSWE") && dir.down && dir.left && dir.right && dir.up)
 	{
 		if (!does_char_contain(dir.down, "10NSWE")
 			|| !does_char_contain(dir.up, "10NSWE")
@@ -50,7 +50,7 @@ void	check_walls(t_map *m)
 		c.j = 0;
 		while (m->map_desc[c.i][c.j])
 		{
-			if (m->map_desc[c.i][c.j] == '0')
+			if (does_char_contain(m->map_desc[c.i][c.j], "0NSWE"))
 				is_good_around(m->map_desc, c.i, c.j);
 			c.j++;
 		}

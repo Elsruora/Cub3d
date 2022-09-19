@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/18 17:26:24 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/19 20:54:59 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_map_start(char **map)
 	return (c.i + 1);
 }
 
-int	nb_lines(char **map)
+int	 ch(char **map)
 {
 	int	i;
 
