@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:40:14 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/12 14:45:27 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/18 15:10:46 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_walls(t_map *m)
 	t_counter	c;
 
 	c.i = 0;
-	while (m->map_desc[c.i])
+	while (m->map_desc[c.i + 1])
 	{
 		c.j = 0;
 		while (m->map_desc[c.i][c.j])
@@ -55,5 +55,12 @@ void	check_walls(t_map *m)
 			c.j++;
 		}
 		c.i++;
+	}
+	c.j = 0;
+	while (m->map_desc[c.i][c.j])
+	{
+		if (m->map_desc[c.i][c.j] == '0')
+			ft_error(BAD_WALL, ft_strjoin("line ", ft_itoa(c.i)));
+		c.j++;
 	}
 }

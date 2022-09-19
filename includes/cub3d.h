@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/16 09:29:14 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/18 15:13:25 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ int		is_color_code(char *code);
 int		open_each_texture(t_map *m, char *path, int i);
 char	*get_rgbffile(char *file);
 int		*filter_rgb_file(char *file);
+int		nb_lines(char **map);
 
 /* EXECUTION */
 int		ft_buttons(int key, t_map *m);
