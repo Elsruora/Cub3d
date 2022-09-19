@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/19 15:58:53 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:46:34 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int ac, char **av)
 	control_arg(ac, av);
 	ft_init_struc(&m);
 	m.map = ft_split(get_file_str(av[1]), '\n');
-	check_all_map_file(&m);
+/* 	check_all_map_file(&m);
 	ft_map_size(&m, &m.colums, &m.lines);
 	ft_find_player(&m);
 	ft_set_window(&m);
@@ -75,6 +75,7 @@ int	main(int ac, char **av)
 			0, 448);
 	mlx_hook(m.s_mlx->win, 2, 1L << 0, ft_buttons, &m);
 	mlx_hook(m.s_mlx->win, 17, 0, ft_close_window, &m);
-	m.s_mlx->loop = mlx_loop(m.s_mlx->mlx);
+	m.s_mlx->loop = mlx_loop(m.s_mlx->mlx); */
+	printf("90 degrees %lf/ 270 degrees %lf", PI1, PI2);
 	return (0);
 }

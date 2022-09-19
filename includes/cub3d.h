@@ -6,7 +6,7 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/19 16:41:51 by jvalenci         ###   ########lyon.fr   */
+/*   Updated: 2022/09/19 16:47:45 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include "../mlx/mlx.h"
 
 /** @brief 90 degrees */
-# define PI1 (3 * M_PI) / 2
+# define PI1 4.712389
 
 /** @brief 270 degrees */
-# define PI2 M_PI / 2
+# define PI2 1.570796
 /* 
  ─── Textures ────────────────────────────────────────────────────
 */
