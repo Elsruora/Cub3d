@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:35:45 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/19 14:49:29 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/19 16:31:47 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,6 @@ char	how_much_players(char **map)
 		return (player_dir);
 	else
 		return ('0');
-}
-
-void	check_map_desc_len(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	if (i < 3)
-		ft_error(BAD_WALL, NULL);
 }
 
 void	check_map(t_map *m)

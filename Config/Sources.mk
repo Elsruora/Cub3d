@@ -32,6 +32,7 @@ SRCS += srcs/parsing/fetch_texture_colors.c
 SRCS += srcs/parsing/init.c
 SRCS += srcs/parsing/init_map.c
 SRCS += srcs/parsing/init_textures.c
+SRCS += srcs/utils/check_map_desc.c
 SRCS += srcs/utils/colors.c
 SRCS += srcs/utils/control_arg.c
 SRCS += srcs/utils/draw_line.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/18 15:13:25 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/19 16:41:51 by jvalenci         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,7 @@ int		add_shadow(int rgb, float intensity);
 int		choose_color(t_map *m, int color);
 int		*choose_texture(t_map *m);
 float	player_direction(char c);
+void	check_map_desc_len(char **map);
 
 /* LIBFT */
 size_t	ft_strlen(const char *s);

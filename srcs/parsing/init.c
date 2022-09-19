@@ -6,17 +6,16 @@
 /*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/16 09:27:31 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:34:16 by jvalenci         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-
 /** 
-	@brief determines player's inicial potition
- */
-float player_direction(char c)
+  @brief determines player's inicial potition
+  */
+float	player_direction(char c)
 {
 	if (c == 'N')
 		return ((float)PI1);
@@ -29,9 +28,9 @@ float player_direction(char c)
 }
 
 /** 
- @brief inicialize main structures see header file to know more about it,
-		fetch map size and player position 
-*/
+  @brief inicialize main structures see header file to know more about it,
+  fetch map size and player position 
+  */
 void	ft_init_struc(t_map *m)
 {
 	t_sys		*mlx;
