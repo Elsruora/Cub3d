@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/20 17:30:20 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/20 18:36:39 by jvalenci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_close_window(t_map *m)
 	int	i;
 
 	ft_free((void **)m->map);
+	free(m->buffer);
 	mlx_destroy_image(m->s_mlx->mlx, m->s_img[0]->img);
 	mlx_destroy_image(m->s_mlx->mlx, m->s_img[1]->img);
 	mlx_clear_window(m->s_mlx->mlx, m->s_mlx->win);
@@ -61,7 +62,8 @@ int	main(int ac, char **av)
 
 	control_arg(ac, av);
 	ft_init_struc(&m);
-	m.map = ft_split(get_file_str(av[1]), '\n');
+	m.buffer = get_file_str(av[1]);
+	m.map = ft_split(m.buffer, '\n');
 	check_all_map_file(&m);
 	init_texture(&m);
 	ft_map_size(&m, &m.colums, &m.lines);
