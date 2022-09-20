@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/20 17:33:43 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:38:37 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,15 @@ void	check_texture_ext(char *path)
 
 char	*open_one_texture(char *path)
 {
+	int	fd;
+
 	check_texture_ext(path);
-	
+	if (open(path, O_DIRECTORY) != -1)
+		ft_error(PATH_IS_DIRECTORY, path);
+    fd = open(path, O_RDONLY);
+	if (fd == -1)
+		ft_error(BAD_TEXTURE_PATH, path);
+	close(fd);
 	return (path);
 }
 
