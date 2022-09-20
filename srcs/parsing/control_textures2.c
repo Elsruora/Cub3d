@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:22:13 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/20 16:33:00 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:58:52 by jvalenci         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void	check_textures_name(char **map)
 		ft_error(TEXTURE_ERROR, NULL);
 	while (i < 6)
 	{
-		if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3)
-			&& ft_strncmp(map[i], "WE ", 3) && ft_strncmp(map[i], "EA ", 3)
-			&& ft_strncmp(map[i], "F ", 2) && ft_strncmp(map[i], "C ", 2))
+		if (ft_strncmp(map[i], "NO ", 3) && ft_strncmp(map[i], "SO ", 3) \
+				&& ft_strncmp(map[i], "WE ", 3) && \
+				ft_strncmp(map[i], "EA ", 3) && ft_strncmp(map[i], "F ", 2) \
+				&& ft_strncmp(map[i], "C ", 2))
 			ft_error(TEXTURE_NAME_ERROR, map[i]);
 		i++;
 	}
@@ -37,10 +38,6 @@ void	check_textures_path_and_color(t_map *m)
 	i = -1;
 	while (++i <= 3)
 		open_each_texture(m, find_scnd_word(m->map[i]), i);
-	//printf("EA : %s", m->t->ea);
-	//printf("NO : %s", m->t->no);
-	//printf("SO : %s", m->t->so);
-	//printf("WE : %s", m->t->we);
 	i--;
 	while (++i <= 5)
 	{

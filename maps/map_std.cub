@@ -2,8 +2,8 @@ WE ./textures/west.ppm
 EA ./textures/east.ppm
 NO ./textures/north.ppm
 SO ./textures/south.ppm
-F 1,15,30
-C 150,150,245
+F 242,242,242 
+C 2,62,115 
 
 
 11111111111111
