@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:07:46 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/19 16:33:30 by jvalenci         ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 17:30:54 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init_texture(t_map *m)
 	m->t->textures = malloc(4 * sizeof(int *));
 	if (!m->t->textures)
 		return ;
-	m->t->textures[north] = filter_rgb_file(FNORTH);
-	m->t->textures[south] = filter_rgb_file(FSOUTH);
-	m->t->textures[east] = filter_rgb_file(FEAST);
-	m->t->textures[west] = filter_rgb_file(FWEST);
+	m->t->textures[north] = filter_rgb_file(m->t->no);
+	m->t->textures[south] = filter_rgb_file(m->t->so);
+	m->t->textures[east] = filter_rgb_file(m->t->ea);
+	m->t->textures[west] = filter_rgb_file(m->t->we);
 }
 
 /**

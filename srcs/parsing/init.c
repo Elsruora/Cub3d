@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 11:32:21 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/19 16:34:16 by jvalenci         ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 17:30:05 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,4 @@ void	ft_init_struc(t_map *m)
 	m->t = t;
 	m->pps_pix = 32;
 	m->l->pa = (float)(2 * M_PI);
-	init_texture(m);
 }

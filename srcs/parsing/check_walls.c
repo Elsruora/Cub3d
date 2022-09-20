@@ -6,7 +6,7 @@
 /*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 09:40:14 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/19 20:54:25 by nchabli          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:50:03 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_walls(t_map *m)
 	c.j = 0;
 	while (m->map_desc[c.i][c.j])
 	{
-		if (m->map_desc[c.i][c.j] == '0')
+		if (m->map_desc[c.i][c.j] == '0' || m->map_desc[c.i][c.j] == 'N')
 			ft_error(BAD_WALL, ft_strjoin("line ", ft_itoa(c.i)));
 		c.j++;
 	}

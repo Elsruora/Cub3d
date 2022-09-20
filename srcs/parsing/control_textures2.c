@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_textures2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:22:13 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/12 15:00:18 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 16:33:00 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ void	check_textures_path_and_color(t_map *m)
 
 	i = -1;
 	while (++i <= 3)
-	{
-		if (open_each_texture(m, find_scnd_word(m->map[i]), i) == -1)
-			ft_error(BAD_TEXTURE_PATH, find_scnd_word(m->map[i]));
-	}
+		open_each_texture(m, find_scnd_word(m->map[i]), i);
+	//printf("EA : %s", m->t->ea);
+	//printf("NO : %s", m->t->no);
+	//printf("SO : %s", m->t->so);
+	//printf("WE : %s", m->t->we);
 	i--;
 	while (++i <= 5)
 	{

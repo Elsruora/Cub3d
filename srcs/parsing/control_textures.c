@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nchabli <nchabli@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:05:16 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/12 14:24:05 by nchabli          ###   ########lyon.fr   */
+/*   Updated: 2022/09/20 17:33:43 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,46 +39,28 @@ void	check_texture_ext(char *path)
 		while (i)
 			extension[j++] = path[ft_strlen(path) - i--];
 		extension[4] = '\0';
-		if (ft_strcmp(extension, ".xpm"))
+		if (ft_strcmp(extension, ".ppm"))
 			ft_error(WRONG_TEXTURE_EXT, path);
 	}
 }
 
-int	open_one_texture(char *path)
+char	*open_one_texture(char *path)
 {
-	int	fd;
-
 	check_texture_ext(path);
-	if (open(path, O_DIRECTORY) != -1)
-		ft_error(PATH_IS_DIRECTORY, "textures");
-	fd = open(path, O_RDONLY);
-	return (fd);
+	
+	return (path);
 }
 
-int	open_each_texture(t_map *m, char *path, int i)
+void	open_each_texture(t_map *m, char *path, int i)
 {
-	if (ft_strncmp(m->map[i], "NO ", 3))
-	{
-		m->t->no_fd = open_one_texture(path);
-		return (m->t->no_fd);
-	}
-	else if (ft_strncmp(m->map[i], "SO ", 3))
-	{
-		m->t->so_fd = open_one_texture(path);
-		return (m->t->so_fd);
-	}
-	else if (ft_strncmp(m->map[i], "WE ", 3))
-	{
-		m->t->we_fd = open_one_texture(path);
-		return (m->t->we_fd);
-	}
-	else if (ft_strncmp(m->map[i], "EA ", 3))
-	{
-		m->t->ea_fd = open_one_texture(path);
-		return (m->t->ea_fd);
-	}
-	else
-		return (0);
+	if (!ft_strncmp(m->map[i], "NO ", 3))
+		m->t->no = open_one_texture(path);
+	else if (!ft_strncmp(m->map[i], "SO ", 3))
+		m->t->so = open_one_texture(path);
+	else if (!ft_strncmp(m->map[i], "WE ", 3))
+		m->t->we = open_one_texture(path);
+	else if (!ft_strncmp(m->map[i], "EA ", 3))
+		m->t->ea = open_one_texture(path);
 }
 
 void	check_textures_doublons(char **map)

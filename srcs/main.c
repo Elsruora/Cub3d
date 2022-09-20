@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 04:35:19 by nchabli           #+#    #+#             */
-/*   Updated: 2022/09/19 16:49:34 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:30:20 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	main(int ac, char **av)
 	ft_init_struc(&m);
 	m.map = ft_split(get_file_str(av[1]), '\n');
 	check_all_map_file(&m);
+	init_texture(&m);
 	ft_map_size(&m, &m.colums, &m.lines);
 	ft_find_player(&m);
 	ft_set_window(&m);

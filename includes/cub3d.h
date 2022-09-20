@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalenci <jvalenci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nchabli <nchabli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 09:12:16 by jvalenci          #+#    #+#             */
-/*   Updated: 2022/09/19 16:47:45 by jvalenci         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:31:42 by nchabli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@
 
 /** @brief 270 degrees */
 # define PI2 1.570796
-/* 
- ─── Textures ────────────────────────────────────────────────────
-*/
-
-# define FNORTH "textures/north.ppm"
-# define FSOUTH "textures/south.ppm"
-# define FWEST "textures/west.ppm"
-# define FEAST "textures/east.ppm"
 
 /**
  @param DR radians per pixel
@@ -140,10 +132,10 @@ typedef struct s_textures
 	int		ceiler_code;
 	int		floor_code;
 	int		wall_code;
-	int		no_fd;
-	int		so_fd;
-	int		we_fd;
-	int		ea_fd;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
 	int		**textures;
 	int		char_color;
 	char	player_dir;
@@ -221,13 +213,14 @@ void	ft_error(char *error, char *where);
 
 /* PARSING */
 char	*get_file_str(char *file_entry);
+char	*get_file_str2(char *file_entry);
 void	ft_init_struc(t_map *m);
 void	init_texture(t_map *m);
 void	ft_draw_player(t_map *m);
 void	ft_set_image(t_map *m);
 int		get_color_code(char *rgb_code);
 int		is_color_code(char *code);
-int		open_each_texture(t_map *m, char *path, int i);
+void	open_each_texture(t_map *m, char *path, int i);
 char	*get_rgbffile(char *file);
 int		*filter_rgb_file(char *file);
 int		nb_lines(char **map);
@@ -280,8 +273,7 @@ void	check_textures_path_and_color(t_map *m);
 void	ft_free(void **arr);
 char	*find_scnd_word(char *line);
 void	check_texture_ext(char *path);
-int		open_one_texture(char *path);
-int		open_each_texture(t_map *m, char *path, int i);
+char	*open_one_texture(char *path);
 void	check_textures_doublons(char **map);
 void	go_lr(int key, t_map *m);
 void	go_down(t_map *m);
